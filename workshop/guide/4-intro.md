@@ -10,4 +10,4 @@ La comprobación debe mostrar `load_skill` y luego `load_skill_resource`, antes 
 
 Después, personaliza una regla de tono en SKILL.md y compara resultados en una ejecución real. El modo offline utiliza respuestas fijas y no mide calidad de escritura.
 
-Error frecuente: escribir mal el nombre `instagram-copy` o la ruta `references/estructuras.md`. Las skills se incluyen en ambos ZIP; no necesitas el proyecto Python.
+Error frecuente: escribir mal el nombre `instagram-copy` o la ruta `references/estructuras.md`. La skill y sus recursos están incluidos en el repositorio.

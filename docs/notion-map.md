@@ -2,7 +2,7 @@
 
 [Workshop y recorrido completo](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55).
 
-[Repositorio público](https://github.com/mayrascript/golden-rentals-workshop): [main](https://github.com/mayrascript/golden-rentals-workshop/tree/main) (solución completa con comentarios) y [starter](https://github.com/mayrascript/golden-rentals-workshop/tree/starter) (paso a paso). Los archivos de la guía se conservan también en workshop/guide/.
+[Repositorio público](https://github.com/mayrascript/multiagent-adk-workshop): [main](https://github.com/mayrascript/multiagent-adk-workshop/tree/main) (solución completa con comentarios) y [starter](https://github.com/mayrascript/multiagent-adk-workshop/tree/starter) (paso a paso). Los archivos de la guía se conservan también en workshop/guide/.
 
 | Página | Fuente |
 | --- | --- |

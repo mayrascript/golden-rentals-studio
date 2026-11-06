@@ -6,7 +6,7 @@ Abre `workshop/exercises/07-workflow.ts`. En el TODO 7.1 construyes los cuatro a
 
 En el TODO 7.2 preparas el mensaje de cada etapa. El Redactor recibe la estrategia porque el workflow la incluye explícitamente. El Editor recibe las piezas actuales. El modelo no recibe el historial de versiones ni la aprobación humana.
 
-El orden ya está preparado en `apps/server/src/workflow/service.ts`: estrategia → textos → imágenes → revisión y calendario. Ese código conserva persistencia, cancelación y límites. Esta edición enseña un workflow local; el director remoto con A2A del codelab pertenece a otra arquitectura.
+El orden ya está preparado en `apps/server/src/workflow/service.ts`: estrategia → textos → imágenes → revisión y calendario. Ese código conserva persistencia, cancelación y límites. El workflow coordina a los cuatro agentes dentro del mismo proceso local.
 
 En ambos paquetes del taller, `apps/server/src/agents/team.ts` y `packages/providers/adk.ts` están conectados a estos ejercicios. Los cambios sí llegan al modo real de la web. El modo simulado usa sus propias plantillas y permite recorrer la interfaz antes de terminar los TODO.
 

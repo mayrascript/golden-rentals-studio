@@ -16,4 +16,4 @@ La simulación usa [SimulatedProvider](../../packages/providers/simulated.ts). S
 
 Ejecuta `pnpm demo:validate`. Debe confirmar tres piezas, tres imágenes, calendario, aprobación y ZIP, sin llamadas externas. El código de la comprobación está en [validate-demo.ts](../../scripts/validate-demo.ts).
 
-Si el servidor no arranca, revisa Node.js y el puerto. Si ves un error de credenciales, comprueba que `GENERATION_MODE` esté en `simulated`. No copies la configuración privada del proyecto Python.
+Si el servidor no arranca, revisa Node.js y el puerto. Si ves un error de credenciales, comprueba que `GENERATION_MODE` esté en `simulated`. Configura tus propios valores en `.env` cuando actives el modo real.

@@ -31,7 +31,7 @@ En una prueba offline, un resultado de texto fijo es esperado. En una prueba rea
 
 ## Ensayo pendiente
 
-Esta edición se valida con pruebas técnicas y recorrido de instalación. Mide por separado el tiempo de instalación, cada módulo y la campaña final con participantes del público objetivo antes de anunciar una duración. Registra también errores frecuentes y gasto observado. No atribuyas los tiempos del codelab Python a esta adaptación.
+Esta edición se valida con pruebas técnicas y recorrido de instalación. Mide por separado el tiempo de instalación, cada módulo y la campaña final con participantes del público objetivo antes de anunciar una duración. Registra también errores frecuentes y gasto observado.
 
 ## Mantener el material
 

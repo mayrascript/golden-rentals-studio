@@ -6,7 +6,7 @@ Abre `packages/contracts/index.ts` y localiza `editorSchema`. Define una revisi�
 
 En `workshop/exercises/06-editor.ts`, configura el agente (6.1) y completa el parseo y validación (6.2). `JSON.parse` rechaza JSON mal formado; `editorSchema.parse` rechaza datos con campos o valores incorrectos. El laboratorio prueba también un JSON sintácticamente válido pero incompleto.
 
-La aplicación actual solicita JSON mediante instrucciones y valida al recibirlo. El codelab original también enseña a enviar un esquema al proveedor: esa restricción durante la generación es una técnica adicional y no equivale a validar con Zod al final. Esta edición mantiene el comportamiento probado del MVP.
+La aplicación solicita JSON mediante instrucciones y valida la respuesta con Zod al recibirla. Enviar un esquema al proveedor para restringir la generación es una técnica adicional; no sustituye la validación de la respuesta en la aplicación.
 
 El Editor revisa textos y metadatos. `HUMAN_REQUIRED` deja explícito que la persona revisa los píxeles. `APPROVED` en la respuesta automática todavía no constituye aprobación humana.
 

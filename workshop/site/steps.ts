@@ -1,6 +1,6 @@
-export const repository = 'https://github.com/mayrascript/golden-rentals-workshop';
+export const repository = 'https://github.com/mayrascript/multiagent-adk-workshop';
 export const notionGuide = 'https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55';
-export const siteUrl = 'https://mayrascript.github.io/golden-rentals-workshop/';
+export const siteUrl = 'https://mayrascript.github.io/multiagent-adk-workshop/';
 export const workshopName = 'Tu próximo equipo no es humano';
 export const workshopSubtitle = 'Workshop de orquestación de agentes con Google ADK';
 export const workshopTitle = `${workshopName}: ${workshopSubtitle.toLowerCase().replace('google adk', 'Google ADK')}`;

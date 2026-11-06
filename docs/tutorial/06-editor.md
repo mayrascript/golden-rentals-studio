@@ -5,7 +5,7 @@ Objetivo: distinguir decisiones del modelo de reglas obligatorias del programa. 
 ## Pasos
 
 1. Lee las cuatro llamadas a `phase` en [service.ts](../../apps/server/src/workflow/service.ts): Estratega, Redactor, Diseñador y Editor.
-2. Observa que el Editor reúne la crítica y el calendario que el codelab separaba entre dos agentes.
+2. Observa que el Editor revisa textos y metadatos, y propone el calendario de la campaña.
 3. Sigue `audit` y `validateCalendar` en [rules.ts](../../apps/server/src/workflow/rules.ts). La aplicación comprueba referencias, piezas, fechas y algunas afirmaciones de riesgo.
 4. Localiza el contador de revisiones. Una revisión fallida puede provocar una sola corrección automática. Si vuelve a fallar, el resultado queda para intervención humana.
 5. Observa la cancelación y `completedSteps`: se dejan de iniciar pasos y se conservan los ya terminados. Una llamada externa enviada antes de cancelar puede tener costo.

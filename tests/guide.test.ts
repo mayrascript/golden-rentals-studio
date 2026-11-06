@@ -24,7 +24,7 @@ it('rechaza enlaces ejecutables y conserva enlaces de consulta seguros', () => {
   expect(guideHref('javascript:alert(1)')).toBeNull();
   expect(guideHref('data:text/html,hello')).toBeNull();
   expect(guideHref('README.md')).toBe('#/inicio');
-  expect(guideHref('https://github.com/mayrascript/golden-rentals-workshop')).toMatch(/^https:/);
+  expect(guideHref('https://github.com/mayrascript/multiagent-adk-workshop')).toMatch(/^https:/);
 });
 
 it('incluye los 14 TODO con sus fragmentos de solución en la guía generada', async () => {

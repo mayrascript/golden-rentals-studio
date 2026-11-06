@@ -1,4 +1,4 @@
-Use case: infographic-diagram. Adapt the attached architecture diagram for a Spanish educational TypeScript workshop. This is the edit target/reference. Create a polished, technically accurate diagram, opaque white background, landscape 2048x1152 or similar, high resolution with very legible Spanish labels. Preserve the original visual grammar: blue rounded system boundary, pale agent cards, clean icons, orthogonal labeled arrows. Simplify the crowded layout. Do not copy the original cloud architecture.
+Use case: infographic-diagram. Create a technically accurate architecture diagram for a Spanish TypeScript workshop. Use an opaque white background, landscape 2048x1152 or similar, and very legible Spanish labels. Use a blue rounded system boundary, pale agent cards, clean icons and orthogonal labeled arrows. Keep the layout spacious and readable.
 
 Exact top title: "Tu próximo equipo no es humano"
 Exact subtitle: "Workshop de orquestación de agentes con Google ADK"

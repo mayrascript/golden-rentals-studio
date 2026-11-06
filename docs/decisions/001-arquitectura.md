@@ -1,6 +1,6 @@
 # Decisión de arquitectura local en TypeScript
 
-Fecha: 5 de noviembre de 2026. Decisión aceptada en la conversación del proyecto: la organizadora prefiere TypeScript y el proyecto Python se conserva como referencia.
+Fecha: 5 de noviembre de 2026. Decisión: implementar el workshop en TypeScript para trabajar con un mismo lenguaje en la interfaz, el servidor y los agentes.
 
 ## Objetivo
 
@@ -15,7 +15,7 @@ Una experiencia educativa con una interfaz React, un servidor Node.js y cuatro a
 - El workflow en `service.ts` define cuatro etapas. El coordinador es código, no un agente adicional. No depende de que un prompt recuerde cancelar o exigir aprobación.
 - Los proveedores simulado y real comparten contratos. El modo lo elige el servidor. El simulado usa plantillas y SVG originales, y se identifica en la interfaz y las exportaciones.
 - Las campañas se guardan como JSON y archivos de imagen locales. No se requiere nube, base de datos externa ni cuentas de usuario.
-- A2A, MCP, Cloud Run y Agent Runtime se explican en el mapa como partes del codelab original que no hacen falta para esta versión. No son funcionalidades pendientes del prototipo.
+- A2A y MCP se explican como posibles extensiones. El despliegue en Cloud Run o Agent Runtime queda fuera del alcance de esta aplicación local.
 - La revisión visual es humana. El Editor real revisa texto y metadatos, y declara `HUMAN_REQUIRED`.
 - La aprobación global se vincula al hash del contenido actual. Cambiar una pieza invalida su revisión y la aprobación global; cambiar el calendario invalida la aprobación global.
 

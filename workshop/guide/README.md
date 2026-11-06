@@ -1,6 +1,6 @@
 # Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK
 
-[Abrir la guía web con menú lateral](https://mayrascript.github.io/golden-rentals-workshop/) · [Seguir este recorrido en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55)
+[Abrir la guía web con menú lateral](https://mayrascript.github.io/multiagent-adk-workshop/) · [Seguir este recorrido en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55)
 
 Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.
 
@@ -46,20 +46,6 @@ MCP y A2A son complementarios. Registrar una función local como tool no implica
 
 Consulta las fuentes: [ADK](https://adk.dev/), [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) y [A2A](https://a2a-protocol.org/latest/topics/what-is-a2a/).
 
-## Cómo adaptamos el codelab original
-
-El [codelab de referencia](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a) presenta un Director Creativo y cinco especialistas distribuidos. Nuestro recorrido adapta esa idea a un proyecto local en TypeScript:
-
-| En el codelab original | En este workshop |
-| --- | --- |
-| Estratega con búsqueda web. | Estratega que trabaja con los hechos del brief, sin investigación web. |
-| Diseñador con imágenes almacenadas en GCS. | Diseñador con imágenes guardadas localmente. |
-| Crítico y Administrador de proyectos separados. | Editor que revisa textos y propone el calendario; la revisión visual es humana. |
-| Director Creativo que llama especialistas mediante A2A. | Workflow TypeScript que coordina llamadas locales. |
-| Conexión opcional a Notion mediante MCP. | MCP se explica como ampliación; la aplicación todavía no conecta con Notion. |
-
-La guía de Notion es material del taller. Tenerla allí no significa que la aplicación esté integrada con Notion mediante MCP.
-
 ## Recorrido
 
 1. [Preparar entorno y valores personales](01-preparacion.md).
@@ -84,5 +70,3 @@ Abre `workshop/exercises/`. Descomenta el código del TODO indicado y elimina su
 `workshop/solution/` contiene la referencia comentada. Puedes consultarla para recuperarte de un error. `--solution` prueba explícitamente esa referencia; no certifica los ejercicios que estás completando. Las pruebas normales usan `workshop/exercises/`.
 
 Consulta [el laboratorio](laboratorio.md) para entender qué demuestra cada modo y cómo ejecutar un agente real de forma explícita. Las pruebas offline funcionan sin credenciales. La duración y dificultad del taller deben ajustarse después de un ensayo con participantes.
-
-Para la organizadora: [guía de facilitación](facilitadora.md).
