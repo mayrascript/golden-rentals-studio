@@ -1,6 +1,6 @@
 # Golden Rentals · Codelab en TypeScript
 
-[Seguir este recorrido en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55)
+[Abrir la guía web con menú lateral](https://mayrascript.github.io/golden-rentals-workshop/) · [Seguir este recorrido en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55)
 
 Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.
 

@@ -22,7 +22,9 @@
     "real:validate": "node --import tsx scripts/validate-real.ts",
     "package": "node --import tsx scripts/package.ts",
     "workshop:check": "node --import tsx scripts/workshop.ts",
-    "workshop:run": "node --import tsx scripts/workshop.ts"
+    "workshop:run": "node --import tsx scripts/workshop.ts",
+    "guide:build": "node --import tsx scripts/build-guide.ts",
+    "guide:dev": "pnpm guide:build && node --import tsx scripts/serve-guide.ts"
   },
   "dependencies": {
     "@google/adk": "2.4.0",
@@ -44,6 +46,7 @@
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.2.1",
     "eslint": "10.14.0",
+    "marked": "18.1.3",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "typescript-eslint": "8.72.1",
