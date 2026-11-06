@@ -10,15 +10,20 @@ const css = await readFile('workshop/site/style.css', 'utf8');
 const client = transpileModule(await readFile('workshop/site/client.ts', 'utf8'), {
   compilerOptions: { target: ScriptTarget.ES2022, module: ModuleKind.ES2022 },
 }).outputText;
+const theme = transpileModule(await readFile('workshop/site/theme.ts', 'utf8'), {
+  compilerOptions: { target: ScriptTarget.ES2022, module: ModuleKind.None },
+}).outputText;
 const hash = (source: string) => createHash('sha256').update(source).digest('hex').slice(0, 12);
 const cssName = `style.${hash(css)}.css`;
 const jsName = `client.${hash(client)}.js`;
-// Solo retiramos versiones anteriores de estos dos archivos generados.
+const themeName = `theme.${hash(theme)}.js`;
+// Solo retiramos versiones anteriores de los estilos y scripts generados.
 for (const name of await readdir(output)) {
-  if (/^(style\.[a-f0-9]+\.css|client\.[a-f0-9]+\.js)$/.test(name) && ![cssName, jsName].includes(name)) await unlink(`${output}/${name}`);
+  if (/^(style\.[a-f0-9]+\.css|(?:client|theme)\.[a-f0-9]+\.js)$/.test(name) && ![cssName, jsName, themeName].includes(name)) await unlink(`${output}/${name}`);
 }
 await writeFile(`${output}/${cssName}`, css);
 await writeFile(`${output}/${jsName}`, client);
+await writeFile(`${output}/${themeName}`, theme);
 await writeFile('docs/.nojekyll', '');
 await copyFile('workshop/assets/workshop-architecture.png', `${output}/workshop-architecture.png`);
 await writeFile(`${output}/icon.svg`, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#edf3ff"/><g fill="none" stroke="#2862d7" stroke-width="3"><path d="m20 24 24 16M44 24 20 40M20 24h24"/><circle cx="18" cy="21" r="6"/><circle cx="46" cy="21" r="6"/><circle cx="18" cy="43" r="6"/><circle cx="46" cy="43" r="6"/></g></svg>');
@@ -43,12 +48,13 @@ const data = JSON.stringify(steps.map(({ id, title, number }) => ({ id, title, n
 const html = `<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(workshopTitle)}</title><meta name="application-name" content="${escapeHtml(workshopName)}">
 <meta name="description" content="Construye cuatro agentes con TypeScript, Google ADK y Gemini. Un workshop guiado con 14 ejercicios, código comentado y comprobaciones paso a paso.">
-<meta name="theme-color" content="#2862d7"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+<meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light dark"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+<script src="./guide-assets/${themeName}"></script>
 <link rel="icon" type="image/svg+xml" href="./guide-assets/icon.svg"><link rel="canonical" href="${siteUrl}"><link rel="stylesheet" href="./guide-assets/${cssName}"></head>
 <body><a href="#page-title" class="skip-link">Saltar al contenido</a>
 <header class="topbar"><button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menú de pasos">☰</button>
 <a class="brand" href="#/inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m7 8 10 8M17 8 7 16M7 8h10"/><circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/></svg></span><span><strong>${escapeHtml(workshopName)}</strong><small>Orquestación de agentes con Google ADK</small></span></a>
-<nav class="header-links" aria-label="Enlaces del workshop"><a aria-label="Abrir código del workshop en GitHub" href="${repository}/tree/starter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg><span class="github-label">Código en GitHub</span></a><a class="notion-link" href="${notionGuide}" target="_blank" rel="noopener noreferrer">Abrir en Notion ↗</a><span class="language">ES · Español</span></nav></header>
+<nav class="header-links" aria-label="Enlaces del workshop"><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Modo oscuro" aria-pressed="false" title="Cambiar a modo oscuro"><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><span class="theme-label">Modo oscuro</span></button><a aria-label="Abrir código del workshop en GitHub" href="${repository}/tree/starter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg><span class="github-label">Código en GitHub</span></a><a class="notion-link" href="${notionGuide}" target="_blank" rel="noopener noreferrer">Abrir en Notion ↗</a><span class="language">ES · Español</span></nav></header>
 <button class="menu-shade" id="menu-shade" type="button" aria-label="Cerrar menú"></button>
 <aside class="sidebar" id="sidebar"><nav aria-label="Pasos del workshop"><p class="sidebar-label">EL RECORRIDO</p><ol class="step-list">${navigation(false)}</ol></nav>
 <nav class="sidebar-resources" aria-label="Recursos adicionales"><p class="sidebar-label">PARA IR MÁS ALLÁ</p><ul class="step-list">${navigation(true)}</ul></nav>
