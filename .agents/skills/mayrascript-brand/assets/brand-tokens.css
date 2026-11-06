@@ -1,0 +1,48 @@
+/* MayraScript: origen y adaptaciones en references/brand-guide.md. */
+:root {
+  --ms-font-brand: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --ms-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ms-coral: #ff3b3b;
+  --ms-pink: #ff6a9e;
+  --ms-violet: hsl(267 67% 51%);
+  --ms-cyan: hsl(187 100% 50%);
+  --ms-gradient: linear-gradient(110deg, var(--ms-coral), var(--ms-pink));
+  --ms-on-gradient: #240b25;
+  --ms-bg: #f9f6f0;
+  --ms-surface: #fffdfb;
+  --ms-raised: #f1eaf7;
+  --ms-text: #211333;
+  --ms-body: #4f425f;
+  --ms-muted: #6d5b7c;
+  --ms-link: #6525a8;
+  --ms-border: #e2d7eb;
+  --ms-control-border: #9580aa;
+  --ms-active-bg: #eadcf8;
+  --ms-active-text: #55208b;
+  --ms-focus: #7129bc;
+  --ms-glow: #7a2ed612;
+  --ms-success-bg: #edf4ee;
+  --ms-success-text: #28563f;
+  --ms-code-bg: #10091f;
+  --ms-code-bar: #201232;
+  --ms-code-text: #f0e6fa;
+  --ms-code-muted: #c7b7db;
+  --ms-code-border: #674e81;
+}
+:root[data-theme="dark"] {
+  --ms-bg: hsl(256 70% 8%);
+  --ms-surface: hsl(256 70% 10%);
+  --ms-raised: hsl(256 70% 12%);
+  --ms-text: hsl(40 43% 96%);
+  --ms-body: #d6cce4;
+  --ms-muted: #b8a6cb;
+  --ms-link: #73deed;
+  --ms-border: #35204e;
+  --ms-control-border: #82629f;
+  --ms-active-bg: #32174d;
+  --ms-active-text: #f4d7f3;
+  --ms-focus: #73deed;
+  --ms-glow: #7a2ed62b;
+  --ms-success-bg: #182c29;
+  --ms-success-text: #b4dfc8;
+}
