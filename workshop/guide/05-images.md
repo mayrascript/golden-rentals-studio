@@ -4,7 +4,7 @@ Objetivo: completar la función que conecta el Diseñador con el modelo de imág
 
 El agente de texto elabora el concepto y llama a `generate_campaign_image`. La función del servidor construye el prompt fotográfico, solicita la imagen, lee la respuesta y guarda el archivo. La referencia del archivo vuelve a ADK como resultado de la tool.
 
-Abre `workshop/exercises/05-images.ts`. Completa la llamada al modelo (5.1), la extracción de bytes (5.2) y el guardado (5.3). En esta adaptación se guarda en disco; el codelab original usa Cloud Storage. El cálculo de dimensiones, checksum, historial y límites está preparado en el proveedor de la aplicación.
+Abre `workshop/exercises/05-images.ts`. Completa la llamada al modelo (5.1), la extracción de bytes (5.2) y el guardado (5.3). Las imágenes se guardan en disco local. El cálculo de dimensiones, checksum, historial y límites está preparado en el proveedor de la aplicación.
 
 La respuesta puede incluir texto, partes internas y una imagen final. La prueba incluye una parte interna deliberadamente distinta: extraer la primera imagen sin comprobar `thought` hará fallar el ejercicio. El PNG offline tiene un solo píxel; comprueba el mecanismo, no el aspecto fotográfico.
 

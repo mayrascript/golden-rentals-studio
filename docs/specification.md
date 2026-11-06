@@ -384,9 +384,7 @@ Usar @google/adk y @google/adk-devtools del proyecto oficial. Fijar versiones pr
 
 El quickstart actual recomienda Node.js 24.13.0 o posterior y npm 11.8.0 o posterior; el README declara un mínimo distinto. Al implementar, verificar los requisitos de la versión seleccionada y documentar la combinación que realmente pase instalación y pruebas.
 
-Graph Workflows está documentado para TypeScript desde ADK v2.0.0. Puede usarse para expresar el flujo básico si su API fijada queda probada. También es aceptable un workflow secuencial controlado en TypeScript que conserve los mismos estados, validación y límites. No introducir un grafo complejo solo para reproducir el diagrama original.
-
-El codelab de Creative Studio es una referencia conceptual en Python. No copiar imports ni comandos como si fueran TypeScript, ni adoptar su infraestructura distribuida como requisito de este proyecto.
+Graph Workflows está documentado para TypeScript desde ADK v2.0.0. Puede usarse para expresar el flujo básico si su API fijada queda probada. También es aceptable un workflow secuencial controlado en TypeScript que conserve los mismos estados, validación y límites. Mantener la orquestación simple y coherente con los estados, la validación y los límites del proyecto.
 
 Fuentes oficiales consultadas:
 
@@ -394,7 +392,6 @@ Fuentes oficiales consultadas:
 - Preparación TypeScript: https://adk.dev/get-started/typescript/
 - Graph Workflows: https://adk.dev/graphs/
 - Skills y estado experimental: https://adk.dev/skills/
-- Codelab de referencia conceptual: https://codelabs.developers.google.com/ai-creative-studio-adk-a2a?hl=es_419
 
 ## 17 Instrucciones para Antigravity u otra herramienta
 

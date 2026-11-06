@@ -4,14 +4,14 @@
 
 Esta es la rama **main**: los 14 pasos están resueltos y activos, con comentarios que explican qué hace cada bloque, qué recibe y qué devuelve. La aplicación usa estas mismas funciones para ejecutar al Estratega, Redactor, Diseñador y Editor.
 
-[Guía web con menú lateral](https://mayrascript.github.io/golden-rentals-workshop/) · [Guía paso a paso en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55) · [Codelab en el repositorio](workshop/guide/README.md)
+[Guía web con menú lateral](https://mayrascript.github.io/multiagent-adk-workshop/) · [Guía paso a paso en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55) · [Guía en el repositorio](workshop/guide/README.md)
 
 ## Las dos ramas
 
 | Rama | Contenido | Puerto predeterminado |
 | --- | --- | --- |
-| [main](https://github.com/mayrascript/golden-rentals-workshop/tree/main) | Solución completa, funcional y explicada | 4317 |
-| [starter](https://github.com/mayrascript/golden-rentals-workshop/tree/starter) | Interfaz y backend preparados; 14 bloques para descomentar o completar | 4319 |
+| [main](https://github.com/mayrascript/multiagent-adk-workshop/tree/main) | Solución completa, funcional y explicada | 4317 |
+| [starter](https://github.com/mayrascript/multiagent-adk-workshop/tree/starter) | Interfaz y backend preparados; 14 bloques para descomentar o completar | 4319 |
 
 Cada rama contiene el proyecto directamente en la raíz. Ya no hay carpetas de versiones ni una tercera rama solution. Los comentarios explicativos se conservan tanto en la solución como en los ejercicios.
 
@@ -20,7 +20,7 @@ Cada rama contiene el proyecto directamente en la raíz. Ya no hay carpetas de v
 Requisitos: Node.js 24.13 o posterior y pnpm 11.25.0. Si falta pnpm, instala `npm install --global pnpm@11.25.0`.
 
 ```sh
-git clone --branch main https://github.com/mayrascript/golden-rentals-workshop.git golden-rentals-solution
+git clone --branch main https://github.com/mayrascript/multiagent-adk-workshop.git golden-rentals-solution
 cd golden-rentals-solution
 pnpm install --frozen-lockfile
 pnpm workshop:check setup
@@ -34,8 +34,8 @@ Abre http://127.0.0.1:4317. La demo inicia en modo simulado, sin clave ni consum
 Clona starter en otra carpeta para conservar tus ejercicios y tu configuración por separado:
 
 ```sh
-git clone --branch starter https://github.com/mayrascript/golden-rentals-workshop.git golden-rentals-workshop
-cd golden-rentals-workshop
+git clone --branch starter https://github.com/mayrascript/multiagent-adk-workshop.git multiagent-adk-workshop
+cd multiagent-adk-workshop
 pnpm install --frozen-lockfile
 pnpm workshop:check setup
 pnpm dev
@@ -62,12 +62,12 @@ Las comprobaciones usan respuestas locales, sin inferencia real. En starter, un 
 
 Consulta [la validación](docs/validation.md) y [la guía de facilitación](workshop/guide/facilitadora.md). La marca y los alojamientos son ficticios; las imágenes reales son generadas con IA y requieren revisión visual humana. La aplicación no publica en redes sociales.
 
-## Créditos
+## Licencia
 
-Adaptación educativa en TypeScript del [codelab de Saoussen Chaabnia y Mete Atamel](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a). [Código Python original](https://github.com/Saoussen-CH/mas-a2a-gcp). Licencia Apache 2.0: [LICENSE](LICENSE) y [NOTICE](NOTICE).
+Consulta [LICENSE](LICENSE) y [NOTICE](NOTICE) para los avisos de licencia.
 
 ## Guía web del workshop
 
-La [guía navegable](https://mayrascript.github.io/golden-rentals-workshop/) incluye menú lateral, navegación entre pasos, copia de código y progreso guardado en el navegador. Para mantenerla o abrirla localmente, consulta [guide-site.md](docs/guide-site.md).
+La [guía navegable](https://mayrascript.github.io/multiagent-adk-workshop/) incluye menú lateral, navegación entre pasos, copia de código y progreso guardado en el navegador. Para mantenerla o abrirla localmente, consulta [guide-site.md](docs/guide-site.md).
 
 Su identidad visual usa la [skill reutilizable de MayraScript](https://github.com/mayrascript/mayrascript-brand-skill), incluida y consumida desde `.agents/skills/mayrascript-brand/`: isotipo original, IBM Plex Mono y paleta compartida para los temas claro y oscuro.

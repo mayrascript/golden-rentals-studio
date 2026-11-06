@@ -10,7 +10,7 @@ Objetivo: comprender el límite entre un concepto visual y una imagen generada. 
 4. Compara con la ilustración SVG de [simulated.ts](../../packages/providers/simulated.ts). Es un activo de prueba original y se identifica como tal.
 5. Desde la web genera otra imagen para una sola pieza. Comprueba que las otras se mantienen y que esa pieza vuelve a requerir revisión.
 
-En el flujo real el Diseñador llama a la herramienta. La regeneración explícita reutiliza la escena del concepto guardado y llama a la misma función desde el workflow. La dirección fotográfica central tiene prioridad sobre estilos antiguos de ilustración, también al regenerar campañas existentes. El almacenamiento local reemplaza a Cloud Storage del codelab.
+En el flujo real el Diseñador llama a la herramienta. La regeneración explícita reutiliza la escena del concepto guardado y llama a la misma función desde el workflow. La dirección fotográfica central tiene prioridad sobre estilos antiguos de ilustración, también al regenerar campañas existentes. Las imágenes se guardan en el almacenamiento local de la aplicación.
 
 ## Checkpoint
 

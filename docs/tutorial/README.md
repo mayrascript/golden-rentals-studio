@@ -1,6 +1,6 @@
 # Guía de referencia del MVP
 
-Para construir los agentes mediante TODO numerados y bloques comentados, comienza por el [codelab del participante](../../workshop/guide/README.md). Esta guía conserva el recorrido de lectura de la implementación de referencia.
+Para construir los agentes mediante TODO numerados y bloques comentados, comienza por el [recorrido del participante](../../workshop/guide/README.md). Esta guía conserva el recorrido de lectura de la implementación de referencia.
 
 Construye y comprende una aplicación que convierte un brief ficticio en tres piezas de contenido revisables. La interfaz ya está preparada para que el trabajo se concentre en agentes, herramientas, contratos y control del flujo.
 
@@ -17,4 +17,4 @@ Necesitas familiaridad básica con TypeScript, funciones asíncronas y JSON. Emp
 
 Cada módulo enlaza archivos reales y una comprobación que puedes ejecutar. Son checkpoints de comportamiento; no son tags Git ni versiones de código históricas. La duración se ajustará después de un ensayo con participantes.
 
-El [mapa del codelab](../codelab-map.md) explica las equivalencias y las partes añadidas para Golden Rentals.
+El [mapa del workshop](../workshop-map.md) resume los módulos, sus objetivos y dónde practicarlos.
