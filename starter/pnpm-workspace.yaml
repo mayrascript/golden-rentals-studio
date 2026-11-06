@@ -1,9 +1,0 @@
-overrides:
-  '@opentelemetry/api': 1.9.1
-allowBuilds:
-  '@google/genai': false
-  cpu-features: false
-  protobufjs: false
-  ssh2: false
-  esbuild: true
-  better-sqlite3: false

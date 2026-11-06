@@ -5,8 +5,7 @@ dist/
 .env
 .env.*
 !.env.example
-release/
-test-results/
 playwright-report/
+test-results/
+release/
 .DS_Store
-*.log
