@@ -1,0 +1,66 @@
+{
+  "workshopUrl": "https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55",
+  "repositoryUrl": "https://github.com/mayrascript/golden-rentals-workshop",
+  "pages": [
+    {
+      "id": "410f59a7-4a4e-8100-af7c-d564be9a1af5",
+      "url": "https://app.notion.com/p/410f59a74a4e8100af7cd564be9a1af5",
+      "title": "1 · Preparar entorno y valores personales",
+      "source": "workshop/guide/01-preparacion.md"
+    },
+    {
+      "id": "410f59a7-4a4e-81ac-9f84-d491838d0882",
+      "url": "https://app.notion.com/p/410f59a74a4e81ac9f84d491838d0882",
+      "title": "2 · Configurar y probar un agente",
+      "source": "workshop/guide/02-strategist.md"
+    },
+    {
+      "id": "410f59a7-4a4e-81a0-8e03-df13c9df092a",
+      "url": "https://app.notion.com/p/410f59a74a4e81a08e03df13c9df092a",
+      "title": "3 · Registrar y llamar una tool",
+      "source": "workshop/guide/03-tools.md"
+    },
+    {
+      "id": "410f59a7-4a4e-815a-9531-cfd17988f27c",
+      "url": "https://app.notion.com/p/410f59a74a4e815a9531cfd17988f27c",
+      "title": "4 · Conectar una skill y sus recursos",
+      "source": "workshop/guide/04-skills.md"
+    },
+    {
+      "id": "410f59a7-4a4e-81a2-bf59-d34e31371079",
+      "url": "https://app.notion.com/p/410f59a74a4e81a2bf59d34e31371079",
+      "title": "5 · Generar, extraer y guardar una imagen",
+      "source": "workshop/guide/05-images.md"
+    },
+    {
+      "id": "410f59a7-4a4e-813c-bd28-f23ab5e25ed5",
+      "url": "https://app.notion.com/p/410f59a74a4e813cbd28f23ab5e25ed5",
+      "title": "6 · Revisar y validar una respuesta",
+      "source": "workshop/guide/06-editor.md"
+    },
+    {
+      "id": "410f59a7-4a4e-8141-be34-fd916ae85e54",
+      "url": "https://app.notion.com/p/410f59a74a4e8141be34fd916ae85e54",
+      "title": "7 · Conectar agentes y pasar contexto",
+      "source": "workshop/guide/07-workflow.md"
+    },
+    {
+      "id": "410f59a7-4a4e-812b-b8f6-c211548e63e7",
+      "url": "https://app.notion.com/p/410f59a74a4e812bb8f6c211548e63e7",
+      "title": "8 · Crear la campaña y cerrar el ejercicio",
+      "source": "workshop/guide/08-campana.md"
+    },
+    {
+      "id": "410f59a7-4a4e-8159-a47c-f9163b9318b9",
+      "url": "https://app.notion.com/p/410f59a74a4e8159a47cf9163b9318b9",
+      "title": "Laboratorio · Probar un agente por separado",
+      "source": "workshop/guide/laboratorio.md"
+    },
+    {
+      "id": "410f59a7-4a4e-81f3-81b6-ca635e491580",
+      "url": "https://app.notion.com/p/410f59a74a4e81f381b6ca635e491580",
+      "title": "Facilitación · Preparar y acompañar el taller",
+      "source": "workshop/guide/facilitadora.md"
+    }
+  ]
+}
