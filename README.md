@@ -54,3 +54,5 @@ Adaptación educativa en TypeScript del [codelab de Saoussen Chaabnia y Mete Ata
 ## Guía web del workshop
 
 La [guía navegable](https://mayrascript.github.io/golden-rentals-workshop/) incluye menú lateral, navegación entre pasos, copia de código y progreso guardado en el navegador. Para mantenerla o abrirla localmente, consulta [guide-site.md](docs/guide-site.md).
+
+Su identidad visual usa la [skill reutilizable de MayraScript](https://github.com/mayrascript/mayrascript-brand-skill), incluida y consumida desde `.agents/skills/mayrascript-brand/`: isotipo original, IBM Plex Mono y paleta compartida para los temas claro y oscuro.

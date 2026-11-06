@@ -5,7 +5,7 @@ import { resolve, extname, sep } from 'node:path';
 const root = resolve('docs');
 const base = '/golden-rentals-workshop/';
 const port = Number(process.env.GUIDE_PORT ?? 4321);
-const types: Record<string, string> = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml' };
+const types: Record<string, string> = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.ttf': 'font/ttf' };
 createServer(async (request, response) => {
   if (!['GET', 'HEAD'].includes(request.method ?? '')) { response.writeHead(405).end(); return; }
   const url = new URL(request.url ?? '/', 'http://localhost');

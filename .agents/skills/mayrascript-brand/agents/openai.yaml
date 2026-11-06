@@ -1,0 +1,4 @@
+interface:
+  display_name: "MayraScript Brand"
+  short_description: "Identidad visual y voz de MayraScript"
+  default_prompt: "Usa $mayrascript-brand para adaptar esta interfaz a la identidad de MayraScript."

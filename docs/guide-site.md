@@ -6,7 +6,19 @@ El contenido sigue en `workshop/guide/*.md`. `workshop/site/steps.ts` define el 
 
 El nombre del workshop es **Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK**. Golden Rentals identifica únicamente el caso práctico. El nombre visible se configura en `workshop/site/steps.ts`; la dirección del repositorio se mantiene para conservar los enlaces compartidos.
 
-El selector de modo oscuro está en la cabecera. `workshop/site/theme.ts` aplica la preferencia guardada antes de dibujar la página; en la primera visita sigue el tema del dispositivo. La elección se guarda únicamente en ese navegador y el progreso del taller se conserva por separado. Los colores del modo oscuro están al final de `style.css`.
+El selector de modo oscuro está en la cabecera. `workshop/site/theme.ts` aplica la preferencia guardada antes de dibujar la página; en la primera visita sigue el tema del dispositivo. La elección se guarda únicamente en ese navegador y el progreso del taller se conserva por separado.
+
+## Branding de MayraScript
+
+La guía consume la [skill pública de MayraScript](https://github.com/mayrascript/mayrascript-brand-skill), incluida en `.agents/skills/mayrascript-brand/`. `AGENTS.md` dirige a los agentes de desarrollo a sus instrucciones. La versión exacta está en `workshop/site/brand-source.json`.
+
+`scripts/build-guide.ts` concatena las fuentes y los tokens CSS de la skill antes de `workshop/site/style.css`, y copia el isotipo, los dos archivos de IBM Plex Mono y su licencia a la salida pública. Por eso un clon del repositorio puede generar la guía sin descargar la skill ni las fuentes. Las reglas de los componentes permanecen en `workshop/site/style.css`.
+
+El violeta profundo, el marfil, el cian y el degradado coral–rosa proceden de mayrascript.com. El modo claro y los ajustes de contraste están documentados como adaptaciones. Los títulos y la firma usan IBM Plex Mono; el cuerpo usa una fuente de sistema sin serifas para facilitar la lectura de guías largas. El diagrama conserva sus colores originales.
+
+Para actualizar la skill, revisa el commit nuevo en su repositorio, sustituye la carpeta completa y actualiza `brand-source.json`. Regenera el sitio y comprueba claro/oscuro, móvil, navegación y copiado. No edites los archivos generados dentro de `docs/guide-assets/`. Esta skill guía el desarrollo visual; no se añade a los agentes de campaña ni sustituye `skills/instagram-copy/`.
+
+## Contenido y generación
 
 La introducción incluye la tabla de agentes, las diferencias entre ADK, tools, skills, MCP y A2A, y la adaptación del diagrama. La imagen está en `workshop/assets/workshop-architecture.png` y se copia a la salida pública al generar la guía. Se adaptó con la herramienta de generación de imágenes integrada; el prompt reproducible está en `workshop/assets/architecture-prompt.txt`. El texto alternativo y la explicación en Markdown describen el flujo sin depender de la imagen.
 

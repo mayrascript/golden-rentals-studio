@@ -8,3 +8,9 @@ Proyecto Python de referencia: https://github.com/Saoussen-CH/mas-a2a-gcp
 El proyecto original se consulta en su repositorio. Esta adaptación conserva
 la licencia Apache 2.0. Las ilustraciones simuladas son activos originales
 producidos por código y no representan propiedades reales.
+
+La guía web usa la identidad visual de MayraScript y su isotipo público:
+https://github.com/mayrascript/mayrascript-brand-skill
+El isotipo identifica a MayraScript; no representa la marca ficticia del ejercicio.
+La fuente IBM Plex Mono se distribuye bajo SIL Open Font License 1.1.
+La licencia de la fuente se conserva en docs/guide-assets/OFL.txt y en la skill.
