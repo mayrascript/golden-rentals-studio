@@ -1,7 +1,7 @@
-import { mkdir, readFile, writeFile, readdir, unlink } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, readdir, unlink, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { transpileModule, ScriptTarget, ModuleKind } from 'typescript';
-import { steps, repository, notionGuide, siteUrl } from '../workshop/site/steps.js';
+import { steps, repository, notionGuide, siteUrl, workshopName, workshopSubtitle, workshopTitle } from '../workshop/site/steps.js';
 import { escapeHtml, renderGuideMarkdown } from '../workshop/site/render.js';
 
 const output = 'docs/guide-assets';
@@ -20,7 +20,8 @@ for (const name of await readdir(output)) {
 await writeFile(`${output}/${cssName}`, css);
 await writeFile(`${output}/${jsName}`, client);
 await writeFile('docs/.nojekyll', '');
-await writeFile(`${output}/icon.svg`, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#faf1da"/><path d="M14 29 32 14l18 15v22H14zm12 22V34h12v17" fill="none" stroke="#946f20" stroke-width="4" stroke-linejoin="round"/></svg>');
+await copyFile('workshop/assets/workshop-architecture.png', `${output}/workshop-architecture.png`);
+await writeFile(`${output}/icon.svg`, '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#edf3ff"/><g fill="none" stroke="#2862d7" stroke-width="3"><path d="m20 24 24 16M44 24 20 40M20 24h24"/><circle cx="18" cy="21" r="6"/><circle cx="46" cy="21" r="6"/><circle cx="18" cy="43" r="6"/><circle cx="46" cy="43" r="6"/></g></svg>');
 
 const navigation = (resource: boolean) => steps.filter(step => (step.number === null) === resource).map(step => {
   const marker = step.number === null ? (step.id === 'laboratorio' ? '◇' : '☷') : step.number === 0 ? '⌂' : String(step.number).padStart(2, '0');
@@ -34,26 +35,26 @@ for (const step of steps) {
   source = source.replace(/^\[(?:Seguir este recorrido en Notion|Abrir la guía web con menú lateral)\].*\n?/m, '').replace(/^\[Volver al recorrido\]\(README.md\)\s*$/m, '');
   const exercise = 'exercise' in step ? step.exercise : null;
   const links = `<div class="step-tools"><a href="${repository}/blob/starter/workshop/guide/${step.file}" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a>${exercise ? `<a href="${repository}/blob/starter/workshop/exercises/${exercise}" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="${repository}/blob/main/workshop/exercises/${exercise}" target="_blank" rel="noopener noreferrer">✓ Ver solución</a>` : ''}</div>`;
-  const intro = step.id === 'inicio' ? `<div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="agent-flow" aria-label="Equipo creativo: Estratega, Redactor, Diseñador y Editor"><div><span class="agent-icon" aria-hidden="true">◎</span><b>Estratega</b><small>Define los ángulos</small></div><div><span class="agent-icon" aria-hidden="true">≡</span><b>Redactor</b><small>Textos + skill</small></div><div><span class="agent-icon" aria-hidden="true">▧</span><b>Diseñador</b><small>Imágenes + tool</small></div><div><span class="agent-icon" aria-hidden="true">✓</span><b>Editor</b><small>Revisa y valida</small></div></div>` : '';
+  const intro = step.id === 'inicio' ? `<p class="workshop-subtitle">${escapeHtml(workshopSubtitle)}</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="agent-flow" aria-label="Equipo creativo: Estratega, Redactor, Diseñador y Editor"><div><span class="agent-icon" aria-hidden="true">◎</span><b>Estratega</b><small>Define los ángulos</small></div><div><span class="agent-icon" aria-hidden="true">≡</span><b>Redactor</b><small>Textos + skill</small></div><div><span class="agent-icon" aria-hidden="true">▧</span><b>Diseñador</b><small>Imágenes + tool</small></div><div><span class="agent-icon" aria-hidden="true">✓</span><b>Editor</b><small>Revisa y valida</small></div></div>` : '';
   sections.push(`<section data-step="${step.id}" aria-label="${escapeHtml(step.title)}"${step.id === 'inicio' ? '' : ' hidden'}>${links}${intro}<div class="step-body">${renderGuideMarkdown(source)}</div></section>`);
 }
 
 const data = JSON.stringify(steps.map(({ id, title, number }) => ({ id, title, number }))).replaceAll('<', '\\u003c');
 const html = `<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Golden Rentals · Workshop de agentes con TypeScript</title>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(workshopTitle)}</title><meta name="application-name" content="${escapeHtml(workshopName)}">
 <meta name="description" content="Construye cuatro agentes con TypeScript, Google ADK y Gemini. Un workshop guiado con 14 ejercicios, código comentado y comprobaciones paso a paso.">
 <meta name="theme-color" content="#2862d7"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
 <link rel="icon" type="image/svg+xml" href="./guide-assets/icon.svg"><link rel="canonical" href="${siteUrl}"><link rel="stylesheet" href="./guide-assets/${cssName}"></head>
 <body><a href="#page-title" class="skip-link">Saltar al contenido</a>
 <header class="topbar"><button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menú de pasos">☰</button>
-<a class="brand" href="#/inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m3 10 9-7 9 7v11H3z"/><path d="M9 21v-8h6v8"/></svg></span><span><strong>Golden Rentals</strong><small>Un estudio creativo con agentes de IA</small></span></a>
+<a class="brand" href="#/inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m7 8 10 8M17 8 7 16M7 8h10"/><circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/></svg></span><span><strong>${escapeHtml(workshopName)}</strong><small>Orquestación de agentes con Google ADK</small></span></a>
 <nav class="header-links" aria-label="Enlaces del workshop"><a aria-label="Abrir código del workshop en GitHub" href="${repository}/tree/starter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg><span class="github-label">Código en GitHub</span></a><a class="notion-link" href="${notionGuide}" target="_blank" rel="noopener noreferrer">Abrir en Notion ↗</a><span class="language">ES · Español</span></nav></header>
 <button class="menu-shade" id="menu-shade" type="button" aria-label="Cerrar menú"></button>
 <aside class="sidebar" id="sidebar"><nav aria-label="Pasos del workshop"><p class="sidebar-label">EL RECORRIDO</p><ol class="step-list">${navigation(false)}</ol></nav>
 <nav class="sidebar-resources" aria-label="Recursos adicionales"><p class="sidebar-label">PARA IR MÁS ALLÁ</p><ul class="step-list">${navigation(true)}</ul></nav>
 <div class="progress-card"><div class="progress-heading"><strong>Tu progreso</strong></div><p id="progress-label" class="progress-heading">0 de 8 pasos completados</p><progress id="progress" max="8" value="0" aria-labelledby="progress-label"></progress><p class="progress-note">Se guarda solo en este navegador.<br>Avanza a tu ritmo.</p></div></aside>
 <main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><span>Workshop</span><span aria-hidden="true">/</span><span>Agentes con TypeScript</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">${steps[0].title}</h1>${sections.join('\n')}<div class="lesson-complete"><button class="complete-button" id="complete" type="button" aria-pressed="false" hidden>Marcar como completado</button></div></article><div class="reading-note"><span>Un caso educativo con datos ficticios. Tú decides cuándo activar Gemini.</span><a href="${repository}/issues" target="_blank" rel="noopener noreferrer">Reportar un problema ↗</a></div></div></main>
-<footer class="footer"><nav class="footer-inner" aria-label="Navegación entre pasos"><div class="footer-side"><a class="nav-button" id="previous" href="#/inicio" hidden>← Anterior</a><span class="footer-position" id="footer-position">Golden Rentals · Workshop</span></div><a class="nav-button primary" id="next" href="#/preparacion">Comenzar el taller →</a></nav></footer>
+<footer class="footer"><nav class="footer-inner" aria-label="Navegación entre pasos"><div class="footer-side"><a class="nav-button" id="previous" href="#/inicio" hidden>← Anterior</a><span class="footer-position" id="footer-position">Workshop · Google ADK</span></div><a class="nav-button primary" id="next" href="#/preparacion">Comenzar el taller →</a></nav></footer>
 <p class="sr-only" id="announcer" role="status" aria-live="polite"></p>
 <noscript>Activa JavaScript para navegar por los pasos o consulta <a href="${repository}/blob/starter/workshop/guide/README.md">la guía completa en GitHub</a>.</noscript>
 <script type="application/json" id="guide-data">${data}</script><script type="module" src="./guide-assets/${jsName}"></script></body></html>`;

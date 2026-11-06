@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Golden Rentals · Workshop de agentes con TypeScript</title>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK</title><meta name="application-name" content="Tu próximo equipo no es humano">
 <meta name="description" content="Construye cuatro agentes con TypeScript, Google ADK y Gemini. Un workshop guiado con 14 ejercicios, código comentado y comprobaciones paso a paso.">
 <meta name="theme-color" content="#2862d7"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
-<link rel="icon" type="image/svg+xml" href="./guide-assets/icon.svg"><link rel="canonical" href="https://mayrascript.github.io/golden-rentals-workshop/"><link rel="stylesheet" href="./guide-assets/style.77195a3c63e4.css"></head>
+<link rel="icon" type="image/svg+xml" href="./guide-assets/icon.svg"><link rel="canonical" href="https://mayrascript.github.io/golden-rentals-workshop/"><link rel="stylesheet" href="./guide-assets/style.c949726bf636.css"></head>
 <body><a href="#page-title" class="skip-link">Saltar al contenido</a>
 <header class="topbar"><button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menú de pasos">☰</button>
-<a class="brand" href="#/inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m3 10 9-7 9 7v11H3z"/><path d="M9 21v-8h6v8"/></svg></span><span><strong>Golden Rentals</strong><small>Un estudio creativo con agentes de IA</small></span></a>
+<a class="brand" href="#/inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m7 8 10 8M17 8 7 16M7 8h10"/><circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/></svg></span><span><strong>Tu próximo equipo no es humano</strong><small>Orquestación de agentes con Google ADK</small></span></a>
 <nav class="header-links" aria-label="Enlaces del workshop"><a aria-label="Abrir código del workshop en GitHub" href="https://github.com/mayrascript/golden-rentals-workshop/tree/starter" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg><span class="github-label">Código en GitHub</span></a><a class="notion-link" href="https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55" target="_blank" rel="noopener noreferrer">Abrir en Notion ↗</a><span class="language">ES · Español</span></nav></header>
 <button class="menu-shade" id="menu-shade" type="button" aria-label="Cerrar menú"></button>
 <aside class="sidebar" id="sidebar"><nav aria-label="Pasos del workshop"><p class="sidebar-label">EL RECORRIDO</p><ol class="step-list"><li><a class="step-link" href="#/inicio" data-nav="inicio" aria-current="step"><span class="step-number" data-number="⌂" aria-hidden="true">⌂</span><span class="step-label">Descripción general</span></a></li>
@@ -20,7 +20,123 @@
 <nav class="sidebar-resources" aria-label="Recursos adicionales"><p class="sidebar-label">PARA IR MÁS ALLÁ</p><ul class="step-list"><li><a class="step-link" href="#/laboratorio" data-nav="laboratorio"><span class="step-number" data-number="◇" aria-hidden="true">◇</span><span class="step-label">Laboratorio con Gemini</span></a></li>
 <li><a class="step-link" href="#/facilitacion" data-nav="facilitacion"><span class="step-number" data-number="☷" aria-hidden="true">☷</span><span class="step-label">Guía de facilitación</span></a></li></ul></nav>
 <div class="progress-card"><div class="progress-heading"><strong>Tu progreso</strong></div><p id="progress-label" class="progress-heading">0 de 8 pasos completados</p><progress id="progress" max="8" value="0" aria-labelledby="progress-label"></progress><p class="progress-note">Se guarda solo en este navegador.<br>Avanza a tu ritmo.</p></div></aside>
-<main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><span>Workshop</span><span aria-hidden="true">/</span><span>Agentes con TypeScript</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">Tu estudio creativo, paso a paso</h1><section data-step="inicio" aria-label="Tu estudio creativo, paso a paso"><div class="step-tools"><a href="https://github.com/mayrascript/golden-rentals-workshop/blob/starter/workshop/guide/README.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="agent-flow" aria-label="Equipo creativo: Estratega, Redactor, Diseñador y Editor"><div><span class="agent-icon" aria-hidden="true">◎</span><b>Estratega</b><small>Define los ángulos</small></div><div><span class="agent-icon" aria-hidden="true">≡</span><b>Redactor</b><small>Textos + skill</small></div><div><span class="agent-icon" aria-hidden="true">▧</span><b>Diseñador</b><small>Imágenes + tool</small></div><div><span class="agent-icon" aria-hidden="true">✓</span><b>Editor</b><small>Revisa y valida</small></div></div><div class="step-body"><p>Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.</p>
+<main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><span>Workshop</span><span aria-hidden="true">/</span><span>Agentes con TypeScript</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">Tu próximo equipo no es humano</h1><section data-step="inicio" aria-label="Tu próximo equipo no es humano"><div class="step-tools"><a href="https://github.com/mayrascript/golden-rentals-workshop/blob/starter/workshop/guide/README.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><p class="workshop-subtitle">Workshop de orquestación de agentes con Google ADK</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="agent-flow" aria-label="Equipo creativo: Estratega, Redactor, Diseñador y Editor"><div><span class="agent-icon" aria-hidden="true">◎</span><b>Estratega</b><small>Define los ángulos</small></div><div><span class="agent-icon" aria-hidden="true">≡</span><b>Redactor</b><small>Textos + skill</small></div><div><span class="agent-icon" aria-hidden="true">▧</span><b>Diseñador</b><small>Imágenes + tool</small></div><div><span class="agent-icon" aria-hidden="true">✓</span><b>Editor</b><small>Revisa y valida</small></div></div><div class="step-body"><p>Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.</p>
+<p>El caso práctico es <strong>Golden Rentals</strong>, una marca ficticia de alojamientos. El nombre del taller es <strong>Tu próximo equipo no es humano</strong>: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.</p>
+<h2>Los agentes que construirás</h2>
+<p>Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Agente</th>
+<th>Rol</th>
+<th>Qué recibe</th>
+<th>Qué produce</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Estratega de marca</strong></td>
+<td>Propone una dirección creativa usando los hechos del brief.</td>
+<td>Marca, audiencia, objetivo y hechos disponibles.</td>
+<td>Una estrategia y tres ángulos de contenido.</td>
+</tr>
+<tr>
+<td><strong>Redactor creativo</strong></td>
+<td>Redacta publicaciones y consulta la skill de Instagram y sus recursos.</td>
+<td>Brief, estrategia e instrucciones de la skill.</td>
+<td>Tres textos con gancho, cuerpo, CTA, hashtags y referencias a los hechos.</td>
+</tr>
+<tr>
+<td><strong>Diseñador</strong></td>
+<td>Crea conceptos visuales y solicita imágenes fotorrealistas mediante una tool.</td>
+<td>Brief, estrategia y textos de cada pieza.</td>
+<td>Prompts, texto alternativo e imágenes generadas con Gemini y guardadas localmente.</td>
+</tr>
+<tr>
+<td><strong>Editor</strong></td>
+<td>Revisa coherencia, hechos y textos; propone un calendario.</td>
+<td>Brief, estrategia y piezas actuales.</td>
+<td>Revisión textual con <code>APPROVED</code> o <code>NEEDS_REVISION</code>, observaciones y tres fechas dentro de siete días.</td>
+</tr>
+</tbody></table>
+</div><p>El <strong>workflow del backend</strong> coordina el orden, pasa el contexto y aplica límites. Es código TypeScript; no es un quinto agente. La persona revisa las imágenes y aprueba la campaña. El Editor no inspecciona píxeles y su <code>APPROVED</code> no sustituye esa aprobación humana.</p>
+<h2>Así se conecta el equipo</h2>
+<p><figure class="architecture-figure"><a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el diagrama de arquitectura"><img src="./guide-assets/workshop-architecture.png" alt="El participante usa React para enviar un brief al workflow local. El servidor TypeScript coordina cuatro agentes ADK: Estratega, Redactor con una skill, Diseñador con una tool de imágenes y Editor. En modo real, los cuatro usan el modelo de texto de Gemini; la tool usa el modelo de imágenes y guarda archivos localmente." width="2048" height="1152" loading="lazy"></a><figcaption>Arquitectura del proyecto en TypeScript. <a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer">Abrir diagrama en tamaño completo ↗</a></figcaption></figure></p>
+<p>Lee el diagrama de izquierda a derecha:</p>
+<ol>
+<li><strong>Participante e interfaz:</strong> introduces el brief y después revisas, editas y descargas la campaña.</li>
+<li><strong>Workflow TypeScript:</strong> ejecuta estrategia → textos → imágenes → revisión y calendario. También controla el guardado, la cancelación y los límites de ejecución.</li>
+<li><strong>Cuatro agentes ADK:</strong> cada uno recibe instrucciones y contexto explícito. El Redactor consulta la skill; el Diseñador solicita la tool de imágenes.</li>
+<li><strong>Modelos y archivos:</strong> en modo real, los cuatro agentes llaman a Gemini para texto y la tool llama al modelo de imágenes. Las campañas y las imágenes se guardan en tu computadora. En modo simulado, la demo usa resultados preparados sin contactar a Gemini.</li>
+</ol>
+<p>La flecha discontinua hacia el modelo de texto representa al conjunto de los cuatro agentes. El diagrama muestra componentes y conexiones; el orden y las posibles revisiones los decide el workflow.</p>
+<h2>ADK, tools, skills, MCP y A2A</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Para qué sirve</th>
+<th>Dónde lo verás</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Google ADK</strong></td>
+<td>Framework para definir y ejecutar agentes, gestionar sesiones y conectar sus herramientas.</td>
+<td>Construyes un <code>LlmAgent</code> en el paso 2 y lo ejecutas con un <code>Runner</code>.</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>Función con nombre, descripción y argumentos que el modelo puede solicitar ejecutar.</td>
+<td>El Diseñador llama a <code>generate_campaign_image</code> en los pasos 3 y 5.</td>
+</tr>
+<tr>
+<td><strong>Skill</strong></td>
+<td>Instrucciones y recursos reutilizables que se cargan cuando hacen falta.</td>
+<td>El Redactor consulta <code>SKILL.md</code> y sus referencias en el paso 4.</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>Protocolo para conectar aplicaciones de IA con herramientas y datos ofrecidos por servidores externos.</td>
+<td>Extensión conceptual: consultar o guardar tareas en Notion mediante un servidor MCP.</td>
+</tr>
+<tr>
+<td><strong>A2A</strong></td>
+<td>Protocolo para que agentes independientes anuncien sus capacidades e intercambien trabajo y resultados.</td>
+<td>Extensión conceptual: delegar una tarea en un especialista que corre como servicio separado.</td>
+</tr>
+</tbody></table>
+</div><p>MCP y A2A son complementarios. Registrar una función local como tool no implica usar MCP; ejecutar varios agentes dentro del mismo proceso no implica usar A2A. Esta edición implementa ADK, tools, skills y orquestación local. Las conexiones A2A, MCP y el despliegue en Cloud Run quedan como posibles ampliaciones.</p>
+<p>Consulta las fuentes: <a href="https://adk.dev/" target="_blank" rel="noopener noreferrer">ADK</a>, <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer">MCP</a> y <a href="https://a2a-protocol.org/latest/topics/what-is-a2a/" target="_blank" rel="noopener noreferrer">A2A</a>.</p>
+<h2>Cómo adaptamos el codelab original</h2>
+<p>El <a href="https://codelabs.developers.google.com/ai-creative-studio-adk-a2a" target="_blank" rel="noopener noreferrer">codelab de referencia</a> presenta un Director Creativo y cinco especialistas distribuidos. Nuestro recorrido adapta esa idea a un proyecto local en TypeScript:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>En el codelab original</th>
+<th>En este workshop</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Estratega con búsqueda web.</td>
+<td>Estratega que trabaja con los hechos del brief, sin investigación web.</td>
+</tr>
+<tr>
+<td>Diseñador con imágenes almacenadas en GCS.</td>
+<td>Diseñador con imágenes guardadas localmente.</td>
+</tr>
+<tr>
+<td>Crítico y Administrador de proyectos separados.</td>
+<td>Editor que revisa textos y propone el calendario; la revisión visual es humana.</td>
+</tr>
+<tr>
+<td>Director Creativo que llama especialistas mediante A2A.</td>
+<td>Workflow TypeScript que coordina llamadas locales.</td>
+</tr>
+<tr>
+<td>Conexión opcional a Notion mediante MCP.</td>
+<td>MCP se explica como ampliación; la aplicación todavía no conecta con Notion.</td>
+</tr>
+</tbody></table>
+</div><p>La guía de Notion es material del taller. Tenerla allí no significa que la aplicación esté integrada con Notion mediante MCP.</p>
 <h2>Recorrido</h2>
 <ol>
 <li><a href="#/preparacion">Preparar entorno y valores personales</a>.</li>
@@ -105,6 +221,49 @@ pnpm dev</code></pre></div><h2>TODO 1.1 · Crear tu configuración local</h2>
 <p>Resultado esperado: la interfaz abre y produce una campaña simulada, y la comprobación setup termina sin mostrar credenciales.</p>
 </div></section>
 <section data-step="agente" aria-label="Configura tu primer agente" hidden><div class="step-tools"><a href="https://github.com/mayrascript/golden-rentals-workshop/blob/starter/workshop/guide/02-strategist.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a><a href="https://github.com/mayrascript/golden-rentals-workshop/blob/starter/workshop/exercises/02-strategist.ts" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="https://github.com/mayrascript/golden-rentals-workshop/blob/main/workshop/exercises/02-strategist.ts" target="_blank" rel="noopener noreferrer">✓ Ver solución</a></div><div class="step-body"><p>Objetivo: construir un <code>LlmAgent</code> y distinguir definirlo de ejecutarlo. Requisito: completar la preparación.</p>
+<h2>Antes del código: qué hace Google ADK</h2>
+<p><strong>Agent Development Kit (ADK)</strong> es el framework que usamos para definir y ejecutar los agentes. Gemini es el modelo que genera las respuestas; ADK conecta ese modelo con instrucciones, herramientas, sesiones y el ciclo de ejecución. En este taller usamos su SDK de TypeScript, <code>@google/adk</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué significa en este ejercicio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LlmAgent</code></td>
+<td>La definición del Estratega: su nombre, modelo, instrucciones y herramientas disponibles.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Identificador del agente, por ejemplo <code>strategist</code>.</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>Modelo configurado en el servidor que atenderá las solicitudes.</td>
+</tr>
+<tr>
+<td><code>instruction</code></td>
+<td>Instrucciones de sistema: qué debe hacer y qué límites debe respetar.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Resumen de su responsabilidad.</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td>Herramientas disponibles. El Estratega empieza con una lista vacía.</td>
+</tr>
+<tr>
+<td><code>Runner</code> y sesión</td>
+<td>Ejecutan al agente con un mensaje y organizan los eventos y el contexto de esa ejecución.</td>
+</tr>
+</tbody></table>
+</div><p>El recorrido es <strong>mensaje → Runner → modelo → respuesta</strong>. Cuando hay tools, el modelo puede solicitar una llamada, ADK ejecuta la función y devuelve su resultado al modelo. Una herramienta disponible no se ejecuta automáticamente por estar registrada.</p>
+<p>En el paso 7 verás cómo el backend construye el contexto para cada especialista. Las sesiones no hacen que dos agentes compartan automáticamente los resultados del otro.</p>
+<p><strong>Comprueba la idea:</strong> si creas <code>new LlmAgent(...)</code> sin ejecutarlo, ¿ya consumiste una llamada a Gemini? No: solo has definido el agente. La ejecución ocurre después mediante el Runner.</p>
+<p>Documentación: <a href="https://adk.dev/" target="_blank" rel="noopener noreferrer">Google ADK</a>.</p>
+<h2>Construye el Estratega</h2>
 <p>ADK necesita un modelo, un nombre y unas instrucciones. La descripción resume su responsabilidad. El <code>Runner</code> crea una sesión, envía el brief y recoge la respuesta. Crear el objeto del agente no envía solicitudes al proveedor.</p>
 <p>Abre <code>workshop/exercises/02-strategist.ts</code> y lee los comentarios de los TODO 2.1 y 2.2. Completa primero la instrucción y luego el agente. El laboratorio aportará un brief ficticio; el código de la sesión ya está preparado en <code>workshop/lab.ts</code>.</p>
 <p>Después de comprobar el bloque base, cambia la instrucción para pedir tres ángulos más distintos. El laboratorio offline verifica la conexión y el contrato con respuestas fijas. Para evaluar el efecto de tu nueva instrucción necesitas una ejecución real.</p>
@@ -371,7 +530,7 @@ pnpm workshop:check all</code></pre></div><p>Los módulos 2 a 6 ejecutan agentes
 <p>Main es la referencia completa y starter nace de main con los 14 bloques desactivados. Mantén alineados los comentarios, los bloques de la guía y los contratos al actualizar los ejercicios. El archivo workshop/source-generator.ts contiene la transformación de solución a código comentado. Comprueba main con los seis módulos y las pruebas de producto; comprueba starter también como proyecto incompleto antes de distribuirlo.</p>
 <p>Para distribuir un ZIP de una rama, ejecuta pnpm package desde esa copia. El paquete excluye las credenciales, las campañas guardadas y las dependencias instaladas.</p>
 </div></section><div class="lesson-complete"><button class="complete-button" id="complete" type="button" aria-pressed="false" hidden>Marcar como completado</button></div></article><div class="reading-note"><span>Un caso educativo con datos ficticios. Tú decides cuándo activar Gemini.</span><a href="https://github.com/mayrascript/golden-rentals-workshop/issues" target="_blank" rel="noopener noreferrer">Reportar un problema ↗</a></div></div></main>
-<footer class="footer"><nav class="footer-inner" aria-label="Navegación entre pasos"><div class="footer-side"><a class="nav-button" id="previous" href="#/inicio" hidden>← Anterior</a><span class="footer-position" id="footer-position">Golden Rentals · Workshop</span></div><a class="nav-button primary" id="next" href="#/preparacion">Comenzar el taller →</a></nav></footer>
+<footer class="footer"><nav class="footer-inner" aria-label="Navegación entre pasos"><div class="footer-side"><a class="nav-button" id="previous" href="#/inicio" hidden>← Anterior</a><span class="footer-position" id="footer-position">Workshop · Google ADK</span></div><a class="nav-button primary" id="next" href="#/preparacion">Comenzar el taller →</a></nav></footer>
 <p class="sr-only" id="announcer" role="status" aria-live="polite"></p>
 <noscript>Activa JavaScript para navegar por los pasos o consulta <a href="https://github.com/mayrascript/golden-rentals-workshop/blob/starter/workshop/guide/README.md">la guía completa en GitHub</a>.</noscript>
-<script type="application/json" id="guide-data">[{"id":"inicio","title":"Tu estudio creativo, paso a paso","number":0},{"id":"preparacion","title":"Prepara tu entorno","number":1},{"id":"agente","title":"Configura tu primer agente","number":2},{"id":"tools","title":"Dale una herramienta al agente","number":3},{"id":"skills","title":"Conecta una skill y sus recursos","number":4},{"id":"imagenes","title":"Del concepto a la imagen","number":5},{"id":"editor","title":"Revisa y valida las respuestas","number":6},{"id":"equipo","title":"Conecta tus cuatro agentes","number":7},{"id":"campana","title":"Crea tu primera campaña","number":8},{"id":"laboratorio","title":"Prueba un agente por separado","number":null},{"id":"facilitacion","title":"Prepara y acompaña el taller","number":null}]</script><script type="module" src="./guide-assets/client.524da7741a45.js"></script></body></html>
+<script type="application/json" id="guide-data">[{"id":"inicio","title":"Tu próximo equipo no es humano","number":0},{"id":"preparacion","title":"Prepara tu entorno","number":1},{"id":"agente","title":"Configura tu primer agente","number":2},{"id":"tools","title":"Dale una herramienta al agente","number":3},{"id":"skills","title":"Conecta una skill y sus recursos","number":4},{"id":"imagenes","title":"Del concepto a la imagen","number":5},{"id":"editor","title":"Revisa y valida las respuestas","number":6},{"id":"equipo","title":"Conecta tus cuatro agentes","number":7},{"id":"campana","title":"Crea tu primera campaña","number":8},{"id":"laboratorio","title":"Prueba un agente por separado","number":null},{"id":"facilitacion","title":"Prepara y acompaña el taller","number":null}]</script><script type="module" src="./guide-assets/client.9483a4443165.js"></script></body></html>

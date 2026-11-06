@@ -1,4 +1,6 @@
-# Golden Rentals · Paso a paso del participante
+# Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK
+
+**Versión participante, paso a paso.** Caso práctico: Golden Rentals, una marca ficticia de alojamientos.
 
 Estás en la rama **starter**. La interfaz y el backend están preparados; completa los 14 bloques de agentes, tools, skills, imágenes, validación y coordinación. Cada TODO incluye el código para descomentar o pegar y comentarios sobre su propósito, entradas y salidas.
 

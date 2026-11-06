@@ -20,6 +20,12 @@ export function guideHref(href: string): string | null {
 export function renderGuideMarkdown(markdown: string): string {
   const renderer = new Renderer();
   renderer.html = ({ text }) => escapeHtml(text);
+  renderer.image = ({ href, text }) => {
+    // La única imagen de la guía está incluida en el repo; no cargamos URLs arbitrarias.
+    if (href !== '../assets/workshop-architecture.png') return escapeHtml(text);
+    const src = './guide-assets/workshop-architecture.png';
+    return `<figure class="architecture-figure"><a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el diagrama de arquitectura"><img src="${src}" alt="${escapeHtml(text)}" width="2048" height="1152" loading="lazy"></a><figcaption>Arquitectura del proyecto en TypeScript. <a href="${src}" target="_blank" rel="noopener noreferrer">Abrir diagrama en tamaño completo ↗</a></figcaption></figure>`;
+  };
   renderer.code = ({ text, lang }) => {
     const label = lang === 'ts' ? 'TypeScript' : ['sh', 'bash'].includes(lang ?? '') ? 'Terminal' : 'Código';
     return `<div class="code-block"><div class="code-toolbar"><span>${label}</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>${escapeHtml(text)}</code></pre></div>`;
