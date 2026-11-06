@@ -1,4 +1,6 @@
-# Golden Rentals · Solución completa con comentarios
+# Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK
+
+**Solución completa con comentarios.** Caso práctico: Golden Rentals, una marca ficticia de alojamientos.
 
 Esta es la rama **main**: los 14 pasos están resueltos y activos, con comentarios que explican qué hace cada bloque, qué recibe y qué devuelve. La aplicación usa estas mismas funciones para ejecutar al Estratega, Redactor, Diseñador y Editor.
 

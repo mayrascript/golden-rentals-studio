@@ -1,10 +1,13 @@
 export const repository = 'https://github.com/mayrascript/golden-rentals-workshop';
 export const notionGuide = 'https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55';
 export const siteUrl = 'https://mayrascript.github.io/golden-rentals-workshop/';
+export const workshopName = 'Tu próximo equipo no es humano';
+export const workshopSubtitle = 'Workshop de orquestación de agentes con Google ADK';
+export const workshopTitle = `${workshopName}: ${workshopSubtitle.toLowerCase().replace('google adk', 'Google ADK')}`;
 
 // Los números coinciden con los TODO y con la guía de Notion.
 export const steps = [
-  { id: 'inicio', file: 'README.md', label: 'Descripción general', title: 'Tu estudio creativo, paso a paso', number: 0 },
+  { id: 'inicio', file: 'README.md', label: 'Descripción general', title: workshopName, number: 0 },
   { id: 'preparacion', file: '01-preparacion.md', label: 'Prepara tu entorno', title: 'Prepara tu entorno', number: 1 },
   { id: 'agente', file: '02-strategist.md', label: 'Configura tu primer agente', title: 'Configura tu primer agente', number: 2, exercise: '02-strategist.ts' },
   { id: 'tools', file: '03-tools.md', label: 'Registra y llama una tool', title: 'Dale una herramienta al agente', number: 3, exercise: '03-tools.ts' },

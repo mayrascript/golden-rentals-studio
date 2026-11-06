@@ -1,8 +1,64 @@
-# Golden Rentals · Codelab en TypeScript
+# Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK
 
 [Abrir la guía web con menú lateral](https://mayrascript.github.io/golden-rentals-workshop/) · [Seguir este recorrido en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55)
 
 Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.
+
+El caso práctico es **Golden Rentals**, una marca ficticia de alojamientos. El nombre del taller es **Tu próximo equipo no es humano**: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.
+
+## Los agentes que construirás
+
+Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.
+
+| Agente | Rol | Qué recibe | Qué produce |
+| --- | --- | --- | --- |
+| **Estratega de marca** | Propone una dirección creativa usando los hechos del brief. | Marca, audiencia, objetivo y hechos disponibles. | Una estrategia y tres ángulos de contenido. |
+| **Redactor creativo** | Redacta publicaciones y consulta la skill de Instagram y sus recursos. | Brief, estrategia e instrucciones de la skill. | Tres textos con gancho, cuerpo, CTA, hashtags y referencias a los hechos. |
+| **Diseñador** | Crea conceptos visuales y solicita imágenes fotorrealistas mediante una tool. | Brief, estrategia y textos de cada pieza. | Prompts, texto alternativo e imágenes generadas con Gemini y guardadas localmente. |
+| **Editor** | Revisa coherencia, hechos y textos; propone un calendario. | Brief, estrategia y piezas actuales. | Revisión textual con `APPROVED` o `NEEDS_REVISION`, observaciones y tres fechas dentro de siete días. |
+
+El **workflow del backend** coordina el orden, pasa el contexto y aplica límites. Es código TypeScript; no es un quinto agente. La persona revisa las imágenes y aprueba la campaña. El Editor no inspecciona píxeles y su `APPROVED` no sustituye esa aprobación humana.
+
+## Así se conecta el equipo
+
+![El participante usa React para enviar un brief al workflow local. El servidor TypeScript coordina cuatro agentes ADK: Estratega, Redactor con una skill, Diseñador con una tool de imágenes y Editor. En modo real, los cuatro usan el modelo de texto de Gemini; la tool usa el modelo de imágenes y guarda archivos localmente.](../assets/workshop-architecture.png)
+
+Lee el diagrama de izquierda a derecha:
+
+1. **Participante e interfaz:** introduces el brief y después revisas, editas y descargas la campaña.
+2. **Workflow TypeScript:** ejecuta estrategia → textos → imágenes → revisión y calendario. También controla el guardado, la cancelación y los límites de ejecución.
+3. **Cuatro agentes ADK:** cada uno recibe instrucciones y contexto explícito. El Redactor consulta la skill; el Diseñador solicita la tool de imágenes.
+4. **Modelos y archivos:** en modo real, los cuatro agentes llaman a Gemini para texto y la tool llama al modelo de imágenes. Las campañas y las imágenes se guardan en tu computadora. En modo simulado, la demo usa resultados preparados sin contactar a Gemini.
+
+La flecha discontinua hacia el modelo de texto representa al conjunto de los cuatro agentes. El diagrama muestra componentes y conexiones; el orden y las posibles revisiones los decide el workflow.
+
+## ADK, tools, skills, MCP y A2A
+
+| Concepto | Para qué sirve | Dónde lo verás |
+| --- | --- | --- |
+| **Google ADK** | Framework para definir y ejecutar agentes, gestionar sesiones y conectar sus herramientas. | Construyes un `LlmAgent` en el paso 2 y lo ejecutas con un `Runner`. |
+| **Tool** | Función con nombre, descripción y argumentos que el modelo puede solicitar ejecutar. | El Diseñador llama a `generate_campaign_image` en los pasos 3 y 5. |
+| **Skill** | Instrucciones y recursos reutilizables que se cargan cuando hacen falta. | El Redactor consulta `SKILL.md` y sus referencias en el paso 4. |
+| **MCP** | Protocolo para conectar aplicaciones de IA con herramientas y datos ofrecidos por servidores externos. | Extensión conceptual: consultar o guardar tareas en Notion mediante un servidor MCP. |
+| **A2A** | Protocolo para que agentes independientes anuncien sus capacidades e intercambien trabajo y resultados. | Extensión conceptual: delegar una tarea en un especialista que corre como servicio separado. |
+
+MCP y A2A son complementarios. Registrar una función local como tool no implica usar MCP; ejecutar varios agentes dentro del mismo proceso no implica usar A2A. Esta edición implementa ADK, tools, skills y orquestación local. Las conexiones A2A, MCP y el despliegue en Cloud Run quedan como posibles ampliaciones.
+
+Consulta las fuentes: [ADK](https://adk.dev/), [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) y [A2A](https://a2a-protocol.org/latest/topics/what-is-a2a/).
+
+## Cómo adaptamos el codelab original
+
+El [codelab de referencia](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a) presenta un Director Creativo y cinco especialistas distribuidos. Nuestro recorrido adapta esa idea a un proyecto local en TypeScript:
+
+| En el codelab original | En este workshop |
+| --- | --- |
+| Estratega con búsqueda web. | Estratega que trabaja con los hechos del brief, sin investigación web. |
+| Diseñador con imágenes almacenadas en GCS. | Diseñador con imágenes guardadas localmente. |
+| Crítico y Administrador de proyectos separados. | Editor que revisa textos y propone el calendario; la revisión visual es humana. |
+| Director Creativo que llama especialistas mediante A2A. | Workflow TypeScript que coordina llamadas locales. |
+| Conexión opcional a Notion mediante MCP. | MCP se explica como ampliación; la aplicación todavía no conecta con Notion. |
+
+La guía de Notion es material del taller. Tenerla allí no significa que la aplicación esté integrada con Notion mediante MCP.
 
 ## Recorrido
 

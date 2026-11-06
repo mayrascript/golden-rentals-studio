@@ -4,6 +4,10 @@ La guía pública se sirve en https://mayrascript.github.io/golden-rentals-works
 
 El contenido sigue en `workshop/guide/*.md`. `workshop/site/steps.ts` define el orden y los títulos del menú; `style.css` y `client.ts` implementan el aspecto, la navegación, el progreso local y la copia de bloques.
 
+El nombre del workshop es **Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK**. Golden Rentals identifica únicamente el caso práctico. El nombre visible se configura en `workshop/site/steps.ts`; la dirección del repositorio se mantiene para conservar los enlaces compartidos.
+
+La introducción incluye la tabla de agentes, las diferencias entre ADK, tools, skills, MCP y A2A, y la adaptación del diagrama. La imagen está en `workshop/assets/workshop-architecture.png` y se copia a la salida pública al generar la guía. Se adaptó con la herramienta de generación de imágenes integrada; el prompt reproducible está en `workshop/assets/architecture-prompt.txt`. El texto alternativo y la explicación en Markdown describen el flujo sin depender de la imagen.
+
 ```sh
 pnpm guide:build
 pnpm guide:dev

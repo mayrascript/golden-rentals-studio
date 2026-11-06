@@ -2,6 +2,7 @@
 export {};
 type Step = { id: string; title: string; number: number | null };
 const steps: Step[] = JSON.parse(document.querySelector('#guide-data')!.textContent!);
+const workshopName = document.querySelector<HTMLMetaElement>('meta[name="application-name"]')!.content;
 const lessons = steps.filter(step => step.number && step.number > 0);
 const storageKey = 'golden-rentals-guide-v1';
 const completed = new Set<string>();
@@ -57,9 +58,9 @@ function render(moveFocus = false) {
     else link.removeAttribute('aria-current');
   });
   heading.textContent = current.title;
-  document.title = `${current.title} · Golden Rentals Workshop`;
+  document.title = current.id === 'inicio' ? workshopName : `${current.title} · ${workshopName}`;
   document.querySelector('#step-position')!.textContent = current.number === 0 ? 'ANTES DE EMPEZAR' : current.number === null ? 'RECURSOS DEL TALLER' : `PASO ${current.number} DE ${lessons.length}`;
-  document.querySelector('#footer-position')!.textContent = current.number ? `${current.number} / ${lessons.length}` : 'Golden Rentals · Workshop';
+  document.querySelector('#footer-position')!.textContent = current.number ? `${current.number} / ${lessons.length}` : 'Workshop · Google ADK';
   const index = steps.indexOf(current);
   const isLesson = current.number !== null;
   previous.hidden = index === 0;
