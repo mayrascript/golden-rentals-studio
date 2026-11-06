@@ -26,7 +26,7 @@ if (process.argv.includes('--production')) {
   const vite = await createServer({ server: { middlewareMode: true }, appType: 'spa' });
   app.use(vite.middlewares); closeVite = () => vite.close();
 }
-const port = Number(process.env.PORT ?? 4317);
+const port = Number(process.env.PORT ?? 4319);
 if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('PORT debe estar entre 1024 y 65535.');
 const server = app.listen(port, '127.0.0.1', () => { console.log(`Golden Rentals · ${mode === 'simulated' ? 'Demo simulada' : 'Modo real'} · http://127.0.0.1:${port}`); });
 async function stop() { await closeVite?.(); server.close(() => process.exit(0)); }
