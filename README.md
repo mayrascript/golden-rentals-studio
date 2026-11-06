@@ -2,7 +2,7 @@
 
 Estás en la rama **starter**. La interfaz y el backend están preparados; completa los 14 bloques de agentes, tools, skills, imágenes, validación y coordinación. Cada TODO incluye el código para descomentar o pegar y comentarios sobre su propósito, entradas y salidas.
 
-[Guía paso a paso en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55) · [Codelab en el repositorio](workshop/guide/README.md)
+[Guía web con menú lateral](https://mayrascript.github.io/golden-rentals-workshop/) · [Guía paso a paso en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55) · [Codelab en el repositorio](workshop/guide/README.md)
 
 ## Las dos ramas
 
@@ -48,3 +48,7 @@ Consulta [la validación](docs/validation.md) y [la guía de facilitación](work
 ## Créditos
 
 Adaptación educativa en TypeScript del [codelab de Saoussen Chaabnia y Mete Atamel](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a). [Código Python original](https://github.com/Saoussen-CH/mas-a2a-gcp). Licencia Apache 2.0: [LICENSE](LICENSE) y [NOTICE](NOTICE).
+
+## Guía web del workshop
+
+La [guía navegable](https://mayrascript.github.io/golden-rentals-workshop/) incluye menú lateral, navegación entre pasos, copia de código y progreso guardado en el navegador. Para mantenerla o abrirla localmente, consulta [guide-site.md](docs/guide-site.md).
