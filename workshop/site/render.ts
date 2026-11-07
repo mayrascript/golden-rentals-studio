@@ -22,6 +22,11 @@ export function renderGuideMarkdown(markdown: string): string {
   const renderer = new Renderer();
   renderer.html = ({ text }) => escapeHtml(text);
   renderer.blockquote = function ({ tokens }) {
+    const first = tokens[0];
+    // La foto local identifica la tarjeta; su texto sigue siendo Markdown escapado.
+    if (first?.type === 'paragraph' && first.tokens?.length === 1 && first.tokens[0].type === 'image' && first.tokens[0].href === '../assets/mayra-rodriguez.jpg') {
+      return `<aside class="presenter-card" aria-label="Tu facilitadora"><div class="presenter-portrait">${this.parser.parse([first])}</div><div class="presenter-bio"><p class="presenter-eyebrow">Tu facilitadora</p>${this.parser.parse(tokens.slice(1))}</div></aside>`;
+    }
     const content = this.parser.parse(tokens);
     const kind = content.match(/^<p>\[!(TIP|NOTE|IMPORTANT|WARNING)\]/)?.[1];
     if (!kind) return `<blockquote>${content}</blockquote>`;
@@ -33,6 +38,9 @@ export function renderGuideMarkdown(markdown: string): string {
     if (!name) return escapeHtml(text);
     const asset = illustrations[name];
     const src = `./guide-assets/${name}`;
+    if (name === 'mayra-rodriguez.jpg') {
+      return `<img class="presenter-photo" src="${src}" alt="${escapeHtml(text)}" width="${asset.width}" height="${asset.height}" loading="lazy" decoding="async">`;
+    }
     const img = `<a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar ${asset.label}"><img src="${src}" alt="${escapeHtml(text)}" width="${asset.width}" height="${asset.height}" loading="${name === 'team-collaboration.png' ? 'eager' : 'lazy'}" decoding="async"></a>`;
     if (name === 'agent-avatars.png') {
       return `<figure class="avatar-team">${img}<figcaption class="avatar-captions"><div><b>Estratega</b><small>La brújula<br>Define la dirección</small></div><div><b>Redactor</b><small>El manual · skill<br>Consulta cómo escribir</small></div><div><b>Diseñador</b><small>La herramienta · tool<br>Genera la imagen</small></div><div><b>Editor</b><small>La lupa<br>Revisa el resultado</small></div></figcaption></figure>`;

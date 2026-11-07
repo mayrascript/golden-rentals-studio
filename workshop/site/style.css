@@ -101,6 +101,14 @@ pre code{font:inherit;background:none;color:inherit}
 .welcome-note{display:flex;align-items:flex-start;gap:13px;background:var(--ms-success-bg);border:1px solid var(--ms-border);border-radius:8px;padding:16px 18px;margin:22px 0;color:var(--ms-success-text);line-height:1.6;font-size:13px}
 .welcome-note strong{color:inherit}
 .welcome-note .note-icon{font-size:17px}
+.presenter-card{display:grid;grid-template-columns:156px minmax(0,1fr);gap:24px;align-items:center;margin:30px 0;padding:24px;background:var(--ms-raised);border:1px solid var(--ms-border);border-radius:10px}
+.presenter-portrait p{margin:0}
+.presenter-photo{display:block;width:100%;height:auto;border-radius:8px}
+.presenter-bio .presenter-eyebrow{font:400 10px/1.5 var(--ms-font-brand);color:var(--ms-muted);letter-spacing:1.4px;text-transform:uppercase;margin:0 0 9px}
+.presenter-bio h2{font:700 20px/1.4 var(--ms-font-brand);letter-spacing:-.4px;margin:0 0 12px;text-wrap:balance}
+.presenter-bio p{font-size:14px;line-height:1.7;margin:12px 0}
+.presenter-bio p:last-child{margin-bottom:0}
+@media(max-width:540px){.presenter-card{grid-template-columns:1fr;padding:18px;gap:18px}.presenter-portrait{width:112px}.presenter-bio h2{font-size:19px}}
 .agent-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:25px 0}
 .agent-flow div{background:var(--ms-raised);border:1px solid var(--ms-border);border-radius:8px;padding:15px 12px}
 .agent-flow b{display:block;font:700 11px var(--ms-font-brand);color:var(--ms-text)}
