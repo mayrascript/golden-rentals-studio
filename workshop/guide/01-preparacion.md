@@ -228,18 +228,10 @@ Duplica `.env.example` y nombra la copia `.env`, si todavía no existe. Si ya ti
 Esta edición usa Gemini mediante API key y guarda archivos localmente. No solicita nombre de proyecto de Google Cloud, región, bucket ni IDs de Notion. Esos campos corresponderían a módulos de nube o MCP.
 
 
-<details>
-<summary>Opcional · Preparar Gemini cuando vayas a probar el modo real</summary>
+> [!NOTE]
+> **La llave de Gemini se configura al probar un agente real.** Encontrarás cómo obtenerla y guardarla en [Prueba un agente por separado](laboratorio.md). Puedes completar esta preparación sin ella.
 
-## TODO 1.2 · Preparar la credencial cuando vayas a probar Gemini
-
-Obtén tu propia clave desde Google AI Studio, en su sección de claves de API, y pégala en `GOOGLE_GENAI_API_KEY` dentro de `.env`. Este archivo permanece local y está excluido del ZIP y de Git. No se coloca la clave dentro de un prompt, una skill ni el código del navegador.
-
-Ejecuta `pnpm workshop:check setup`: mostrará si hay una clave configurada, sin imprimirla. Es una comprobación local, no valida acceso con Google. `pnpm gemini:check` consulta el acceso a los modelos sin generar contenido.
-
-</details>
-
-## TODO 1.3 · Elegir el modo de prueba
+## TODO 1.2 · Elegir el modo de prueba
 
 Los ejercicios empiezan con `pnpm workshop:check NUMERO`, sin consumo de IA. Mantén `GENERATION_MODE=simulated` hasta completar los módulos. El [laboratorio](laboratorio.md) permite probar un agente real antes de integrar toda la web.
 

@@ -1,12 +1,8 @@
-Golden Rentals Content Studio — adaptación educativa en TypeScript.
+Tu próximo equipo no es humano — workshop educativo en TypeScript.
+Caso práctico: Golden Rentals Content Studio.
 
-Referencia conceptual: Build a Multi-Agent Creative Studio with Google's Agent Stack,
-de Saoussen Chaabnia y Mete Atamel.
-https://codelabs.developers.google.com/ai-creative-studio-adk-a2a
-
-Proyecto Python de referencia: https://github.com/Saoussen-CH/mas-a2a-gcp
-El proyecto original se consulta en su repositorio. Esta adaptación conserva
-la licencia Apache 2.0. Las ilustraciones simuladas son activos originales
+Este proyecto se distribuye bajo la licencia Apache 2.0.
+Las ilustraciones simuladas son activos originales
 producidos por código y no representan propiedades reales.
 
 La guía web usa la identidad visual de MayraScript y su isotipo público:

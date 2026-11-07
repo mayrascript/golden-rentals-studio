@@ -27,6 +27,15 @@ it('rechaza enlaces ejecutables y conserva enlaces de consulta seguros', () => {
   expect(guideHref('https://github.com/mayrascript/multiagent-adk-workshop')).toMatch(/^https:/);
 });
 
+it('permite las ilustraciones locales sin cargar imágenes externas ni rutas arbitrarias', () => {
+  const html = renderGuideMarkdown('![Una tool](../assets/tool-illustration.png)\n\n![Externa](https://example.com/tracker.png)\n\n![Privada](../../.env)');
+  expect(html).toContain('src="./guide-assets/tool-illustration.png"');
+  expect(html).toContain('alt="Una tool"');
+  expect(html.match(/<img\b/g)).toHaveLength(1);
+  expect(html).not.toContain('https://example.com/tracker.png');
+  expect(html).not.toContain('../../.env');
+});
+
 it('incluye los 14 TODO con sus fragmentos de solución en la guía generada', async () => {
   let total = 0;
   for (const step of steps) {

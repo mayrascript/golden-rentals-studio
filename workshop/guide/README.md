@@ -14,6 +14,8 @@ Sigue [la verificación e instalación de Node.js, npm, pnpm y Git](01-preparaci
 
 ## Los agentes que construirás
 
+![Los cuatro especialistas del equipo: Estratega con brújula, Redactor con manual, Diseñador con herramientas y Editor con lupa.](../assets/agent-avatars.png)
+
 Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.
 
 | Agente | Rol | Qué recibe | Qué produce |

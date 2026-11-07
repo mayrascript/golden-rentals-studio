@@ -7,6 +7,28 @@
 
 **ADK conecta un modelo con instrucciones, herramientas y una sesión.** Primero entiende la estructura de cualquier agente; luego la adaptaremos al Estratega.
 
+### Características principales
+
+- **Enfoque modular y de software.** Defines agentes, herramientas y flujos mediante código, con componentes que puedes reutilizar y probar. Hay SDK para **Python, TypeScript, Go, Java y Kotlin**. [Lenguajes y ejemplos oficiales](https://adk.dev/).
+- **Flexibilidad de modelos y despliegue.** Puedes usar **Gemini** u otros modelos mediante las integraciones compatibles, como **LiteLLM en ADK Python** o modelos disponibles en Vertex AI. Puedes ejecutar los agentes en local, empaquetarlos con **Docker** y desplegarlos en **Cloud Run o GKE**. [Modelos](https://developers.googleblog.com/en/agent-development-kit-easy-to-build-multi-agent-applications/) · [Despliegue](https://adk.dev/deploy/).
+- **Orquestación y flujos de trabajo.** Combina especialistas en secuencia, en paralelo o en bucle. También admite delegación y enrutamiento dinámico mediante un LLM. [Orquestación en ADK](https://developers.googleblog.com/en/agent-development-kit-easy-to-build-multi-agent-applications/).
+- **Herramientas y MCP.** Conecta funciones propias, búsqueda web, ejecución de código y herramientas o fuentes de datos externas mediante **Model Context Protocol (MCP)**, según el SDK y el modelo utilizados. [Herramientas MCP](https://adk.dev/tools-custom/mcp-tools/).
+- **Pruebas y depuración local.** La CLI y la **Web UI** permiten conversar con los agentes e inspeccionar eventos, llamadas a herramientas, estado y trazas de ejecución. Encontrarás comandos como `adk run` y `adk web`; la forma de invocarlos depende del SDK. [Interfaz web de ADK](https://adk.dev/runtime/web-interface/).
+
+> [!TIP]
+> **Pruébalo en este workshop:** usamos TypeScript y Gemini. El [laboratorio con ADK Web](laboratorio.md) explica cómo iniciar `pnpm workshop:web`, abrir **http://127.0.0.1:8000** y conversar con cada especialista por separado.
+
+<details>
+<summary>Qué capacidades usamos aquí y cuáles puedes explorar después</summary>
+
+En este taller defines cuatro agentes con `LlmAgent`, conectas una tool y una skill, y ejecutas un workflow coordinado por código TypeScript. La persona revisa las imágenes y aprueba la campaña: participa en el proceso como **human in the loop**.
+
+Los agentes de flujo de ADK, la delegación dinámica, MCP y el despliegue en la nube son posibilidades del framework que puedes explorar después. El workflow de este proyecto fija el orden en código; no usa `SequentialAgent`, `ParallelAgent` ni `LoopAgent`.
+
+Las capacidades no son idénticas en todos los lenguajes. Por ejemplo, el [conector LiteLLM documentado por ADK](https://adk.dev/agents/models/litellm/) corresponde a Python; este proyecto TypeScript conecta directamente con Gemini. Revisa siempre la compatibilidad del SDK que uses.
+
+</details>
+
 ### La ficha de un agente, sin un caso de negocio
 
 ```ts
@@ -43,13 +65,13 @@ Este ejemplo muestra la definición. Para ejecutarlo necesitas un modelo válido
 Si el modelo necesita una herramienta: **solicita la tool → ADK ejecuta la función → el resultado vuelve al modelo**. Las skills aportan instrucciones y recursos mediante un `SkillToolset`; no existe un parámetro `skills` en este ejemplo.
 
 <details>
-<summary>Por qué description es breve en el codelab original</summary>
+<summary>Qué va en description y qué va en instruction</summary>
 
-El [codelab de Google, secciones 3 y 4](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a) usa una descripción de una línea para el Brand Strategist. La explicación extensa vive en `SYSTEM_INSTRUCTION`: incluye especialidad, restricciones, pasos y formato de salida.
+`description` resume la responsabilidad del agente en una frase. `instruction` desarrolla el encargo: incluye especialidad, restricciones, pasos y formato de salida.
 
 La diferencia no es la longitud, sino la función: `description` permite identificar al especialista y `instruction` guía su trabajo. En un sistema con delegación, otro agente puede leer esa descripción para seleccionar a quién llamar. En este proyecto el workflow fija el orden, así que la descripción no decide el enrutamiento.
 
-El original investiga con Google Search y usa Python. Nuestra adaptación trabaja con hechos del brief, usa TypeScript y deja `tools: []` en el Estratega. Por eso su descripción es distinta.
+El Estratega de este workshop trabaja con los hechos del brief, usa TypeScript y configura `tools: []`. Su descripción resume esa responsabilidad y sus instrucciones especifican cómo producir la estrategia.
 
 </details>
 
