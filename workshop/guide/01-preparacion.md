@@ -2,7 +2,88 @@
 
 Objetivo: instalar el starter, ejecutar la interfaz y entender qué configuración pertenece a cada participante. Necesitas familiaridad básica con TypeScript, funciones asíncronas, JSON y una terminal.
 
-## Instalar y ejecutar
+## Requisitos iniciales
+
+Prepara estas herramientas antes de clonar el proyecto. Si ya las tienes, comprueba las versiones y continúa con la instalación del workshop.
+
+| Herramienta | Para qué sirve | Versión para el taller |
+| --- | --- | --- |
+| **Node.js** | Ejecuta el servidor y las herramientas de TypeScript. | Recomendamos **Node.js 24 LTS**, versión **24.13.0 o posterior** de esa línea. |
+| **npm** | Permite instalar pnpm. | Viene incluido al instalar Node.js; conserva la versión que lo acompaña. |
+| **pnpm** | Instala las dependencias y ejecuta los comandos del proyecto. | **11.25.0**, fijada en `package.json`. |
+
+Necesitas una terminal, conexión a Internet para descargar las herramientas y un editor como VS Code. Para clonar con `git clone`, necesitas Git; también puedes descargar el ZIP de la rama starter desde GitHub y extraerlo.
+
+### A. Instalar Node.js y npm
+
+**Windows y macOS — instalador gráfico:**
+
+1. Abre la [página oficial de descarga de Node.js](https://nodejs.org/en/download).
+2. Selecciona la línea **24 LTS** y tu sistema operativo. El taller se preparó con Node.js 24.22.1; una versión posterior de la línea 24 también cumple el requisito.
+3. Descarga el instalador **`.msi` en Windows** o **`.pkg` en macOS** y sigue el asistente. Conserva la instalación de npm y la opción de agregar los comandos al PATH si aparece.
+4. Cierra y vuelve a abrir la terminal. Si utilizas la terminal integrada de VS Code, reinicia también el editor.
+
+**Linux — instalación con nvm:**
+
+nvm permite instalar Node.js para tu usuario. Este método también sirve en macOS, especialmente si una instalación global produce errores de permisos. En una terminal Bash o Zsh, instala nvm con el [comando de su documentación oficial](https://github.com/nvm-sh/nvm#installing-and-updating):
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash
+```
+
+Cierra y vuelve a abrir la terminal para cargar nvm. Después instala y activa Node.js 24:
+
+```sh
+nvm install 24
+nvm use 24
+```
+
+**Comprueba Node.js y npm en cualquier sistema:**
+
+```sh
+node --version
+npm --version
+```
+
+Resultado esperado: Node.js muestra una versión `v24.x.x` igual o superior a `v24.13.0`, y npm muestra un número de versión. **npm ya está instalado con Node.js**; no necesitas instalarlo por separado. Si ya usas una versión posterior de Node.js, el proyecto declara un mínimo de 24.13.0; para seguir el entorno del taller recomendamos la línea 24.
+
+### B. Instalar pnpm
+
+Cuando `node` y `npm` funcionen, ejecuta:
+
+```sh
+npm install --global pnpm@11.25.0
+pnpm --version
+```
+
+Resultado esperado: `11.25.0`. La instalación se realiza una vez por entorno de Node.js. El proyecto usa una versión concreta para que todos trabajemos con el mismo gestor de dependencias. Consulta la [instalación oficial de pnpm](https://pnpm.io/installation) si necesitas otra forma de instalarlo.
+
+### C. Comprobar antes de continuar
+
+Ejecuta estos tres comandos en la misma terminal que usarás para el workshop:
+
+```sh
+node --version
+npm --version
+pnpm --version
+```
+
+Si los tres muestran sus versiones, puedes pasar a **Instalar y ejecutar el proyecto**. La preparación todavía no requiere una API key de Gemini.
+
+### Si aparece un error
+
+| Mensaje o situación | Cómo resolverlo |
+| --- | --- |
+| `node`, `npm` o `pnpm` no se reconoce / `command not found` | Cierra y abre la terminal; reinicia VS Code si lo usas. Comprueba que terminaste la instalación de Node.js antes de instalar pnpm. |
+| Node.js es anterior a 24.13.0 | Instala la línea 24 LTS. Si usas nvm, ejecuta `nvm install 24` y `nvm use 24`. |
+| `nvm: command not found` | Abre una terminal nueva. Si continúa, sigue la sección de solución de problemas de la documentación de nvm para tu sistema. |
+| `EACCES` / permiso denegado al instalar pnpm en macOS o Linux | Usa la instalación por usuario con nvm del apartado A, activa Node.js 24 y repite la instalación de pnpm. |
+| PowerShell bloquea `npm.ps1` o `pnpm.ps1` | Abre **Símbolo del sistema (cmd)** y ejecuta allí los comandos del taller. |
+| `git` no se reconoce | Descarga el ZIP: abre el repositorio en GitHub, selecciona **starter**, elige **Code → Download ZIP** y extrae la carpeta. Ábrela en tu editor y en la terminal. |
+
+Referencia: [instalar Node.js y npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/).
+
+## Instalar y ejecutar el proyecto
 
 1. Clona la rama `starter` para realizar el taller. Ejecuta desde una terminal:
 
@@ -13,9 +94,7 @@ cd multiagent-adk-workshop
 
    El proyecto está en la raíz de la carpeta clonada. Si descargas un ZIP desde GitHub, selecciona primero la rama starter. Para consultar la solución completa con comentarios, abre la rama main.
 
-2. Comprueba `node --version`: el proyecto requiere Node.js 24.13 o posterior. La preparación se verificó con 24.22.1 y pnpm 11.25.0.
-3. Si falta pnpm, instálalo con `npm install --global pnpm@11.25.0`.
-4. Desde la carpeta que contiene package.json, ejecuta:
+2. Desde la carpeta que contiene `package.json`, ejecuta:
 
 ```sh
 pnpm install --frozen-lockfile

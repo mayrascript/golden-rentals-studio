@@ -6,6 +6,12 @@ Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicac
 
 El caso práctico es **Golden Rentals**, una marca ficticia de alojamientos. El nombre del taller es **Tu próximo equipo no es humano**: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.
 
+## Requisitos iniciales
+
+Antes de empezar, instala **Node.js 24 LTS** (24.13.0 o posterior), **npm** (incluido con Node.js) y **pnpm 11.25.0**. Necesitarás una terminal, un editor de código y conexión a Internet para la instalación.
+
+Sigue [la instalación de Node.js, npm y pnpm](01-preparacion.md), con instrucciones para Windows, macOS y Linux, comprobación de versiones y soluciones a errores frecuentes. Puedes realizar la preparación y la demo sin una API key de Gemini.
+
 ## Los agentes que construirás
 
 Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.

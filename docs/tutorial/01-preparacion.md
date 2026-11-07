@@ -2,6 +2,8 @@
 
 Objetivo: ejecutar el recorrido completo antes de modificar agentes. Necesitas Node.js y pnpm indicados en el README; no necesitas una cuenta de Google para la simulación.
 
+Antes de continuar, completa [los requisitos iniciales y la instalación de Node.js, npm y pnpm](../../workshop/guide/01-preparacion.md). npm se instala junto con Node.js; el workshop usa pnpm 11.25.0.
+
 ## Pasos
 
 1. Abre una terminal en la carpeta que contiene [package.json](../../package.json).

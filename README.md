@@ -17,7 +17,7 @@ Starter nace de main. Ambas ramas tienen el proyecto directamente en la raíz. N
 
 ## Empezar
 
-Requisitos: Node.js 24.13 o posterior y pnpm 11.25.0. Si falta pnpm, instala `npm install --global pnpm@11.25.0`.
+Requisitos: Node.js 24 LTS (24.13.0 o posterior), npm incluido con Node.js y pnpm 11.25.0. Antes de ejecutar los comandos, sigue [la instalación de Node.js, npm y pnpm](workshop/guide/01-preparacion.md), con instrucciones para Windows, macOS y Linux y comprobación de versiones.
 
 ```sh
 git clone --branch starter https://github.com/mayrascript/multiagent-adk-workshop.git multiagent-adk-workshop
