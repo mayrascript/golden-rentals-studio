@@ -1,58 +1,48 @@
-# Tu próximo equipo no es humano: workshop de orquestación de agentes con Google ADK
+# Golden Rentals Studio
 
-**Versión participante, paso a paso.** Caso práctico: Golden Rentals, una marca ficticia de alojamientos.
+Aplicación del workshop **Tu próximo equipo no es humano**, de MayraScript. Golden Rentals es un caso ficticio.
 
-Estás en la rama **starter**. La interfaz y el backend están preparados; completa los 14 bloques de agentes, tools, skills, imágenes, validación y coordinación. Cada TODO incluye el código para descomentar o pegar y comentarios sobre su propósito, entradas y salidas.
-
-[Guía web con menú lateral](https://mayrascript.github.io/multiagent-adk-workshop/) · [Guía paso a paso en Notion](https://app.notion.com/p/410f59a74a4e8141a98ccc9b3e160c55) · [Guía en el repositorio](workshop/guide/README.md)
-
-## Las dos ramas
-
-| Rama | Contenido | Puerto predeterminado |
-| --- | --- | --- |
-| [main](https://github.com/mayrascript/multiagent-adk-workshop/tree/main) | Solución completa, activa y con comentarios explicativos | 4317 |
-| [starter](https://github.com/mayrascript/multiagent-adk-workshop/tree/starter) | Paso a paso con 14 bloques pendientes | 4319 |
-
-Starter nace de main. Ambas ramas tienen el proyecto directamente en la raíz. No necesitas entrar en una subcarpeta de versión.
+[Seguir la guía paso a paso](https://mayrascript.github.io/multiagent-adk-workshop/) · [Repositorio de la guía](https://github.com/mayrascript/multiagent-adk-workshop)
 
 ## Empezar
 
-Requisitos: Node.js 24 LTS (24.13.0 o posterior), npm incluido con Node.js y pnpm 11.25.0. Antes de ejecutar los comandos, sigue [la instalación de Node.js, npm y pnpm](workshop/guide/01-preparacion.md), con instrucciones para Windows, macOS y Linux y comprobación de versiones.
+Requisitos: Node.js 24.13.0 o posterior y pnpm 11.25.0.
 
 ```sh
-git clone --branch starter https://github.com/mayrascript/multiagent-adk-workshop.git multiagent-adk-workshop
-cd multiagent-adk-workshop
+git clone --branch starter https://github.com/mayrascript/golden-rentals-studio.git
+cd golden-rentals-studio
 pnpm install --frozen-lockfile
 pnpm workshop:check setup
 pnpm dev
 ```
 
-Abre http://127.0.0.1:4319. La demo simulada funciona desde el inicio, sin clave ni consumo de IA.
+La rama `starter` contiene los 14 TODO del participante; `main` contiene la solución comentada. La demo simulada funciona sin claves. Configura tu `.env` siguiendo la [preparación](https://mayrascript.github.io/multiagent-adk-workshop/#/preparacion) antes de activar Gemini.
 
-## Completar los ejercicios
+## Estructura
 
-1. Sigue [la preparación](workshop/guide/01-preparacion.md) y luego los módulos del workshop.
-2. Abre el archivo indicado en `workshop/exercises/`.
-3. Lee los comentarios, descomenta o pega el bloque y elimina su llamada `pending('ID')`.
-4. Ejecuta `pnpm workshop:check 2` hasta `7` conforme avances. Un TODO pendiente devuelve su ID.
-5. Al terminar, ejecuta `pnpm workshop:check all`, `pnpm typecheck`, `pnpm test` y `pnpm build`.
+- `apps/web`: interfaz de campañas.
+- `apps/server`: API local y coordinación.
+- `packages`: contratos, proveedores y persistencia.
+- `workshop/exercises`: código que ejecutan la app y el laboratorio ADK Web.
+- `workshop/solution`: referencia comentada.
+- `skills/instagram-copy`: skill didáctica del Redactor.
 
-Las comprobaciones por módulo usan ADK y respuestas HTTP locales. La demo simulada, la comprobación de tipos y la compilación funcionan antes de completar los TODO; la prueba del equipo completo y el modo real requieren terminarlos. La solución de consulta está en main y también en `workshop/solution/`.
+## Comprobar
 
-## Tu configuración
+```sh
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm build
+pnpm demo:validate
+```
 
-Duplica `.env.example` como `.env`. La clave está vacía para que uses tu propia cuenta. Mantén `GENERATION_MODE=simulated` durante la preparación. El [laboratorio](workshop/guide/laboratorio.md) explica cómo probar un agente real de forma explícita y con presupuesto. Su tope no se aplica a la interfaz web.
+En `starter`, las pruebas de agentes requieren completar los TODO. Usa `pnpm workshop:check NUMERO` para comprobar cada módulo. Las pruebas offline no consumen IA. Consulta el [laboratorio](https://mayrascript.github.io/multiagent-adk-workshop/#/laboratorio) para las pruebas reales con presupuesto.
 
-Los archivos de configuración personal, campañas y registros locales están excluidos de Git. Para consultar main sin modificar tus ejercicios, clónala en otra carpeta como se indica en la preparación.
+La aplicación conserva la aprobación humana y no publica en redes. Los datos y las imágenes del ejemplo son ficticios. `.env`, campañas y credenciales no se incluyen en Git ni en los paquetes.
 
-Consulta [la validación](docs/validation.md) y [la guía de facilitación](workshop/guide/facilitadora.md). Los alojamientos son ficticios; las imágenes reales son generadas con IA y requieren revisión humana. La aplicación no publica en redes sociales.
+## Versión del taller
 
-## Licencia
+La separación inicial corresponde a las etiquetas `workshop-v1-solution` y `workshop-v1-starter`. La guía vive y se publica de forma independiente en `multiagent-adk-workshop`.
 
-Consulta [LICENSE](LICENSE) y [NOTICE](NOTICE) para los avisos de licencia.
-
-## Guía web del workshop
-
-La [guía navegable](https://mayrascript.github.io/multiagent-adk-workshop/) incluye menú lateral, navegación entre pasos, copia de código y progreso guardado en el navegador. Para mantenerla o abrirla localmente, consulta [guide-site.md](docs/guide-site.md).
-
-Su identidad visual usa la [skill reutilizable de MayraScript](https://github.com/mayrascript/mayrascript-brand-skill), incluida y consumida desde `.agents/skills/mayrascript-brand/`: isotipo original, IBM Plex Mono y paleta compartida para los temas claro y oscuro.
+Se conserva el historial del repositorio original. Consulta [LICENSE](LICENSE) y [NOTICE](NOTICE).

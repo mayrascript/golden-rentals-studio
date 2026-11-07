@@ -28,5 +28,5 @@ export type AgentSettings = ReturnType<typeof createSettings>;
 // Es una comprobación de ejecución, no una llamada a Gemini.
 // Los imports están preparados para que el starter compile incluso con TODO pendientes.
 export function pending(step: string): never {
-  throw new AppError(`Completa el TODO ${step}. Consulta workshop/guide y vuelve a ejecutar la comprobación del módulo.`);
+  throw new AppError(`Completa el TODO ${step}. Consulta https://mayrascript.github.io/multiagent-adk-workshop/ y vuelve a ejecutar la comprobación del módulo.`);
 }
