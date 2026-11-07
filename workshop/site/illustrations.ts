@@ -1,5 +1,10 @@
 // Recursos locales revisados: la guía nunca carga imágenes arbitrarias del Markdown.
 export const illustrations = {
+  'mayra-rodriguez.jpg': {
+    width: 887, height: 1181,
+    caption: 'Mayra Rodríguez · MayraScript.',
+    label: 'foto de Mayra Rodríguez',
+  },
   'workshop-architecture.png': {
     width: 2048, height: 1152,
     caption: 'Arquitectura del proyecto en TypeScript.',

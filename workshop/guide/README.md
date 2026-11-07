@@ -6,6 +6,14 @@ Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicac
 
 El caso práctico es **Golden Rentals**, una marca ficticia de alojamientos. El nombre del taller es **Tu próximo equipo no es humano**: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.
 
+> ![Mayra Rodríguez, facilitadora del workshop.](../assets/mayra-rodriguez.jpg)
+>
+> ## Hola, soy Mayra Rodríguez
+>
+> Soy **Software Engineer** y **Google Developer Expert**. También soy organizadora de **GDG Bogotá**, **Women Techmakers Ambassador** y host de **Viernes de Despliegue**.
+>
+> Me encuentras como **@mayrascript**. [Conoce más en MayraScript ↗](https://mayrascript.com/)
+
 ## Requisitos iniciales
 
 Antes de empezar, instala **Node.js 24 LTS** (24.13.0 o posterior), **npm** (incluido con Node.js) **pnpm 11.25.0** y **Git**. Necesitarás una terminal, un editor de código y conexión a Internet para la instalación.
