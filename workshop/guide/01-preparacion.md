@@ -25,6 +25,8 @@ Necesitas una terminal, conexión a Internet para descargar las herramientas y u
 
 **Linux — instalación con nvm:**
 
+Si ya instalaste Node.js con el instalador gráfico, continúa en **Comprueba Node.js y npm**. Los comandos `nvm install` y `nvm use` corresponden a la alternativa con nvm.
+
 nvm permite instalar Node.js para tu usuario. Este método también sirve en macOS, especialmente si una instalación global produce errores de permisos. En una terminal Bash o Zsh, instala nvm con el [comando de su documentación oficial](https://github.com/nvm-sh/nvm#installing-and-updating):
 
 ```sh
@@ -76,10 +78,59 @@ Si los tres muestran sus versiones, puedes pasar a **Instalar y ejecutar el proy
 | --- | --- |
 | `node`, `npm` o `pnpm` no se reconoce / `command not found` | Cierra y abre la terminal; reinicia VS Code si lo usas. Comprueba que terminaste la instalación de Node.js antes de instalar pnpm. |
 | Node.js es anterior a 24.13.0 | Instala la línea 24 LTS. Si usas nvm, ejecuta `nvm install 24` y `nvm use 24`. |
-| `nvm: command not found` | Abre una terminal nueva. Si continúa, sigue la sección de solución de problemas de la documentación de nvm para tu sistema. |
+| `nvm: command not found` / `zsh: command not found: nvm` | En MacBook, sigue el apartado **MacBook: Zsh no encuentra nvm**, debajo de esta tabla. También encontrarás enlaces para otros entornos. |
 | `EACCES` / permiso denegado al instalar pnpm en macOS o Linux | Usa la instalación por usuario con nvm del apartado A, activa Node.js 24 y repite la instalación de pnpm. |
 | PowerShell bloquea `npm.ps1` o `pnpm.ps1` | Abre **Símbolo del sistema (cmd)** y ejecuta allí los comandos del taller. |
 | `git` no se reconoce | Descarga el ZIP: abre el repositorio en GitHub, selecciona **starter**, elige **Code → Download ZIP** y extrae la carpeta. Ábrela en tu editor y en la terminal. |
+
+### MacBook: Zsh no encuentra nvm
+
+Si al ejecutar `nvm use 24` aparece:
+
+```text
+zsh: command not found: nvm
+```
+
+La terminal no tiene nvm disponible: puede faltar la instalación o su carga en Zsh. **El instalador `.pkg` de Node.js no instala nvm.** Si `node --version` cumple el requisito y `npm --version` funciona, puedes continuar instalando pnpm.
+
+**Si elegiste usar nvm:**
+
+1. Carga la configuración de Zsh y comprueba si reconoce nvm. `touch` crea el archivo si falta y conserva su contenido si existe:
+
+```sh
+touch "$HOME/.zshrc"
+source "$HOME/.zshrc"
+command -v nvm
+```
+
+2. Si no imprime `nvm`, ejecuta el instalador oficial indicando el archivo que Zsh debe cargar:
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | PROFILE="$HOME/.zshrc" bash
+source "$HOME/.zshrc"
+command -v nvm
+```
+
+Si falla por Git o las herramientas de Xcode, ejecuta `xcode-select --install`, completa el asistente y repite el paso 2.
+
+3. **Cuando imprima `nvm`**, instala y activa Node.js; después prepara pnpm:
+
+```sh
+nvm install 24
+nvm use 24
+node --version
+npm --version
+npm install --global pnpm@11.25.0
+pnpm --version
+```
+
+Abre una terminal nueva y comprueba otra vez `command -v nvm`. Si utilizas VS Code, reinícialo.
+
+**Ayuda por entorno:**
+
+- [macOS y Zsh: solución oficial de nvm](https://github.com/nvm-sh/nvm#troubleshooting-on-macos).
+- [Linux, Bash y Zsh: solución oficial de nvm](https://github.com/nvm-sh/nvm#troubleshooting-on-linux).
+- [Windows con PowerShell o cmd: problemas frecuentes de NVM for Windows](https://github.com/nvm-windows/nvm/wiki/Common-Issues). Es una herramienta distinta; el bloque de Zsh no se usa allí.
 
 Referencia: [instalar Node.js y npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/).
 

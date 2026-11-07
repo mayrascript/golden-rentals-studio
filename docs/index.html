@@ -166,6 +166,7 @@
 <li>Cierra y vuelve a abrir la terminal. Si utilizas la terminal integrada de VS Code, reinicia también el editor.</li>
 </ol>
 <p><strong>Linux — instalación con nvm:</strong></p>
+<p>Si ya instalaste Node.js con el instalador gráfico, continúa en <strong>Comprueba Node.js y npm</strong>. Los comandos <code>nvm install</code> y <code>nvm use</code> corresponden a la alternativa con nvm.</p>
 <p>nvm permite instalar Node.js para tu usuario. Este método también sirve en macOS, especialmente si una instalación global produce errores de permisos. En una terminal Bash o Zsh, instala nvm con el <a href="https://github.com/nvm-sh/nvm#installing-and-updating" target="_blank" rel="noopener noreferrer">comando de su documentación oficial</a>:</p>
 <div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash</code></pre></div><p>Cierra y vuelve a abrir la terminal para cargar nvm. Después instala y activa Node.js 24:</p>
 <div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>nvm install 24
@@ -198,8 +199,8 @@ pnpm --version</code></pre></div><p>Si los tres muestran sus versiones, puedes p
 <td>Instala la línea 24 LTS. Si usas nvm, ejecuta <code>nvm install 24</code> y <code>nvm use 24</code>.</td>
 </tr>
 <tr>
-<td><code>nvm: command not found</code></td>
-<td>Abre una terminal nueva. Si continúa, sigue la sección de solución de problemas de la documentación de nvm para tu sistema.</td>
+<td><code>nvm: command not found</code> / <code>zsh: command not found: nvm</code></td>
+<td>En MacBook, sigue el apartado <strong>MacBook: Zsh no encuentra nvm</strong>, debajo de esta tabla. También encontrarás enlaces para otros entornos.</td>
 </tr>
 <tr>
 <td><code>EACCES</code> / permiso denegado al instalar pnpm en macOS o Linux</td>
@@ -214,7 +215,37 @@ pnpm --version</code></pre></div><p>Si los tres muestran sus versiones, puedes p
 <td>Descarga el ZIP: abre el repositorio en GitHub, selecciona <strong>starter</strong>, elige <strong>Code → Download ZIP</strong> y extrae la carpeta. Ábrela en tu editor y en la terminal.</td>
 </tr>
 </tbody></table>
-</div><p>Referencia: <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/" target="_blank" rel="noopener noreferrer">instalar Node.js y npm</a>.</p>
+</div><h3>MacBook: Zsh no encuentra nvm</h3>
+<p>Si al ejecutar <code>nvm use 24</code> aparece:</p>
+<div class="code-block"><div class="code-toolbar"><span>Código</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>zsh: command not found: nvm</code></pre></div><p>La terminal no tiene nvm disponible: puede faltar la instalación o su carga en Zsh. <strong>El instalador <code>.pkg</code> de Node.js no instala nvm.</strong> Si <code>node --version</code> cumple el requisito y <code>npm --version</code> funciona, puedes continuar instalando pnpm.</p>
+<p><strong>Si elegiste usar nvm:</strong></p>
+<ol>
+<li>Carga la configuración de Zsh y comprueba si reconoce nvm. <code>touch</code> crea el archivo si falta y conserva su contenido si existe:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>touch &quot;$HOME/.zshrc&quot;
+source &quot;$HOME/.zshrc&quot;
+command -v nvm</code></pre></div><ol start="2">
+<li>Si no imprime <code>nvm</code>, ejecuta el instalador oficial indicando el archivo que Zsh debe cargar:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | PROFILE=&quot;$HOME/.zshrc&quot; bash
+source &quot;$HOME/.zshrc&quot;
+command -v nvm</code></pre></div><p>Si falla por Git o las herramientas de Xcode, ejecuta <code>xcode-select --install</code>, completa el asistente y repite el paso 2.</p>
+<ol start="3">
+<li><strong>Cuando imprima <code>nvm</code></strong>, instala y activa Node.js; después prepara pnpm:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>nvm install 24
+nvm use 24
+node --version
+npm --version
+npm install --global pnpm@11.25.0
+pnpm --version</code></pre></div><p>Abre una terminal nueva y comprueba otra vez <code>command -v nvm</code>. Si utilizas VS Code, reinícialo.</p>
+<p><strong>Ayuda por entorno:</strong></p>
+<ul>
+<li><a href="https://github.com/nvm-sh/nvm#troubleshooting-on-macos" target="_blank" rel="noopener noreferrer">macOS y Zsh: solución oficial de nvm</a>.</li>
+<li><a href="https://github.com/nvm-sh/nvm#troubleshooting-on-linux" target="_blank" rel="noopener noreferrer">Linux, Bash y Zsh: solución oficial de nvm</a>.</li>
+<li><a href="https://github.com/nvm-windows/nvm/wiki/Common-Issues" target="_blank" rel="noopener noreferrer">Windows con PowerShell o cmd: problemas frecuentes de NVM for Windows</a>. Es una herramienta distinta; el bloque de Zsh no se usa allí.</li>
+</ul>
+<p>Referencia: <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/" target="_blank" rel="noopener noreferrer">instalar Node.js y npm</a>.</p>
 <h2>Instalar y ejecutar el proyecto</h2>
 <ol>
 <li>Clona la rama <code>starter</code> para realizar el taller. Ejecuta desde una terminal:</li>
