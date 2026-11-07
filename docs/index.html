@@ -23,6 +23,9 @@
 <div class="progress-card"><div class="progress-heading"><strong>Tu progreso</strong></div><p id="progress-label" class="progress-heading">0 de 8 pasos completados</p><progress id="progress" max="8" value="0" aria-labelledby="progress-label"></progress><p class="progress-note">Se guarda solo en este navegador.<br>Avanza a tu ritmo.</p></div></aside>
 <main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><a href="https://mayrascript.com/" target="_blank" rel="noopener noreferrer">MayraScript</a><span aria-hidden="true">/</span><span>Workshop · Google ADK</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">Tu próximo equipo no es humano</h1><section data-step="inicio" aria-label="Tu próximo equipo no es humano"><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/README.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><p class="workshop-subtitle">Workshop de orquestación de agentes con Google ADK</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="agent-flow" aria-label="Equipo creativo: Estratega, Redactor, Diseñador y Editor"><div><span class="agent-icon" aria-hidden="true">◎</span><b>Estratega</b><small>Define los ángulos</small></div><div><span class="agent-icon" aria-hidden="true">≡</span><b>Redactor</b><small>Textos + skill</small></div><div><span class="agent-icon" aria-hidden="true">▧</span><b>Diseñador</b><small>Imágenes + tool</small></div><div><span class="agent-icon" aria-hidden="true">✓</span><b>Editor</b><small>Revisa y valida</small></div></div><div class="step-body"><p>Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.</p>
 <p>El caso práctico es <strong>Golden Rentals</strong>, una marca ficticia de alojamientos. El nombre del taller es <strong>Tu próximo equipo no es humano</strong>: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.</p>
+<h2>Requisitos iniciales</h2>
+<p>Antes de empezar, instala <strong>Node.js 24 LTS</strong> (24.13.0 o posterior), <strong>npm</strong> (incluido con Node.js) y <strong>pnpm 11.25.0</strong>. Necesitarás una terminal, un editor de código y conexión a Internet para la instalación.</p>
+<p>Sigue <a href="#/preparacion">la instalación de Node.js, npm y pnpm</a>, con instrucciones para Windows, macOS y Linux, comprobación de versiones y soluciones a errores frecuentes. Puedes realizar la preparación y la demo sin una API key de Gemini.</p>
 <h2>Los agentes que construirás</h2>
 <p>Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
@@ -127,16 +130,99 @@
 <p>Consulta <a href="#/laboratorio">el laboratorio</a> para entender qué demuestra cada modo y cómo ejecutar un agente real de forma explícita. Las pruebas offline funcionan sin credenciales. La duración y dificultad del taller deben ajustarse después de un ensayo con participantes.</p>
 </div></section>
 <section data-step="preparacion" aria-label="Prepara tu entorno" hidden><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/01-preparacion.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><div class="step-body"><p>Objetivo: instalar el starter, ejecutar la interfaz y entender qué configuración pertenece a cada participante. Necesitas familiaridad básica con TypeScript, funciones asíncronas, JSON y una terminal.</p>
-<h2>Instalar y ejecutar</h2>
+<h2>Requisitos iniciales</h2>
+<p>Prepara estas herramientas antes de clonar el proyecto. Si ya las tienes, comprueba las versiones y continúa con la instalación del workshop.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Para qué sirve</th>
+<th>Versión para el taller</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Node.js</strong></td>
+<td>Ejecuta el servidor y las herramientas de TypeScript.</td>
+<td>Recomendamos <strong>Node.js 24 LTS</strong>, versión <strong>24.13.0 o posterior</strong> de esa línea.</td>
+</tr>
+<tr>
+<td><strong>npm</strong></td>
+<td>Permite instalar pnpm.</td>
+<td>Viene incluido al instalar Node.js; conserva la versión que lo acompaña.</td>
+</tr>
+<tr>
+<td><strong>pnpm</strong></td>
+<td>Instala las dependencias y ejecuta los comandos del proyecto.</td>
+<td><strong>11.25.0</strong>, fijada en <code>package.json</code>.</td>
+</tr>
+</tbody></table>
+</div><p>Necesitas una terminal, conexión a Internet para descargar las herramientas y un editor como VS Code. Para clonar con <code>git clone</code>, necesitas Git; también puedes descargar el ZIP de la rama starter desde GitHub y extraerlo.</p>
+<h3>A. Instalar Node.js y npm</h3>
+<p><strong>Windows y macOS — instalador gráfico:</strong></p>
+<ol>
+<li>Abre la <a href="https://nodejs.org/en/download" target="_blank" rel="noopener noreferrer">página oficial de descarga de Node.js</a>.</li>
+<li>Selecciona la línea <strong>24 LTS</strong> y tu sistema operativo. El taller se preparó con Node.js 24.22.1; una versión posterior de la línea 24 también cumple el requisito.</li>
+<li>Descarga el instalador <strong><code>.msi</code> en Windows</strong> o <strong><code>.pkg</code> en macOS</strong> y sigue el asistente. Conserva la instalación de npm y la opción de agregar los comandos al PATH si aparece.</li>
+<li>Cierra y vuelve a abrir la terminal. Si utilizas la terminal integrada de VS Code, reinicia también el editor.</li>
+</ol>
+<p><strong>Linux — instalación con nvm:</strong></p>
+<p>nvm permite instalar Node.js para tu usuario. Este método también sirve en macOS, especialmente si una instalación global produce errores de permisos. En una terminal Bash o Zsh, instala nvm con el <a href="https://github.com/nvm-sh/nvm#installing-and-updating" target="_blank" rel="noopener noreferrer">comando de su documentación oficial</a>:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash</code></pre></div><p>Cierra y vuelve a abrir la terminal para cargar nvm. Después instala y activa Node.js 24:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>nvm install 24
+nvm use 24</code></pre></div><p><strong>Comprueba Node.js y npm en cualquier sistema:</strong></p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>node --version
+npm --version</code></pre></div><p>Resultado esperado: Node.js muestra una versión <code>v24.x.x</code> igual o superior a <code>v24.13.0</code>, y npm muestra un número de versión. <strong>npm ya está instalado con Node.js</strong>; no necesitas instalarlo por separado. Si ya usas una versión posterior de Node.js, el proyecto declara un mínimo de 24.13.0; para seguir el entorno del taller recomendamos la línea 24.</p>
+<h3>B. Instalar pnpm</h3>
+<p>Cuando <code>node</code> y <code>npm</code> funcionen, ejecuta:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>npm install --global pnpm@11.25.0
+pnpm --version</code></pre></div><p>Resultado esperado: <code>11.25.0</code>. La instalación se realiza una vez por entorno de Node.js. El proyecto usa una versión concreta para que todos trabajemos con el mismo gestor de dependencias. Consulta la <a href="https://pnpm.io/installation" target="_blank" rel="noopener noreferrer">instalación oficial de pnpm</a> si necesitas otra forma de instalarlo.</p>
+<h3>C. Comprobar antes de continuar</h3>
+<p>Ejecuta estos tres comandos en la misma terminal que usarás para el workshop:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>node --version
+npm --version
+pnpm --version</code></pre></div><p>Si los tres muestran sus versiones, puedes pasar a <strong>Instalar y ejecutar el proyecto</strong>. La preparación todavía no requiere una API key de Gemini.</p>
+<h3>Si aparece un error</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Mensaje o situación</th>
+<th>Cómo resolverlo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>node</code>, <code>npm</code> o <code>pnpm</code> no se reconoce / <code>command not found</code></td>
+<td>Cierra y abre la terminal; reinicia VS Code si lo usas. Comprueba que terminaste la instalación de Node.js antes de instalar pnpm.</td>
+</tr>
+<tr>
+<td>Node.js es anterior a 24.13.0</td>
+<td>Instala la línea 24 LTS. Si usas nvm, ejecuta <code>nvm install 24</code> y <code>nvm use 24</code>.</td>
+</tr>
+<tr>
+<td><code>nvm: command not found</code></td>
+<td>Abre una terminal nueva. Si continúa, sigue la sección de solución de problemas de la documentación de nvm para tu sistema.</td>
+</tr>
+<tr>
+<td><code>EACCES</code> / permiso denegado al instalar pnpm en macOS o Linux</td>
+<td>Usa la instalación por usuario con nvm del apartado A, activa Node.js 24 y repite la instalación de pnpm.</td>
+</tr>
+<tr>
+<td>PowerShell bloquea <code>npm.ps1</code> o <code>pnpm.ps1</code></td>
+<td>Abre <strong>Símbolo del sistema (cmd)</strong> y ejecuta allí los comandos del taller.</td>
+</tr>
+<tr>
+<td><code>git</code> no se reconoce</td>
+<td>Descarga el ZIP: abre el repositorio en GitHub, selecciona <strong>starter</strong>, elige <strong>Code → Download ZIP</strong> y extrae la carpeta. Ábrela en tu editor y en la terminal.</td>
+</tr>
+</tbody></table>
+</div><p>Referencia: <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/" target="_blank" rel="noopener noreferrer">instalar Node.js y npm</a>.</p>
+<h2>Instalar y ejecutar el proyecto</h2>
 <ol>
 <li>Clona la rama <code>starter</code> para realizar el taller. Ejecuta desde una terminal:</li>
 </ol>
 <div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>git clone --branch starter https://github.com/mayrascript/multiagent-adk-workshop.git multiagent-adk-workshop
 cd multiagent-adk-workshop</code></pre></div><p>   El proyecto está en la raíz de la carpeta clonada. Si descargas un ZIP desde GitHub, selecciona primero la rama starter. Para consultar la solución completa con comentarios, abre la rama main.</p>
 <ol start="2">
-<li>Comprueba <code>node --version</code>: el proyecto requiere Node.js 24.13 o posterior. La preparación se verificó con 24.22.1 y pnpm 11.25.0.</li>
-<li>Si falta pnpm, instálalo con <code>npm install --global pnpm@11.25.0</code>.</li>
-<li>Desde la carpeta que contiene package.json, ejecuta:</li>
+<li>Desde la carpeta que contiene <code>package.json</code>, ejecuta:</li>
 </ol>
 <div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm install --frozen-lockfile
 pnpm workshop:check setup
