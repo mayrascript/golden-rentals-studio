@@ -132,3 +132,25 @@ pre code{font:inherit;background:none;color:inherit}
 @media(max-width:900px){:root{--header:76px;--footer:78px}.topbar{padding:0 18px;gap:12px}.menu-toggle{display:block}.brand{margin-right:auto;gap:10px}.brand-mark{width:36px;height:36px}.brand strong{font-size:18px}.brand small{font-size:10px}.header-links .notion-link{display:none}.sidebar{width:294px;transform:translateX(-100%);transition:transform .18s ease}.menu-open .sidebar{transform:translateX(0)}.menu-open .menu-shade{display:block;position:fixed;inset:var(--header) 0 0;background:#0e0623aa;z-index:15;border:0}.main{margin-left:0;padding:calc(var(--header) + 24px) 23px calc(var(--footer) + 25px)}.footer{left:0;padding-inline:23px}.article{padding:32px}.breadcrumbs{margin-bottom:16px}.header-links{font-size:12px;gap:16px}}
 @media(max-width:540px){:root{--header:78px}.header-links .github-label{display:none}.topbar{padding-inline:13px;gap:9px}.brand{gap:6px}.brand strong{font-size:16px}.brand small{font-size:9px;max-width:165px}.brand-mark{display:none}.main{padding-inline:13px}.article{padding:25px 20px;border-radius:9px}.article h1,.article:has(section[data-step="inicio"]:not([hidden])) h1{font-size:27px;letter-spacing:-.8px}.workshop-subtitle{font-size:16px}.step-body{font-size:14px}.step-body h2{font-size:19px}.breadcrumbs{font-size:10px;gap:7px;margin-left:4px}.footer{padding:13px}.footer-inner{gap:8px}.footer-side{gap:8px}.footer-position{display:none}.nav-button{font-size:12px;padding:9px 14px}.agent-flow{grid-template-columns:repeat(2,1fr)}.reading-note{display:block;margin-inline:4px}.reading-note span{display:block;margin-bottom:5px}.step-tools{gap:7px}.step-tools a{font-size:10px}.code-toolbar{padding-inline:12px}pre{padding:16px;font-size:11px}.welcome-note{padding:14px}.progress-card{margin-top:20px}.architecture-figure figcaption a{margin-left:0;display:block}.header-links{gap:9px}.theme-toggle{padding:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Ayudas editoriales: lo esencial visible, el detalle a un clic. */
+.step-duration{display:block;font-weight:400;font-size:10px;color:var(--ms-muted);margin-top:4px}
+.lesson-time{font:400 11px/1.6 var(--ms-font-brand);color:var(--ms-muted);border-bottom:1px solid var(--ms-border);padding-bottom:17px}
+.guide-details{margin:22px 0;border:1px solid var(--ms-control-border);border-radius:9px;background:var(--ms-surface);overflow:hidden}
+.guide-details summary{padding:17px 20px;font-weight:700;cursor:pointer;color:var(--ms-text)}
+.guide-details summary:hover{background:var(--ms-raised)}
+.guide-details summary:focus-visible{outline:3px solid var(--ms-focus);outline-offset:-4px}
+.details-body{padding:0 20px 18px;border-top:1px solid var(--ms-border)}
+.info-card{margin:24px 0;padding:17px 22px;background:var(--ms-active-bg);border-left:4px solid var(--ms-link);border-radius:0 8px 8px 0}
+.info-card .info-label{display:block;font:700 10px/1.5 var(--ms-font-brand);text-transform:uppercase;letter-spacing:1px;color:var(--ms-active-text);margin-bottom:8px}
+.info-card p:last-child{margin-bottom:0}
+.join-workshop{display:flex;gap:24px;align-items:center;background:var(--ms-raised);border:1px solid var(--ms-border);border-radius:10px;padding:20px;margin:28px 0;font-size:13px}
+.join-workshop img{flex:none;background:white;border-radius:4px}
+.join-workshop a{overflow-wrap:anywhere}
+.join-workshop p{margin:7px 0}
+.avatar-team{margin:28px 0 35px}
+.avatar-team>img{display:block;width:100%;height:auto;border-radius:10px}
+.avatar-captions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-top:12px}
+.avatar-captions b{display:block;font:700 12px/1.4 var(--ms-font-brand)}
+.avatar-captions small{display:block;font-size:11px;color:var(--ms-muted);line-height:1.6;margin-top:6px}
+@media(max-width:540px){.join-workshop{flex-direction:column;align-items:flex-start;gap:14px}.avatar-captions b{font-size:9px}.avatar-captions small{font-size:10px}.details-body{padding-inline:14px}.guide-details summary{padding:15px}.avatar-team>img{min-height:120px;object-fit:cover}}

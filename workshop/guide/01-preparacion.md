@@ -1,18 +1,24 @@
 # 1 Preparar entorno y valores personales
 
-Objetivo: instalar el starter, ejecutar la interfaz y entender qué configuración pertenece a cada participante. Necesitas familiaridad básica con TypeScript, funciones asíncronas, JSON y una terminal.
+> [!TIP]
+> **Tu objetivo:** verificar las herramientas, abrir el proyecto y ejecutar una campaña de práctica. Comienza sin API key.
 
-## Requisitos iniciales
+## Primero, verifica tus herramientas
 
-Prepara estas herramientas antes de clonar el proyecto. Si ya las tienes, comprueba las versiones y continúa con la instalación del workshop.
+**Verifica que tengas instalados estos paquetes y las versiones recomendadas.** Ejecuta cada comando en la terminal que usarás durante el taller. Si ya cumples los requisitos, pasa a instalar el proyecto.
 
-| Herramienta | Para qué sirve | Versión para el taller |
-| --- | --- | --- |
-| **Node.js** | Ejecuta el servidor y las herramientas de TypeScript. | Recomendamos **Node.js 24 LTS**, versión **24.13.0 o posterior** de esa línea. |
-| **npm** | Permite instalar pnpm. | Viene incluido al instalar Node.js; conserva la versión que lo acompaña. |
-| **pnpm** | Instala las dependencias y ejecuta los comandos del proyecto. | **11.25.0**, fijada en `package.json`. |
+| Herramienta | Comando | Versión recomendada | Para qué sirve |
+| --- | --- | --- | --- |
+| **Node.js** | `node --version` | **24 LTS**, mínimo **24.13.0** | Ejecuta TypeScript y el servidor. |
+| **npm** | `npm --version` | La incluida con Node.js 24 | Instala pnpm. No necesita instalación aparte. |
+| **pnpm** | `pnpm --version` | **11.25.0** | Instala y ejecuta este proyecto. |
+| **Git** | `git --version` | **2.43 o posterior** | Clona el starter y permite guardar cambios. |
 
-Necesitas una terminal, conexión a Internet para descargar las herramientas y un editor como VS Code. Para clonar con `git clone`, necesitas Git; también puedes descargar el ZIP de la rama starter desde GitHub y extraerlo.
+El proyecto fija Node.js y pnpm; Git 2.43 es una recomendación del taller. También necesitas un editor, una terminal y conexión a Internet para las descargas.
+
+
+<details>
+<summary>Me falta instalar una o más herramientas</summary>
 
 ### A. Instalar Node.js y npm
 
@@ -60,17 +66,27 @@ pnpm --version
 
 Resultado esperado: `11.25.0`. La instalación se realiza una vez por entorno de Node.js. El proyecto usa una versión concreta para que todos trabajemos con el mismo gestor de dependencias. Consulta la [instalación oficial de pnpm](https://pnpm.io/installation) si necesitas otra forma de instalarlo.
 
-### C. Comprobar antes de continuar
+### C. Instalar Git
 
-Ejecuta estos tres comandos en la misma terminal que usarás para el workshop:
+- **Windows:** descarga y ejecuta [Git for Windows](https://git-scm.com/downloads/win). Conserva la opción que permite usar Git desde la terminal.
+- **macOS:** ejecuta `xcode-select --install` y completa el asistente. Si ya usas Homebrew, puedes instalar Git con `brew install git`.
+- **Ubuntu / Debian:** ejecuta `sudo apt update` y después `sudo apt install git`.
+- **Otros Linux:** usa el gestor de tu distribución siguiendo la [guía oficial](https://git-scm.com/downloads/linux).
+
+Abre una terminal nueva y ejecuta `git --version`. Recomendamos Git 2.43 o posterior para el taller; no hay un mínimo específico impuesto por el código. Git descarga y versiona los archivos; no necesitas configurar tu correo para clonar el repositorio público.
+
+### D. Comprobar antes de continuar
+
+Ejecuta estos cuatro comandos en la misma terminal que usarás para el workshop:
 
 ```sh
 node --version
 npm --version
 pnpm --version
+git --version
 ```
 
-Si los tres muestran sus versiones, puedes pasar a **Instalar y ejecutar el proyecto**. La preparación todavía no requiere una API key de Gemini.
+Si los cuatro muestran sus versiones, puedes pasar a **Instalar y ejecutar el proyecto**. La preparación todavía no requiere una API key de Gemini.
 
 ### Si aparece un error
 
@@ -81,7 +97,7 @@ Si los tres muestran sus versiones, puedes pasar a **Instalar y ejecutar el proy
 | `nvm: command not found` / `zsh: command not found: nvm` | En MacBook, sigue el apartado **MacBook: Zsh no encuentra nvm**, debajo de esta tabla. También encontrarás enlaces para otros entornos. |
 | `EACCES` / permiso denegado al instalar pnpm en macOS o Linux | Usa la instalación por usuario con nvm del apartado A, activa Node.js 24 y repite la instalación de pnpm. |
 | PowerShell bloquea `npm.ps1` o `pnpm.ps1` | Abre **Símbolo del sistema (cmd)** y ejecuta allí los comandos del taller. |
-| `git` no se reconoce | Descarga el ZIP: abre el repositorio en GitHub, selecciona **starter**, elige **Code → Download ZIP** y extrae la carpeta. Ábrela en tu editor y en la terminal. |
+| `git` no se reconoce | Termina la instalación del apartado C y abre una terminal nueva. El ZIP sirve como alternativa temporal para descargar el código. |
 
 ### MacBook: Zsh no encuentra nvm
 
@@ -122,6 +138,7 @@ node --version
 npm --version
 npm install --global pnpm@11.25.0
 pnpm --version
+git --version
 ```
 
 Abre una terminal nueva y comprueba otra vez `command -v nvm`. Si utilizas VS Code, reinícialo.
@@ -133,6 +150,32 @@ Abre una terminal nueva y comprueba otra vez `command -v nvm`. Si utilizas VS Co
 - [Windows con PowerShell o cmd: problemas frecuentes de NVM for Windows](https://github.com/nvm-windows/nvm/wiki/Common-Issues). Es una herramienta distinta; el bloque de Zsh no se usa allí.
 
 Referencia: [instalar Node.js y npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/).
+
+</details>
+
+<details>
+<summary>Ya las tengo, pero mis versiones son antiguas</summary>
+
+### Actualiza Node.js y npm
+
+Con **nvm en macOS o Linux**, ejecuta `nvm install 24` y `nvm use 24`. Si usaste un instalador gráfico, descarga de nuevo la línea **24 LTS** desde [Node.js](https://nodejs.org/en/download) y completa el asistente. No necesitas instalar nvm para actualizar con el instalador. npm se actualiza junto con Node.js.
+
+### Alinea pnpm con el proyecto
+
+```sh
+npm install --global pnpm@11.25.0
+pnpm --version
+```
+
+Repite este paso después de cambiar de versión de Node.js si pnpm deja de aparecer.
+
+### Actualiza Git
+
+En Windows, usa el instalador oficial de Git; en macOS, actualiza las herramientas de línea de comandos de Apple o usa `brew upgrade git` si tu instalación pertenece a Homebrew. En Ubuntu / Debian, usa `sudo apt update` y `sudo apt install --only-upgrade git`.
+
+Abre una terminal nueva y repite los cuatro comandos de la tabla. Si falla alguno, abre el desplegable anterior: conserva las soluciones de permisos, PowerShell y nvm en Zsh.
+
+</details>
 
 ## Instalar y ejecutar el proyecto
 
@@ -155,6 +198,10 @@ pnpm dev
 
 Abre la dirección que imprima el servidor. La rama starter usa el puerto 4319; main usa 4317. Puedes cambiarlos en `.env`. Ejecuta una campaña simulada para conocer el resultado que construirás.
 
+
+<details>
+<summary>Consultar la solución en una carpeta separada</summary>
+
 Para ejecutar la solución sin modificar tus ejercicios, clónala en una carpeta distinta:
 
 ```sh
@@ -163,6 +210,8 @@ cd golden-rentals-solution
 pnpm install --frozen-lockfile
 pnpm dev
 ```
+
+</details>
 
 ## TODO 1.1 · Crear tu configuración local
 
@@ -178,11 +227,17 @@ Duplica `.env.example` y nombra la copia `.env`, si todavía no existe. Si ya ti
 
 Esta edición usa Gemini mediante API key y guarda archivos localmente. No solicita nombre de proyecto de Google Cloud, región, bucket ni IDs de Notion. Esos campos corresponderían a módulos de nube o MCP.
 
+
+<details>
+<summary>Opcional · Preparar Gemini cuando vayas a probar el modo real</summary>
+
 ## TODO 1.2 · Preparar la credencial cuando vayas a probar Gemini
 
 Obtén tu propia clave desde Google AI Studio, en su sección de claves de API, y pégala en `GOOGLE_GENAI_API_KEY` dentro de `.env`. Este archivo permanece local y está excluido del ZIP y de Git. No se coloca la clave dentro de un prompt, una skill ni el código del navegador.
 
 Ejecuta `pnpm workshop:check setup`: mostrará si hay una clave configurada, sin imprimirla. Es una comprobación local, no valida acceso con Google. `pnpm gemini:check` consulta el acceso a los modelos sin generar contenido.
+
+</details>
 
 ## TODO 1.3 · Elegir el modo de prueba
 

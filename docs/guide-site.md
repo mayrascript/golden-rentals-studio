@@ -34,3 +34,13 @@ Al editar un paso, ejecuta `pnpm guide:build` y sube tanto el Markdown como `doc
 Solo se leen los once archivos enumerados en el temario: la introducción, ocho pasos, el laboratorio y la guía de facilitación. El generador no lee `.env`, campañas ni registros de consumo. El navegador guarda únicamente los IDs de los pasos marcados como completados, en almacenamiento local.
 
 Si cambias una explicación que también aparece en Notion, actualiza allí el bloque correspondiente. La web se genera desde los Markdown; Notion es una copia editorial separada.
+
+## Edición del 7 de noviembre de 2026
+
+- Preparación con comprobación inicial de Node.js, npm, pnpm y Git; instalación y actualización en desplegables. El contenido usa `<details>` y `<summary>` sin atributos, procesados mediante una extensión limitada del renderizador. El resto del HTML continúa escapado.
+- Las notas Markdown `[!TIP]`, `[!NOTE]`, `[!IMPORTANT]` y `[!WARNING]` se convierten en tarjetas accesibles.
+- El QR se genera localmente con `qrcode` desde `siteUrl`, con margen de cuatro módulos y corrección M. No depende de un servicio externo.
+- `agent-avatars.png` es una ilustración original generada con la herramienta de imágenes integrada, sin datos de personas reales. La analogía distingue agente, manual/skill e instrumento/tool. El texto accesible describe los roles.
+- Se muestran tiempos estimados por sección. Por decisión de la organizadora, se conserva el progreso local sencillo; no se añaden login, seguimiento por bloque ni almacenamiento de participantes.
+- El enlace de feedback abre Google Forms, sin recogida de correos ni límite de una respuesta. El formulario no identifica finalizadores; la facilitadora valida el cierre en 30–60 segundos por persona o equipo.
+- `pnpm workshop:web --allow-paid-generation --budget-usd=IMPORTE` inicia el laboratorio ADK Web local. Se cargan los ejercicios del participante y las imágenes pueden aparecer como artefactos. El presupuesto acumulado es independiente del laboratorio CLI.

@@ -1,6 +1,7 @@
 # 6 Revisar y validar una salida estructurada
 
-Objetivo: convertir la respuesta del Editor en datos que la aplicación pueda usar. Requisito: módulo 2; el laboratorio aporta textos de ejemplo sin ejecutar los módulos anteriores.
+> [!TIP]
+> **Tu objetivo:** convertir la respuesta del Editor en datos que la aplicación pueda usar. Requisito: módulo 2; el laboratorio aporta textos de ejemplo sin ejecutar los módulos anteriores.
 
 Abre `packages/contracts/index.ts` y localiza `editorSchema`. Define una revisión y exactamente tres entradas del calendario. TypeScript ayuda al escribir código; Zod valida valores que llegan durante la ejecución.
 
@@ -10,8 +11,8 @@ La aplicación solicita JSON mediante instrucciones y valida la respuesta con Zo
 
 El Editor revisa textos y metadatos. `HUMAN_REQUIRED` deja explícito que la persona revisa los píxeles. `APPROVED` en la respuesta automática todavía no constituye aprobación humana.
 
-Error frecuente: confiar en que pedir JSON garantiza su estructura o aceptar una revisión con cero fechas.
-
+> [!WARNING]
+> **Error frecuente:** confiar en que pedir JSON garantiza su estructura o aceptar una revisión con cero fechas.
 
 ## Bloques para completar
 
@@ -46,7 +47,8 @@ pnpm typecheck
 pnpm workshop:check 6
 ```
 
-Resultado esperado: Una revisión y tres fechas válidas; un JSON con forma incorrecta es rechazado.
+> [!IMPORTANT]
+> **Resultado esperado:** Una revisión y tres fechas válidas; un JSON con forma incorrecta es rechazado.
 
 Esta comprobación usa respuestas HTTP locales preparadas, sin clave ni consumo de IA. Ejecuta ADK y las funciones que completaste; no evalúa la calidad de Gemini. Para probar ese agente con el proveedor real, consulta [el laboratorio](laboratorio.md).
 

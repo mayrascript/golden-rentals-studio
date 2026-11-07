@@ -38,3 +38,24 @@ Esta edición se valida con pruebas técnicas y recorrido de instalación. Mide 
 Main es la referencia completa y starter nace de main con los 14 bloques desactivados. Mantén alineados los comentarios, los bloques de la guía y los contratos al actualizar los ejercicios. El archivo workshop/source-generator.ts contiene la transformación de solución a código comentado. Comprueba main con los seis módulos y las pruebas de producto; comprueba starter también como proyecto incompleto antes de distribuirlo.
 
 Para distribuir un ZIP de una rama, ejecuta pnpm package desde esa copia. El paquete excluye las credenciales, las campañas guardadas y las dependencias instaladas.
+
+## Cierre express y premios, sin registro automático
+
+Mientras recorres las mesas, dedica **30–60 segundos por persona o equipo**. Pide ver la campaña ya creada y una explicación corta de una skill, una tool o del paso de contexto. No pidas un ejercicio nuevo, presentaciones ni una generación real extra. Valida durante la práctica para evitar una fila al cierre.
+
+Lleva una lista privada con nombre o identificador, equipo, validación y premio entregado. Puedes preparar una tabla en papel o en tu herramienta habitual. No guardes la lista en este repositorio público.
+
+| Comprobación | Criterio rápido |
+| --- | --- |
+| Resultado | Muestra las tres piezas de la campaña y su revisión. |
+| Comprensión | Explica una decisión en su código o cómo pasa contexto. |
+| Identificación | Confirma su nombre o identificador contigo. |
+| Premio | Anotas una entrega por persona según las reglas que anuncies. |
+
+Esto es una validación presencial, no una certificación automática ni una garantía de identidad. El progreso local puede marcarse manualmente y no sirve como evidencia de finalización. El feedback es opcional, separado del premio, y no recoge identidad.
+
+## Leer el feedback
+
+Las cinco preguntas recogen utilidad, dificultad, ritmo, mejoras y próximos temas. Abre la encuesta en tu cuenta de Google Forms y usa la pestaña **Respuestas**. No hay un registro de participantes en la guía ni un servicio de autenticación añadido al proyecto.
+
+Los tiempos del menú son estimaciones de planificación: 140 minutos para los ocho pasos, más prácticas opcionales con Gemini. Ajústalos después del piloto.
