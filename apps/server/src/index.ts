@@ -23,7 +23,8 @@ if (process.argv.includes('--production')) {
   app.get('/{*path}', (_req, res) => res.sendFile(resolve('dist/web/index.html')));
 } else {
   const { createServer } = await import('vite');
-  const vite = await createServer({ server: { middlewareMode: true }, appType: 'spa' });
+  // Evita que node --watch reinicie al eliminar el archivo temporal del cargador bundle.
+  const vite = await createServer({ configLoader: 'runner', server: { middlewareMode: true }, appType: 'spa' });
   app.use(vite.middlewares); closeVite = () => vite.close();
 }
 const port = Number(process.env.PORT ?? 4319);
