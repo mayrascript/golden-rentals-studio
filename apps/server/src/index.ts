@@ -17,18 +17,12 @@ const service = new CampaignService(store, mode, async () => mode === 'simulated
 await service.init();
 const demo = brandSchema.parse(JSON.parse(await readFile(resolve('examples/golden-rentals/brand.json'), 'utf8')));
 const app = createApi(service, demo, Object.values(realConfig).every(Boolean));
-let closeVite: (() => Promise<void>) | undefined;
 if (process.argv.includes('--production')) {
   app.use(express.static(resolve('dist/web')));
   app.get('/{*path}', (_req, res) => res.sendFile(resolve('dist/web/index.html')));
-} else {
-  const { createServer } = await import('vite');
-  // Evita que node --watch reinicie al eliminar el archivo temporal del cargador bundle.
-  const vite = await createServer({ configLoader: 'runner', server: { middlewareMode: true }, appType: 'spa' });
-  app.use(vite.middlewares); closeVite = () => vite.close();
 }
 const port = Number(process.env.PORT ?? 4317);
 if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('PORT debe estar entre 1024 y 65535.');
 const server = app.listen(port, '127.0.0.1', () => { console.log(`Golden Rentals · ${mode === 'simulated' ? 'Demo simulada' : 'Modo real'} · http://127.0.0.1:${port}`); });
-async function stop() { await closeVite?.(); server.close(() => process.exit(0)); }
+async function stop() { server.close(() => process.exit(0)); }
 process.once('SIGINT', () => void stop()); process.once('SIGTERM', () => void stop());

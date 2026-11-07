@@ -12,6 +12,6 @@ export async function collectProjectFiles() {
     }
   }
   for (const folder of ['apps', 'packages', 'examples', 'skills', 'scripts', 'tests', 'workshop']) await collect(folder);
-  for (const file of ['package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', '.env.example', '.npmrc', '.gitignore', 'tsconfig.json', 'tsconfig.server.json', 'vite.config.ts', 'vitest.config.ts', 'playwright.config.ts', 'eslint.config.js', 'README.md', 'LICENSE', 'NOTICE']) files[file] = await readFile(file);
+  for (const file of ['package.json', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', '.env.example', '.npmrc', '.gitignore', 'tsconfig.json', 'tsconfig.server.json', 'angular.json', 'vitest.config.ts', 'playwright.config.ts', 'eslint.config.js', 'README.md', 'LICENSE', 'NOTICE']) files[file] = await readFile(file);
   return files;
 }

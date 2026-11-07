@@ -1,0 +1,19 @@
+<section class="page-title"><div><div class="eyebrow">03 / UN RITMO PARA TUS HISTORIAS</div><h1>Tu semana,<em> con intención.</em></h1><p>Sugerencia editorial de siete días · {{ campaign().brief.timeZone }}</p></div><span class="status-pill">{{ labels[campaign().state] }}</span></section>
+<div class="educational"><studio-sun [small]="true"/><span>Estas fechas son una propuesta. Ninguna publicación está programada en Instagram.</span></div>
+<div class="calendar-list">
+@for (entry of entries; track entry.pieceId; let i = $index) {
+  @if (piece(entry.pieceId); as p) {
+    <article class="calendar-row"><span class="calendar-number">0{{ i + 1 }}</span>
+    @if (p.image; as image) { <div class="calendar-thumbnail"><studio-image [src]="'/api/campaigns/' + campaign().id + '/' + image.relativePath" alt=""/></div> }
+    <div class="calendar-topic"><small>PUBLICACIÓN {{ i + 1 }}</small><h3>{{ entry.topic }}</h3><span>{{ p.humanApproval?.version === p.version ? '✓ Revisada por ti' : 'Pendiente de revisión' }}</span></div>
+    <label>Fecha<input [attr.aria-label]="'Fecha publicación ' + (i + 1)" type="date" [(ngModel)]="entry.date" [disabled]="s.disabled()"/></label>
+    <label>Hora opcional<input [attr.aria-label]="'Hora publicación ' + (i + 1)" type="time" [(ngModel)]="entry.localTime" [disabled]="s.disabled()"/></label></article>
+  }
+}
+</div>
+@if (dirty) { <div class="button-row"><button class="secondary" [disabled]="s.disabled()" (click)="s.action('/calendar', 'PATCH', {calendar: entries, packageHash: campaign().packageHash}, 'Calendario actualizado.')"><studio-busy [active]="s.pending()?.key === '/calendar'" pending="Guardando…">Guardar calendario</studio-busy></button><p>El cambio de fechas requiere aprobar de nuevo la campaña.</p></div> }
+<section class="export-panel"><div><div class="eyebrow">EL ÚLTIMO PASO LO DAS TÚ</div><h2>{{ campaign().state === 'APPROVED' ? 'Tu campaña está aprobada.' : 'Revisa. Aprueba. Llévatela.' }}</h2><p>Descarga los textos, las imágenes y el calendario en un solo paquete.<br/>Puedes guardar un borrador mientras terminas de revisar.</p><small>{{ allApproved ? 'Las tres piezas están revisadas.' : 'Vuelve a la campaña para revisar y aprobar cada texto e imagen.' }}</small></div>
+<div class="export-actions"><label>Nombre para la revisión<input maxlength="80" [(ngModel)]="reviewer" [disabled]="s.disabled()"/></label>
+<button class="primary" [disabled]="s.disabled() || dirty || !allApproved || !reviewer.trim() || campaign().state === 'APPROVED'" (click)="s.action('/approve', 'POST', {packageHash: campaign().packageHash, reviewerLabel: reviewer}, 'Aprobación guardada para esta versión de la campaña.')"><studio-busy [active]="s.pending()?.key === '/approve'" pending="Guardando aprobación…">{{ campaign().state === 'APPROVED' ? '✓ Campaña aprobada' : 'Aprobar esta campaña' }}</studio-busy></button>
+@if (dirty) { <span class="download-disabled">Guarda los cambios para descargar</span> } @else { <a class="secondary download" [href]="'/api/campaigns/' + campaign().id + '/export'" download [attr.aria-disabled]="s.disabled()" (click)="s.download($event)"><studio-busy [active]="s.pending()?.key === '/export'" pending="Preparando descarga…">{{ campaign().state === 'APPROVED' ? 'Descargar campaña' : 'Descargar borrador' }} ↓</studio-busy></a> }
+</div></section>

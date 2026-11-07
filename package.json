@@ -1,6 +1,6 @@
 {
   "name": "golden-rentals-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,10 +8,10 @@
   },
   "packageManager": "pnpm@11.25.0",
   "scripts": {
-    "dev": "node --watch --import tsx apps/server/src/index.ts",
-    "build": "vite build && tsc -p tsconfig.server.json",
+    "dev": "node --import tsx scripts/dev.ts",
+    "build": "ng build && tsc -p tsconfig.server.json",
     "start": "node dist/server/apps/server/src/index.js --production",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && ngc -p apps/web/tsconfig.app.json --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -26,29 +26,33 @@
     "workshop:web": "node --import tsx scripts/workshop-web.ts"
   },
   "dependencies": {
+    "@angular/common": "21.2.26",
+    "@angular/compiler": "21.2.26",
+    "@angular/core": "21.2.26",
+    "@angular/forms": "21.2.26",
+    "@angular/platform-browser": "21.2.26",
     "@google/adk": "2.4.0",
     "@google/genai": "2.32.0",
     "dotenv": "18.0.9",
     "express": "5.3.0",
     "fflate": "0.8.3",
-    "react": "19.3.1",
-    "react-dom": "19.3.1",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1",
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "@angular/build": "21.2.29",
+    "@angular/cli": "21.2.29",
+    "@angular/compiler-cli": "21.2.26",
     "@eslint/js": "10.0.1",
     "@google/adk-devtools": "2.4.0",
     "@playwright/test": "1.64.1",
     "@types/express": "5.0.6",
     "@types/node": "26.6.6",
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0",
-    "@vitejs/plugin-react": "6.2.1",
     "eslint": "10.14.0",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "typescript-eslint": "8.72.1",
-    "vite": "8.3.5",
-    "vitest": "5.1.0"
+    "vitest": "4.1.12"
   }
 }

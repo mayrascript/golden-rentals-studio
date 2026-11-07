@@ -1,0 +1,32 @@
+@if (s.campaign(); as campaign) {
+<article class="piece-card" [attr.aria-label]="'Publicación ' + (index() + 1)" [attr.aria-busy]="working">
+  <div class="piece-image">
+    @if (piece().image; as image) { <studio-image [src]="'/api/campaigns/' + campaign.id + '/' + image.relativePath" [alt]="piece().altText"/> }
+    @else { <div class="image-placeholder">@if (s.running()) { <studio-spinner/> } @else { <studio-sun/> }<span>{{ s.running() ? 'Preparando la imagen…' : 'Imagen pendiente' }}</span></div> }
+    @if (generatingImage) { <div class="image-regenerating" role="status"><studio-spinner/><strong>Creando tu nueva imagen…</strong><span>La anterior se conserva hasta que esté lista.</span></div> }
+    <span class="piece-index">0{{ index() + 1 }}</span><span class="image-label">{{ (piece().image?.generationMode ?? campaign.mode) === 'real' ? 'IMAGEN GENERADA CON IA' : 'ILUSTRACIÓN SIMULADA' }}</span>
+  </div>
+  <div class="piece-body">
+    <div class="piece-meta"><span>{{ approved ? '✓ Revisada por ti' : 'Pendiente de tu revisión' }}</span><small>v{{ piece().version }}</small></div>
+    @if (editing) {
+      <form ngNativeValidate (ngSubmit)="save()"><fieldset [disabled]="s.disabled()">
+        <label>Gancho<input name="hook" required maxlength="160" [(ngModel)]="draft.hook"/></label>
+        <label>Texto<textarea name="body" required maxlength="1500" rows="5" [(ngModel)]="draft.body"></textarea></label>
+        <label>Llamado a la acción<input name="cta" required maxlength="200" [(ngModel)]="draft.cta"/></label>
+        <label>Hashtags<input name="hashtags" [ngModel]="draft.hashtags.join(' ')" (ngModelChange)="hashtags($event)"/></label>
+        <label>Texto alternativo<textarea name="alt" required maxlength="500" [(ngModel)]="draft.altText"></textarea></label>
+        <div class="button-row"><button class="primary small" type="submit"><studio-busy [active]="s.pending()?.key === path" pending="Guardando…">Guardar cambios</studio-busy></button><button class="text-button" type="button" (click)="editing = false">Volver</button></div>
+      </fieldset></form>
+    } @else { <h3>{{ piece().hook }}</h3><p>{{ piece().body }}</p><p class="cta-text">{{ piece().cta }}</p><p class="hashtags">{{ piece().hashtags.join(' ') }}</p> }
+    <details><summary>Ver hechos y descripción de la imagen</summary><p>{{ piece().altText }}</p>@for (id of piece().factIds; track id) { <p>• {{ fact(id) }}</p> }<small>{{ piece().image?.disclosure }}</small></details>
+    <div class="piece-actions">
+      <button [disabled]="s.disabled()" (click)="edit()">Editar texto</button><button (click)="copy()">{{ copied() ? 'Copiado ✓' : 'Copiar' }}</button>
+      <button [disabled]="s.disabled() || campaign.usage.regenerations >= s.config()!.limits.regenerations" (click)="confirmImage = !confirmImage"><studio-busy [active]="generatingImage" pending="Generando imagen…">Otra imagen</studio-busy></button>
+      <button [disabled]="s.disabled() || campaign.usage.revisions >= s.config()!.limits.revisions" (click)="showRevision = !showRevision"><studio-busy [active]="revising" pending="Ajustando texto…">Pedir ajuste</studio-busy></button>
+    </div>
+    @if (confirmImage) { <div class="inline-form"><p>{{ campaign.mode === 'real' ? 'Generar otra imagen puede tener costo. La pieza necesitará una nueva aprobación.' : 'Mostraremos otra composición prediseñada con tu paleta, sin usar IA. La pieza necesitará una nueva aprobación.' }}</p><div class="button-row"><button class="secondary small" [disabled]="s.disabled()" (click)="image()">Generar imagen</button><button class="text-button" [disabled]="s.disabled()" (click)="confirmImage = false">Volver</button></div></div> }
+    @if (showRevision) { <form class="inline-form" ngNativeValidate (ngSubmit)="revise()"><fieldset [disabled]="s.disabled()"><label>Qué te gustaría ajustar<input name="revision" required maxlength="500" placeholder="Por ejemplo: hazlo más breve" [(ngModel)]="revision"/></label>@if (campaign.mode === 'simulated') { <small>La demo permite practicar una versión breve o una variante fija.</small> }<button class="secondary small" type="submit"><studio-busy [active]="revising" pending="Ajustando…">Aplicar ajuste</studio-busy></button></fieldset></form> }
+    <button class="approve-piece" [class.approved]="approved" [disabled]="s.disabled() || approved || !piece().image || editing" (click)="s.action(path + '/approve', 'POST', {version: piece().version})"><studio-busy [active]="s.pending()?.key === path + '/approve'" pending="Guardando revisión…">{{ approved ? '✓ Texto e imagen revisados' : 'He revisado el texto y la imagen' }}</studio-busy></button>
+  </div>
+</article>
+}

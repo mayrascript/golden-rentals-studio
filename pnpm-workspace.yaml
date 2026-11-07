@@ -7,3 +7,6 @@ allowBuilds:
   ssh2: false
   esbuild: true
   better-sqlite3: false
+  '@parcel/watcher': true
+  lmdb: true
+  msgpackr-extract: true
