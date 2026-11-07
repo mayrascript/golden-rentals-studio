@@ -41,3 +41,19 @@ it('incluye los 14 TODO con sus fragmentos de solución en la guía generada', a
   }
   expect(total).toBe(14);
 });
+
+it('renderiza ayudas desplegables sin permitir atributos o HTML ejecutable', () => {
+  const html = renderGuideMarkdown('<details>\n<summary>Instalar herramientas</summary>\n\n```sh\nnode --version\n```\n\n<script>alert(1)</script>\n</details>');
+  expect(html).toContain('<details class="guide-details">');
+  expect(html).toContain('<summary>Instalar herramientas</summary>');
+  expect(html).toContain('copy-code');
+  expect(html).not.toContain('<script>');
+  expect(renderGuideMarkdown('<details onclick="alert(1)">x</details>')).not.toContain('<details onclick');
+});
+
+it('resalta información importante y mantiene el texto accesible', () => {
+  const html = renderGuideMarkdown('> [!IMPORTANT]\n> Definir no es ejecutar.');
+  expect(html).toContain('class="info-card info-important"');
+  expect(html).toContain('Definir no es ejecutar.');
+  expect(html).not.toContain('[!IMPORTANT]');
+});

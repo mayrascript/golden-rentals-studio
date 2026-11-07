@@ -7,3 +7,12 @@ El starter mantiene 14 TODO pendientes: la interfaz simulada, la comprobación d
 Estas pruebas offline no evalúan la calidad ni disponibilidad del proveedor. Cada participante debe configurar su propia cuenta si desea probar Gemini. El ensayo con participantes y la medición de duración siguen pendientes.
 
 La distribución incluye datos ficticios y plantillas de configuración; no incluye campañas guardadas, credenciales ni registros de consumo personales.
+
+
+## Revisión de la guía · 7 de noviembre de 2026
+
+La actualización añade requisitos verificables, Git, desplegables, notas visuales, avatares, tiempos estimados, QR y encuesta de feedback. Conserva el progreso local anterior, sin login ni seguimiento por bloques. El cierre presencial dura 30–60 segundos y reutiliza el trabajo hecho.
+
+Pasaron `guide:build`, `typecheck` y 28 pruebas. El laboratorio ADK Web arrancó localmente, enumeró los cuatro especialistas y abrió el Estratega sin llamadas a Gemini. Las pruebas de definición verifican herramientas y skill sin red. Se revisaron la portada, el tema claro y oscuro y la apertura de desplegables en el navegador. La emulación móvil del navegador no cambió el ancho efectivo; esa comprobación visual queda pendiente. No se ejecutaron inferencias de pago ni se evaluó la calidad de respuestas reales en esta revisión.
+
+El formulario de Google Forms quedó publicado para cualquier persona con el enlace, con «No recoger» correos y sin limitar a una respuesta. No se enviaron respuestas de prueba. Los premios requieren validación presencial; el formulario de feedback no identifica a quienes completaron el taller.

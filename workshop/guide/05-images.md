@@ -1,6 +1,7 @@
 # 5 Generar, extraer y guardar una imagen
 
-Objetivo: completar la función que conecta el Diseñador con el modelo de imágenes. Requisitos: módulos 2 y 3.
+> [!TIP]
+> **Tu objetivo:** completar la función que conecta el Diseñador con el modelo de imágenes. Requisitos: módulos 2 y 3.
 
 El agente de texto elabora el concepto y llama a `generate_campaign_image`. La función del servidor construye el prompt fotográfico, solicita la imagen, lee la respuesta y guarda el archivo. La referencia del archivo vuelve a ADK como resultado de la tool.
 
@@ -10,8 +11,8 @@ La respuesta puede incluir texto, partes internas y una imagen final. La prueba 
 
 En una prueba real se solicita solo una imagen. Se aplica el prompt de `packages/providers/image-prompt.ts`: luz natural, materiales con textura, proporciones plausibles y aviso de alojamiento ficticio fuera de la imagen.
 
-Error frecuente: devolver un prompt como si fuera la imagen, o no esperar el guardado con `await` antes de devolver la referencia.
-
+> [!WARNING]
+> **Error frecuente:** devolver un prompt como si fuera la imagen, o no esperar el guardado con `await` antes de devolver la referencia.
 
 ## Bloques para completar
 
@@ -60,7 +61,8 @@ pnpm typecheck
 pnpm workshop:check 5
 ```
 
-Resultado esperado: Una imagen final decodificada y guardada; las partes de razonamiento se descartan.
+> [!IMPORTANT]
+> **Resultado esperado:** Una imagen final decodificada y guardada; las partes de razonamiento se descartan.
 
 Esta comprobación usa respuestas HTTP locales preparadas, sin clave ni consumo de IA. Ejecuta ADK y las funciones que completaste; no evalúa la calidad de Gemini. Para probar ese agente con el proveedor real, consulta [el laboratorio](laboratorio.md).
 

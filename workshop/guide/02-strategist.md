@@ -1,39 +1,83 @@
 # 2 Configurar y probar un agente
 
-Objetivo: construir un `LlmAgent` y distinguir definirlo de ejecutarlo. Requisito: completar la preparación.
+> [!TIP]
+> **Tu objetivo:** construir un `LlmAgent` y distinguir definirlo de ejecutarlo. Requisito: completar la preparación.
 
 ## Antes del código: qué hace Google ADK
 
-**Agent Development Kit (ADK)** es el framework que usamos para definir y ejecutar los agentes. Gemini es el modelo que genera las respuestas; ADK conecta ese modelo con instrucciones, herramientas, sesiones y el ciclo de ejecución. En este taller usamos su SDK de TypeScript, `@google/adk`.
+**ADK conecta un modelo con instrucciones, herramientas y una sesión.** Primero entiende la estructura de cualquier agente; luego la adaptaremos al Estratega.
 
-| Pieza | Qué significa en este ejercicio |
-| --- | --- |
-| `LlmAgent` | La definición del Estratega: su nombre, modelo, instrucciones y herramientas disponibles. |
-| `name` | Identificador del agente, por ejemplo `strategist`. |
-| `model` | Modelo configurado en el servidor que atenderá las solicitudes. |
-| `instruction` | Instrucciones de sistema: qué debe hacer y qué límites debe respetar. |
-| `description` | Resumen de su responsabilidad. |
-| `tools` | Herramientas disponibles. El Estratega empieza con una lista vacía. |
-| `Runner` y sesión | Ejecutan al agente con un mensaje y organizan los eventos y el contexto de esa ejecución. |
+### La ficha de un agente, sin un caso de negocio
 
-El recorrido es **mensaje → Runner → modelo → respuesta**. Cuando hay tools, el modelo puede solicitar una llamada, ADK ejecuta la función y devuelve su resultado al modelo. Una herramienta disponible no se ejecuta automáticamente por estar registrada.
+```ts
+import { LlmAgent } from '@google/adk';
 
-En el paso 7 verás cómo el backend construye el contexto para cada especialista. Las sesiones no hacen que dos agentes compartan automáticamente los resultados del otro.
+export const rootAgent = new LlmAgent({
+  name: 'asistente',
+  model: process.env.TEXT_MODEL!,
+  description: 'Explica conceptos al usuario con ejemplos breves.',
+  instruction: 'Explica el concepto solicitado en español. Usa un ejemplo y señala lo que no sabes.',
+  tools: [],
+});
+```
 
-**Comprueba la idea:** si creas `new LlmAgent(...)` sin ejecutarlo, ¿ya consumiste una llamada a Gemini? No: solo has definido el agente. La ejecución ocurre después mediante el Runner.
+Este ejemplo muestra la definición. Para ejecutarlo necesitas un modelo válido en `TEXT_MODEL`, una credencial configurada y un Runner o ADK Web. El signo `!` de TypeScript no valida una variable de entorno: en el proyecto, la configuración se comprueba antes de ejecutar.
 
-Documentación: [Google ADK](https://adk.dev/).
+| Parámetro | Analogía | ¿Es obligatorio en ADK TypeScript 2.4? | Qué debes decidir |
+| --- | --- | --- | --- |
+| `name` | Credencial del especialista | **Sí** | Identificador válido, único en el árbol de agentes; no uses `user`. |
+| `model` | Motor con el que piensa | **Necesario al ejecutar**, aquí lo configuramos explícitamente | Puede omitirse al construir y resolverse por herencia o configuración admitida por ADK. Un agente independiente necesita un modelo resuelto. |
+| `description` | Cargo en el directorio del equipo | Opcional; muy útil para delegar | Una frase que permita decidir cuándo llamar a este especialista. |
+| `instruction` | Encargo y reglas de trabajo | Opcional en la API; **necesario para orientar este taller** | Rol, tarea, límites, formato esperado y uso de herramientas. |
+| `tools` | Caja de herramientas | Opcional; por defecto vacía | Funciones o toolsets que podrá solicitar. Registrarlas no las ejecuta. |
+| `generateContentConfig` | Ajustes de trabajo | Opcional | Límites de salida y opciones compatibles con el modelo. |
+| Callbacks | Controles antes y después | Opcionales | Registrar consumo, comprobar límites o revisar resultados. |
+
+> [!IMPORTANT]
+> **Definir no es ejecutar.** `new LlmAgent(...)` crea la ficha del agente. El Runner y la sesión permiten enviar un mensaje y recibir su respuesta; no son parámetros obligatorios de esa ficha.
+
+### De mensaje a resultado
+
+**Tu mensaje → Runner + sesión → agente y modelo → respuesta.**
+
+Si el modelo necesita una herramienta: **solicita la tool → ADK ejecuta la función → el resultado vuelve al modelo**. Las skills aportan instrucciones y recursos mediante un `SkillToolset`; no existe un parámetro `skills` en este ejemplo.
+
+<details>
+<summary>Por qué description es breve en el codelab original</summary>
+
+El [codelab de Google, secciones 3 y 4](https://codelabs.developers.google.com/ai-creative-studio-adk-a2a) usa una descripción de una línea para el Brand Strategist. La explicación extensa vive en `SYSTEM_INSTRUCTION`: incluye especialidad, restricciones, pasos y formato de salida.
+
+La diferencia no es la longitud, sino la función: `description` permite identificar al especialista y `instruction` guía su trabajo. En un sistema con delegación, otro agente puede leer esa descripción para seleccionar a quién llamar. En este proyecto el workflow fija el orden, así que la descripción no decide el enrutamiento.
+
+El original investiga con Google Search y usa Python. Nuestra adaptación trabaja con hechos del brief, usa TypeScript y deja `tools: []` en el Estratega. Por eso su descripción es distinta.
+
+</details>
+
+### Ahora sí: la ficha del Estratega
+
+| Ficha genérica | En este workshop | Por qué |
+| --- | --- | --- |
+| Identidad: `name` | `strategist` | El workflow identifica a este especialista. |
+| Motor: `model` | Viene de `...settings` | Comparte configuración y límites preparados. |
+| Cargo: `description` | Propone tres ángulos a partir de los hechos del brief. | Resume su responsabilidad. |
+| Encargo: `instruction` | `BASE_INSTRUCTION` + estrategia breve + tres ángulos | Combina reglas comunes con su tarea específica. |
+| Herramientas: `tools` | `[]` | Trabaja con información aportada, sin buscar en Internet. |
+
+> [!TIP]
+> Lee `BASE_INSTRUCTION` en `workshop/support.ts`: ahí están las reglas sobre datos ficticios, hechos permitidos, secretos y formato JSON. El texto corto del TODO se suma a esas reglas.
+
+Documentación: [primer agente en TypeScript](https://adk.dev/get-started/typescript/) y [agentes LLM](https://adk.dev/agents/llm-agents/). La obligatoriedad anterior se contrastó con los tipos de `@google/adk` 2.4.0 instalados en este proyecto.
 
 ## Construye el Estratega
 
-ADK necesita un modelo, un nombre y unas instrucciones. La descripción resume su responsabilidad. El `Runner` crea una sesión, envía el brief y recoge la respuesta. Crear el objeto del agente no envía solicitudes al proveedor.
+En este taller configuramos un modelo, un nombre y unas instrucciones. La descripción resume su responsabilidad. El `Runner` crea una sesión, envía el brief y recoge la respuesta. Crear el objeto del agente no envía solicitudes al proveedor.
 
 Abre `workshop/exercises/02-strategist.ts` y lee los comentarios de los TODO 2.1 y 2.2. Completa primero la instrucción y luego el agente. El laboratorio aportará un brief ficticio; el código de la sesión ya está preparado en `workshop/lab.ts`.
 
 Después de comprobar el bloque base, cambia la instrucción para pedir tres ángulos más distintos. El laboratorio offline verifica la conexión y el contrato con respuestas fijas. Para evaluar el efecto de tu nueva instrucción necesitas una ejecución real.
 
-Error frecuente: confundir `description` con `instruction`. La primera describe la responsabilidad del agente; la segunda orienta lo que el modelo debe hacer.
-
+> [!WARNING]
+> **Error frecuente:** confundir `description` con `instruction`. La primera describe la responsabilidad del agente; la segunda orienta lo que el modelo debe hacer.
 
 ## Bloques para completar
 
@@ -68,8 +112,13 @@ pnpm typecheck
 pnpm workshop:check 2
 ```
 
-Resultado esperado: Un agente llamado strategist y una estrategia con tres ángulos.
+> [!IMPORTANT]
+> **Resultado esperado:** Un agente llamado strategist y una estrategia con tres ángulos.
 
 Esta comprobación usa respuestas HTTP locales preparadas, sin clave ni consumo de IA. Ejecuta ADK y las funciones que completaste; no evalúa la calidad de Gemini. Para probar ese agente con el proveedor real, consulta [el laboratorio](laboratorio.md).
+
+## Prueba con tus propias instrucciones
+
+Abre el [laboratorio con ADK Web](laboratorio.md), selecciona **strategist** y envía el prompt de ejemplo. Modifica la instrucción, reinicia el laboratorio y compara en una sesión nueva. Esta práctica real es opcional: requiere tu credencial y consume API.
 
 [Volver al recorrido](README.md)

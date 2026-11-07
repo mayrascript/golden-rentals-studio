@@ -1,6 +1,10 @@
 # 3 Registrar y llamar una tool
 
-Objetivo: exponer una función al modelo y observar el recorrido llamada → ejecución → resultado. Requisito: módulo 2.
+> [!TIP]
+> **Tu objetivo:** exponer una función al modelo y observar el recorrido llamada → ejecución → resultado. Requisito: módulo 2.
+
+> [!NOTE]
+> **La tool es un instrumento de trabajo:** el Diseñador decide qué necesita y pide usarlo. La función ejecuta la acción y devuelve un resultado; no es otro agente.
 
 Una función TypeScript tiene código ejecutable. Una `FunctionTool` agrega el nombre, la descripción y el esquema de argumentos que ADK entrega al modelo. Registrarla en `tools` permite que el agente solicite su ejecución. El modelo propone los argumentos; ADK valida el esquema y ejecuta la función.
 
@@ -10,8 +14,8 @@ En este primer ejercicio `execute` devuelve un resultado técnico fijo. Es delib
 
 Observa dos líneas en la terminal: `→ llamada generate_campaign_image` con `pieceId`, `prompt` y `altText`, y `← resultado generate_campaign_image` con `status: saved`. En modo offline la respuesta del modelo que solicita esa tool también está preparada; ADK sí ejecuta tu función.
 
-Error frecuente: crear la herramienta y olvidar incluirla en `tools`. Otra comprobación rechaza un `pieceId` inexistente mediante el esquema preparado.
-
+> [!WARNING]
+> **Error frecuente:** crear la herramienta y olvidar incluirla en `tools`. Otra comprobación rechaza un `pieceId` inexistente mediante el esquema preparado.
 
 ## Bloques para completar
 
@@ -51,7 +55,8 @@ pnpm typecheck
 pnpm workshop:check 3
 ```
 
-Resultado esperado: Una llamada generate_campaign_image, sus argumentos y el resultado devuelto a ADK.
+> [!IMPORTANT]
+> **Resultado esperado:** Una llamada generate_campaign_image, sus argumentos y el resultado devuelto a ADK.
 
 Esta comprobación usa respuestas HTTP locales preparadas, sin clave ni consumo de IA. Ejecuta ADK y las funciones que completaste; no evalúa la calidad de Gemini. Para probar ese agente con el proveedor real, consulta [el laboratorio](laboratorio.md).
 

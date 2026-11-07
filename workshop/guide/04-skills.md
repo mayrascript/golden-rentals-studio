@@ -1,6 +1,10 @@
 # 4 Conectar una skill y sus recursos
 
-Objetivo: proporcionar conocimiento reutilizable mediante las herramientas de carga de ADK. Requisito: módulo 3.
+> [!TIP]
+> **Tu objetivo:** proporcionar conocimiento reutilizable mediante las herramientas de carga de ADK. Requisito: módulo 3.
+
+> [!NOTE]
+> **La skill es el manual del especialista:** el Redactor consulta reglas y ejemplos cuando los necesita. El manual aporta conocimiento; una tool ejecuta una acción. ADK expone este manual mediante herramientas de lectura.
 
 Abre `skills/instagram-copy/SKILL.md` y `skills/instagram-copy/references/estructuras.md`. El primer archivo define la skill y sus instrucciones; el segundo contiene estructuras que el Redactor puede consultar cuando las necesita.
 
@@ -10,8 +14,8 @@ La comprobación debe mostrar `load_skill` y luego `load_skill_resource`, antes 
 
 Después, personaliza una regla de tono en SKILL.md y compara resultados en una ejecución real. El modo offline utiliza respuestas fijas y no mide calidad de escritura.
 
-Error frecuente: escribir mal el nombre `instagram-copy` o la ruta `references/estructuras.md`. La skill y sus recursos están incluidos en el repositorio.
-
+> [!WARNING]
+> **Error frecuente:** escribir mal el nombre `instagram-copy` o la ruta `references/estructuras.md`. La skill y sus recursos están incluidos en el repositorio.
 
 ## Bloques para completar
 
@@ -59,7 +63,8 @@ pnpm typecheck
 pnpm workshop:check 4
 ```
 
-Resultado esperado: Llamadas load_skill y load_skill_resource antes de recibir tres textos.
+> [!IMPORTANT]
+> **Resultado esperado:** Llamadas load_skill y load_skill_resource antes de recibir tres textos.
 
 Esta comprobación usa respuestas HTTP locales preparadas, sin clave ni consumo de IA. Ejecuta ADK y las funciones que completaste; no evalúa la calidad de Gemini. Para probar ese agente con el proveedor real, consulta [el laboratorio](laboratorio.md).
 
