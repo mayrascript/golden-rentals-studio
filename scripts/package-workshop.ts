@@ -14,7 +14,8 @@ for (const edition of ['participant', 'solution'] as const) {
   }
   files['apps/server/src/agents/team.ts'] = files['workshop/templates/team.ts.txt'];
   files['packages/providers/adk.ts'] = strToU8(adaptProvider(strFromU8(files['packages/providers/adk.ts'])));
-  files['apps/server/src/index.ts'] = strToU8(strFromU8(files['apps/server/src/index.ts']).replace('process.env.PORT ?? 4317', `process.env.PORT ?? ${port}`));
+  files['apps/server/src/index.ts'] = strToU8(strFromU8(files['apps/server/src/index.ts']).replace(/process.env.PORT \?\? \d+/, `process.env.PORT ?? ${port}`));
+  files['scripts/dev.ts'] = strToU8(strFromU8(files['scripts/dev.ts']).replace(/process.env.PORT \?\? \d+/, `process.env.PORT ?? ${port}`));
   files['.env.example'] = strToU8(strFromU8(files['workshop/templates/participant-env.txt']).replace('PORT=4319', `PORT=${port}`));
   // Las pruebas de autoría verifican archivos originales; cada edición conserva las pruebas del producto.
   delete files['tests/workshop.test.ts'];

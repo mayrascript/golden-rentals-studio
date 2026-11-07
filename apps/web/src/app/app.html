@@ -1,0 +1,58 @@
+<div class="shell">
+<aside class="sidebar">
+  <a class="wordmark" href="#" (click)="$event.preventDefault(); s.tab.set('brief')"><studio-sun/><span>golden<span class="wordmark-sub">CONTENT STUDIO</span></span></a>
+  <div class="sidebar-label">TU ESPACIO CREATIVO</div>
+  <nav aria-label="Secciones">
+    <button class="nav" [class.active]="s.tab() === 'brief'" (click)="s.tab.set('brief')"><span>01</span> El brief <span class="nav-arrow">↗</span></button>
+    <button class="nav" [class.active]="s.tab() === 'campaign'" [disabled]="!s.campaign()" (click)="s.tab.set('campaign')"><span>02</span> La campaña <span class="nav-arrow">↗</span></button>
+    <button class="nav" [class.active]="s.tab() === 'calendar'" [disabled]="!s.campaign()?.calendar?.length" (click)="s.tab.set('calendar')"><span>03</span> El calendario <span class="nav-arrow">↗</span></button>
+  </nav>
+  <details class="mobile-history"><summary>Campañas guardadas ({{ s.history().length }})</summary>@for (item of s.history(); track item.id) { <button class="history-item" [disabled]="s.busy()" (click)="s.openCampaign(item.id)"><studio-busy [active]="s.pending()?.key === 'open-' + item.id" pending="Cargando campaña…">{{ item.name }} · {{ labels[item.state] }}</studio-busy></button> }</details>
+  <div class="history"><div class="sidebar-label">CAMPAÑAS GUARDADAS</div>@for (item of s.history().slice(0,6); track item.id) { <button class="history-item" [class.selected]="s.campaign()?.id === item.id" [disabled]="s.busy()" (click)="s.openCampaign(item.id)"><span><studio-busy [active]="s.pending()?.key === 'open-' + item.id" pending="Cargando campaña…">{{ item.name }}</studio-busy></span><small>{{ labels[item.state] }} · {{ date(item.createdAt) }}</small></button> } @empty { <p class="sidebar-hint">Las ideas que crees aparecerán aquí.</p> }</div>
+  <div class="sidebar-footer"><span class="tiny-sun">✳</span><p>De una idea<br/>a una historia que conecta.</p><small>WORKSHOP · EDICIÓN EDUCATIVA</small></div>
+</aside>
+<main>
+  <header class="topbar"><span>EL ESTUDIO <span class="slash">/</span> {{ s.tab() === 'brief' ? 'EMPEZAR UNA CAMPAÑA' : s.tab() === 'campaign' ? 'TU CAMPAÑA' : 'PLANIFICACIÓN' }}</span><span class="mode"><i></i>{{ !s.config() ? 'Conectando…' : s.config()?.mode === 'real' ? 'Generación con IA' : 'Demo simulada' }}</span></header>
+  @if (s.error()) { <div class="alert error" role="alert">{{ s.error() }}<button aria-label="Cerrar error" (click)="s.error.set('')">×</button></div> }
+  @if (s.notice()) { <div class="alert" role="status">{{ s.notice() }}</div> }
+  @if (s.pending() || s.running()) { <div class="activity-toast" role="status" aria-live="polite"><studio-spinner/><div><strong>{{ activityLabel }}</strong><small>{{ activityDetail }}</small></div></div> }
+  @if (s.loading()) { <studio-loading/> }
+  @else if (!s.config() || !s.brief()) { <div class="empty-state"><h2>No pudimos abrir el estudio.</h2><button class="primary" (click)="s.load()">Reintentar</button></div> }
+  @else {
+    @if (s.tab() === 'brief') {
+      @let b = s.brief()!; @let config = s.config()!;
+      <section class="hero"><div><div class="eyebrow">IDEAS QUE ENCUENTRAN SU FORMA</div><h1>Una marca.<br/><em>Tres historias.</em></h1><p>Dale a tu equipo creativo un punto de partida.<br/>Construye, revisa y da forma a tu próxima campaña.</p><div class="hero-tags"><span>4 agentes</span><span>3 publicaciones</span><span>Tu criterio al final</span></div></div><div class="hero-art" aria-hidden="true"><div class="art-sun"></div><div class="art-arch"><div></div></div><div class="art-caption">UN ESPACIO PARA CREAR <span>↗</span></div></div></section>
+      <section class="brief-section"><div class="section-heading"><div><div class="eyebrow">01 / EL PUNTO DE PARTIDA</div><h2>Cuéntanos sobre tu marca</h2></div><button class="text-button" [disabled]="s.disabled()" (click)="s.resetBrief()">Usar Golden Rentals ↗</button></div>
+      <div class="educational"><studio-sun [small]="true"/><span><strong>Un ejercicio para aprender haciendo.</strong> Golden Rentals es una marca ficticia. Toda campaña se revisa aquí y se descarga; no se publica en Instagram.</span></div>
+      <form ngNativeValidate (ngSubmit)="s.generate()"><fieldset [disabled]="s.disabled()"><div class="form-grid">
+        <label>Nombre de marca<input name="name" required maxlength="80" [ngModel]="b.brand.name" (ngModelChange)="brand('name', $event)"/></label>
+        <label>Tono de voz<input name="tone" required maxlength="150" [ngModel]="b.brand.tone" (ngModelChange)="brand('tone', $event)"/></label>
+        <label class="wide">Qué hace tu marca<textarea name="description" required maxlength="1000" rows="2" [ngModel]="b.brand.description" (ngModelChange)="brand('description', $event)"></textarea></label>
+        <label>A quién quieres hablarle<textarea name="audience" required maxlength="500" rows="2" [ngModel]="b.brand.audience" (ngModelChange)="brand('audience', $event)"></textarea></label>
+        <label>Qué quieres lograr<textarea name="objective" required maxlength="500" rows="2" [ngModel]="b.brand.objective" (ngModelChange)="brand('objective', $event)"></textarea></label>
+        <label class="wide">Características que podemos mencionar<span class="hint">Un hecho por línea. Usa datos de prueba para el workshop; omite lo que no conoces.</span><textarea name="facts" required rows="4" maxlength="5000" [ngModel]="factsText()" (ngModelChange)="facts($event)"></textarea></label>
+        <label class="wide">Qué debemos evitar<textarea name="restrictions" maxlength="2000" rows="2" [ngModel]="b.brand.restrictions" (ngModelChange)="brand('restrictions', $event)"></textarea></label>
+        <label>Inicio del calendario<input name="date" required type="date" [ngModel]="b.startDate" (ngModelChange)="brief('startDate', $event)"/></label>
+        <label>Zona horaria<input name="timezone" required [ngModel]="b.timeZone" (ngModelChange)="brief('timeZone', $event)" list="timezones"/><datalist id="timezones"><option>America/Bogota</option><option>America/Mexico_City</option><option>America/Argentina/Buenos_Aires</option><option>Europe/Madrid</option></datalist></label>
+        <div class="wide palette"><span>Paleta de la marca</span>@for (c of b.brand.palette; track $index; let i = $index) { <label><input type="color" [name]="'color-' + i" [attr.aria-label]="'Color ' + (i+1)" [ngModel]="c" (ngModelChange)="color(i,$event)"/><small>{{ c }}</small></label> }</div>
+      </div><div class="form-footer"><p>{{ config.mode === 'simulated' ? 'Modo de práctica: textos e ilustraciones de prueba, sin llamadas a IA ni costo de generación.' : 'Modo real: se enviará este brief al proveedor de IA. Se aplican los límites de la campaña; costo no disponible.' }}</p><button class="primary" type="submit" [disabled]="config.mode === 'real' && !config.realReady"><studio-busy [active]="s.pending()?.key === 'generate'" pending="Preparando…">Crear mi campaña <span>↗</span></studio-busy></button></div>
+      @if (config.mode === 'real' && !config.realReady) { <p role="status">Falta configurar el proveedor en el servidor para usar el modo real.</p> }
+      </fieldset></form></section>
+    }
+    @if (s.tab() === 'campaign') { @if (s.campaign(); as c) {
+      <section class="page-title"><div><div class="eyebrow">02 / DE LA IDEA A LA HISTORIA</div><h1>{{ c.brief.brand.name }}<em> · la campaña</em></h1><p>Ejemplo educativo · {{ c.mode === 'simulated' ? 'Contenido simulado' : 'Contenido generado con IA' }} · {{ labels[c.state] }}</p></div><button class="secondary" [disabled]="s.disabled()" (click)="s.newCampaign()">Nueva campaña +</button></section>
+      <div class="agent-track" aria-label="Progreso del equipo">@for (agent of s.config()!.agents; track agent.id; let i = $index) { <div class="agent-step" [class.current]="c.activeAgent === agent.id" [class.done]="c.completedSteps.includes(agent.id)"><span class="agent-number">@if (c.activeAgent === agent.id && s.running()) { <studio-spinner/> } @else { {{ c.completedSteps.includes(agent.id) ? '✓' : '0' + (i+1) }} }</span><strong>{{ agent.label }}</strong><small>{{ agent.description }}</small></div> }</div>
+      <div class="run-status" role="status"><span class="loading-message">@if (s.running()) { <studio-spinner/> }{{ runStatus }}</span>@if (s.running()) { <button class="text-button" [disabled]="s.busy()" (click)="s.action('/cancel','POST',{})"><studio-busy [active]="s.pending()?.key === '/cancel'" pending="Cancelando…">Cancelar</studio-busy></button> } @if (['DRAFT','FAILED','INTERRUPTED','NEEDS_INPUT','CANCELLED'].includes(c.state)) { <button class="text-button" [disabled]="s.busy()" (click)="s.action('/run','POST',{})"><studio-busy [active]="s.pending()?.key === '/run'" pending="Retomando…">Continuar desde lo guardado ↗</studio-busy></button> }</div>
+      @if (c.error) { <div class="alert error" role="alert">{{ c.error }}</div> }
+      @if (c.strategy; as strategy) { <div class="strategy"><span class="eyebrow">LA DIRECCIÓN CREATIVA</span><p>{{ strategy.summary }}</p><div>@for (angle of strategy.angles; track angle.angleId) { <span>{{ angle.title }}</span> }</div></div> }
+      <div class="section-heading"><div><div class="eyebrow">TRES PIEZAS, UNA MISMA VOZ</div><h2>Tu contenido, con tu mirada</h2></div><small>{{ c.mode === 'simulated' ? 'Imágenes de ejemplo prediseñadas. La generación con IA aún no está activa.' : 'Revisa cada texto y cada imagen.' }}</small></div>
+      <div class="pieces">@for (p of c.pieces; track p.pieceId + '-' + p.version; let i = $index) { <studio-piece [piece]="p" [index]="i"/> }</div>
+      @if (!c.pieces.length) { <div class="empty-state" [attr.aria-busy]="s.running()">@if (s.running()) { <studio-spinner/> } @else { <studio-sun/> }<h2>Las buenas historias empiezan aquí.</h2><p>{{ s.running() ? 'Tu equipo está preparando la dirección creativa de la campaña.' : 'Continúa desde lo guardado para preparar tus publicaciones.' }}</p></div> }
+      @if (c.review?.findings?.length) { <div class="review-notes"><h3>Observaciones del editor</h3>@for (finding of c.review!.findings; track $index) { <p><strong>{{ finding.severity === 'blocking' ? 'Por resolver' : 'Sugerencia' }} · {{ finding.pieceId }}</strong> {{ finding.description }}</p> }</div> }
+      @if (c.pieces.length) { <div class="campaign-footer"><p>La revisión automática es una ayuda. Tú revisas las imágenes y apruebas el resultado.<br/><small>{{ c.usage.images }} imágenes solicitadas · {{ c.usage.modelCalls }} llamadas a modelos · {{ c.mode === 'simulated' ? 'Sin consumo de IA' : 'Costo no disponible' }}</small></p><button class="primary" [disabled]="!c.calendar.length || s.disabled()" (click)="s.tab.set('calendar')">Revisar calendario ↗</button></div> }
+    } }
+    @if (s.tab() === 'calendar' && s.campaign()) { @for (c of [s.campaign()!]; track c.packageHash) { <studio-calendar [campaign]="c"/> } }
+  }
+  <footer class="main-footer"><span>GOLDEN CONTENT STUDIO</span><span>Creado para explorar. Revisado por ti.</span></footer>
+</main>
+</div>

@@ -20,7 +20,7 @@ La rama `starter` contiene los 14 TODO del participante; `main` contiene la solu
 
 ## Estructura
 
-- `apps/web`: interfaz de campañas.
+- `apps/web`: interfaz Angular de campañas.
 - `apps/server`: API local y coordinación.
 - `packages`: contratos, proveedores y persistencia.
 - `workshop/exercises`: código que ejecutan la app y el laboratorio ADK Web.
@@ -43,6 +43,10 @@ La aplicación conserva la aprobación humana y no publica en redes. Los datos y
 
 ## Versión del taller
 
-La separación inicial corresponde a las etiquetas `workshop-v1-solution` y `workshop-v1-starter`. La guía vive y se publica de forma independiente en `multiagent-adk-workshop`.
+La edición Angular corresponde a las etiquetas `workshop-v2-angular-solution` y `workshop-v2-angular-starter`. La guía vive y se publica de forma independiente en `multiagent-adk-workshop`.
 
 Se conserva el historial del repositorio original. Consulta [LICENSE](LICENSE) y [NOTICE](NOTICE).
+
+## Desarrollo de la interfaz
+
+La interfaz usa Angular 21 LTS, componentes standalone y signals, compatible con Node.js 24.13 y TypeScript 5.9 del taller. `pnpm dev` inicia Angular CLI y la API local; conserva el puerto de `.env` (4319 en starter, 4317 en main). La API usa un puerto interno libre. `pnpm build` genera la interfaz y el servidor; `pnpm start` sirve ambos desde Express. `pnpm typecheck` comprueba también las plantillas Angular.
