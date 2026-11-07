@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { transpileModule, ScriptTarget, ModuleKind } from 'typescript';
 import { steps, repository, notionGuide, siteUrl, workshopName, workshopSubtitle, workshopTitle } from '../workshop/site/steps.js';
 import { escapeHtml, renderGuideMarkdown } from '../workshop/site/render.js';
+import { illustrations } from '../workshop/site/illustrations.js';
 
 const output = 'docs/guide-assets';
 await mkdir(output, { recursive: true });
@@ -35,8 +36,9 @@ await writeFile(`${output}/${cssName}`, css);
 await writeFile(`${output}/${jsName}`, client);
 await writeFile(`${output}/${themeName}`, theme);
 await writeFile('docs/.nojekyll', '');
-await copyFile('workshop/assets/workshop-architecture.png', `${output}/workshop-architecture.png`);
-await copyFile('workshop/assets/agent-avatars.png', `${output}/agent-avatars.png`);
+for (const name of Object.keys(illustrations)) {
+  await copyFile(`workshop/assets/${name}`, `${output}/${name}`);
+}
 await writeFile(`${output}/workshop-qr.svg`, await QRCode.toString(siteUrl, { type: 'svg', errorCorrectionLevel: 'M', margin: 4, width: 256 }));
 // Retiramos únicamente el favicon genérico sustituido por el isotipo original.
 if ((await readdir(output)).includes('icon.svg')) await unlink(`${output}/icon.svg`);
@@ -53,7 +55,7 @@ for (const step of steps) {
   source = source.replace(/^\[(?:Seguir este recorrido en Notion|Abrir la guía web con menú lateral)\].*\n?/m, '').replace(/^\[Volver al recorrido\]\(README.md\)\s*$/m, '');
   const exercise = 'exercise' in step ? step.exercise : null;
   const links = `<div class="step-tools"><a href="${repository}/blob/starter/workshop/guide/${step.file}" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a>${exercise ? `<a href="${repository}/blob/starter/workshop/exercises/${exercise}" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="${repository}/blob/main/workshop/exercises/${exercise}" target="_blank" rel="noopener noreferrer">✓ Ver solución</a>` : ''}</div>`;
-  const intro = step.id === 'inicio' ? `<p class="workshop-subtitle">${escapeHtml(workshopSubtitle)}</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span><span>~140 min + práctica opcional</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="join-workshop"><img src="./guide-assets/workshop-qr.svg" width="150" height="150" alt="QR para abrir la dirección pública del workshop"><div><strong>Abre el workshop en tu dispositivo</strong><p>Escanea el QR o comparte el enlace.</p><a href="${siteUrl}">${escapeHtml(siteUrl.replace('https://', ''))}</a><p><a href="./guide-assets/workshop-qr.svg" download="workshop-qr.svg">Descargar QR ↗</a></p></div></div><div class="avatar-team"><img src="./guide-assets/agent-avatars.png" width="2172" height="724" alt="Cuatro especialistas: Estratega con brújula, Redactor con manual, Diseñador con herramientas y Editor con lupa."><div class="avatar-captions"><div><b>Estratega</b><small>La brújula<br>Define la dirección</small></div><div><b>Redactor</b><small>El manual · skill<br>Consulta cómo escribir</small></div><div><b>Diseñador</b><small>La herramienta · tool<br>Genera la imagen</small></div><div><b>Editor</b><small>La lupa<br>Revisa el resultado</small></div></div></div>` : '';
+  const intro = step.id === 'inicio' ? `<p class="workshop-subtitle">${escapeHtml(workshopSubtitle)}</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span><span>~140 min + práctica opcional</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="join-workshop"><img src="./guide-assets/workshop-qr.svg" width="150" height="150" alt="QR para abrir la dirección pública del workshop"><div><strong>Abre el workshop en tu dispositivo</strong><p>Escanea el QR o comparte el enlace.</p><a href="${siteUrl}">${escapeHtml(siteUrl.replace('https://', ''))}</a><p><a href="./guide-assets/workshop-qr.svg" download="workshop-qr.svg">Descargar QR ↗</a></p></div></div>${renderGuideMarkdown('![Los cuatro especialistas colaboran alrededor de una mesa. Una silla vacía dice Tú, human in the loop: tu lugar para orientar y revisar el trabajo del equipo.](../assets/team-collaboration.png)')}` : '';
   sections.push(`<section data-step="${step.id}" aria-label="${escapeHtml(step.title)}"${step.id === 'inicio' ? '' : ' hidden'}>${links}${'minutes' in step ? `<p class="lesson-time">◷ ${step.minutes} min estimados · Puedes avanzar a tu ritmo.</p>` : ''}${intro}<div class="step-body">${renderGuideMarkdown(source)}</div></section>`);
 }
 

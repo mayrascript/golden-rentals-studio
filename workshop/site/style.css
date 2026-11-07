@@ -106,11 +106,11 @@ pre code{font:inherit;background:none;color:inherit}
 .agent-flow b{display:block;font:700 11px var(--ms-font-brand);color:var(--ms-text)}
 .agent-flow small{display:block;font-size:11px;color:var(--ms-muted);margin-top:5px}
 .agent-flow .agent-icon{display:block;margin-bottom:9px;color:var(--ms-link);font-size:18px}
-.architecture-figure{margin:26px 0;border:1px solid var(--ms-border);border-radius:10px;overflow:hidden;background:white}
-.architecture-figure>a{display:block}
-.architecture-figure img{display:block;width:100%;height:auto}
-.architecture-figure figcaption{padding:12px 16px;font-size:11px;line-height:1.7;background:var(--ms-raised);border-top:1px solid var(--ms-border);color:var(--ms-body)}
-.architecture-figure figcaption a{display:inline-block;margin-left:6px}
+.guide-figure{margin:26px 0;border:1px solid var(--ms-border);border-radius:10px;overflow:hidden;background:white}
+.guide-figure>a{display:block}
+.guide-figure img{display:block;width:100%;height:auto}
+.guide-figure figcaption{padding:12px 16px;font-size:11px;line-height:1.7;background:var(--ms-raised);border-top:1px solid var(--ms-border);color:var(--ms-body)}
+.guide-figure figcaption a{display:inline-block;margin-left:6px}
 .lesson-complete{border-top:1px solid var(--ms-border);margin-top:35px;padding-top:24px;display:flex;justify-content:flex-end}
 .complete-button{font-size:12px;border:1px solid var(--ms-control-border);border-radius:7px;color:var(--ms-body);background:var(--ms-surface);padding:9px 13px}
 .complete-button:hover{background:var(--ms-raised)}
@@ -130,7 +130,7 @@ pre code{font:inherit;background:none;color:inherit}
 @media(max-width:1200px){.theme-label{display:none}.header-links{gap:15px}.language{display:none}}
 @media(max-width:1100px){:root{--sidebar:263px}.main{padding-inline:27px}.article{padding:32px}.article h1{font-size:29px}.article:has(section[data-step="inicio"]:not([hidden])) h1{font-size:33px}.footer{padding-inline:27px}.step-link{font-size:12px}}
 @media(max-width:900px){:root{--header:76px;--footer:78px}.topbar{padding:0 18px;gap:12px}.menu-toggle{display:block}.brand{margin-right:auto;gap:10px}.brand-mark{width:36px;height:36px}.brand strong{font-size:18px}.brand small{font-size:10px}.header-links .notion-link{display:none}.sidebar{width:294px;transform:translateX(-100%);transition:transform .18s ease}.menu-open .sidebar{transform:translateX(0)}.menu-open .menu-shade{display:block;position:fixed;inset:var(--header) 0 0;background:#0e0623aa;z-index:15;border:0}.main{margin-left:0;padding:calc(var(--header) + 24px) 23px calc(var(--footer) + 25px)}.footer{left:0;padding-inline:23px}.article{padding:32px}.breadcrumbs{margin-bottom:16px}.header-links{font-size:12px;gap:16px}}
-@media(max-width:540px){:root{--header:78px}.header-links .github-label{display:none}.topbar{padding-inline:13px;gap:9px}.brand{gap:6px}.brand strong{font-size:16px}.brand small{font-size:9px;max-width:165px}.brand-mark{display:none}.main{padding-inline:13px}.article{padding:25px 20px;border-radius:9px}.article h1,.article:has(section[data-step="inicio"]:not([hidden])) h1{font-size:27px;letter-spacing:-.8px}.workshop-subtitle{font-size:16px}.step-body{font-size:14px}.step-body h2{font-size:19px}.breadcrumbs{font-size:10px;gap:7px;margin-left:4px}.footer{padding:13px}.footer-inner{gap:8px}.footer-side{gap:8px}.footer-position{display:none}.nav-button{font-size:12px;padding:9px 14px}.agent-flow{grid-template-columns:repeat(2,1fr)}.reading-note{display:block;margin-inline:4px}.reading-note span{display:block;margin-bottom:5px}.step-tools{gap:7px}.step-tools a{font-size:10px}.code-toolbar{padding-inline:12px}pre{padding:16px;font-size:11px}.welcome-note{padding:14px}.progress-card{margin-top:20px}.architecture-figure figcaption a{margin-left:0;display:block}.header-links{gap:9px}.theme-toggle{padding:8px}}
+@media(max-width:540px){:root{--header:78px}.header-links .github-label{display:none}.topbar{padding-inline:13px;gap:9px}.brand{gap:6px}.brand strong{font-size:16px}.brand small{font-size:9px;max-width:165px}.brand-mark{display:none}.main{padding-inline:13px}.article{padding:25px 20px;border-radius:9px}.article h1,.article:has(section[data-step="inicio"]:not([hidden])) h1{font-size:27px;letter-spacing:-.8px}.workshop-subtitle{font-size:16px}.step-body{font-size:14px}.step-body h2{font-size:19px}.breadcrumbs{font-size:10px;gap:7px;margin-left:4px}.footer{padding:13px}.footer-inner{gap:8px}.footer-side{gap:8px}.footer-position{display:none}.nav-button{font-size:12px;padding:9px 14px}.agent-flow{grid-template-columns:repeat(2,1fr)}.reading-note{display:block;margin-inline:4px}.reading-note span{display:block;margin-bottom:5px}.step-tools{gap:7px}.step-tools a{font-size:10px}.code-toolbar{padding-inline:12px}pre{padding:16px;font-size:11px}.welcome-note{padding:14px}.progress-card{margin-top:20px}.guide-figure figcaption a{margin-left:0;display:block}.header-links{gap:9px}.theme-toggle{padding:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
 /* Ayudas editoriales: lo esencial visible, el detalle a un clic. */
@@ -149,8 +149,9 @@ pre code{font:inherit;background:none;color:inherit}
 .join-workshop a{overflow-wrap:anywhere}
 .join-workshop p{margin:7px 0}
 .avatar-team{margin:28px 0 35px}
-.avatar-team>img{display:block;width:100%;height:auto;border-radius:10px}
+.avatar-team>a{display:block;border-radius:10px;overflow:hidden}
+.avatar-team img{display:block;width:100%;height:auto}
 .avatar-captions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-top:12px}
 .avatar-captions b{display:block;font:700 12px/1.4 var(--ms-font-brand)}
 .avatar-captions small{display:block;font-size:11px;color:var(--ms-muted);line-height:1.6;margin-top:6px}
-@media(max-width:540px){.join-workshop{flex-direction:column;align-items:flex-start;gap:14px}.avatar-captions b{font-size:9px}.avatar-captions small{font-size:10px}.details-body{padding-inline:14px}.guide-details summary{padding:15px}.avatar-team>img{min-height:120px;object-fit:cover}}
+@media(max-width:540px){.join-workshop{flex-direction:column;align-items:flex-start;gap:14px}.avatar-captions b{font-size:9px}.avatar-captions small{font-size:10px}.details-body{padding-inline:14px}.guide-details summary{padding:15px}}

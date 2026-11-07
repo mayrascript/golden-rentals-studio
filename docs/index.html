@@ -3,7 +3,7 @@
 <meta name="description" content="Construye cuatro agentes con TypeScript, Google ADK y Gemini. Un workshop guiado con 14 ejercicios, código comentado y comprobaciones paso a paso.">
 <meta name="theme-color" content="#f9f6f0"><meta name="color-scheme" content="light dark"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
 <script src="./guide-assets/theme.46be1fd547d4.js"></script>
-<link rel="icon" type="image/png" href="./guide-assets/mayrascript-isotipo.png"><link rel="canonical" href="https://mayrascript.github.io/multiagent-adk-workshop/"><link rel="stylesheet" href="./guide-assets/style.6e56cab232ff.css"></head>
+<link rel="icon" type="image/png" href="./guide-assets/mayrascript-isotipo.png"><link rel="canonical" href="https://mayrascript.github.io/multiagent-adk-workshop/"><link rel="stylesheet" href="./guide-assets/style.87e433c5f42a.css"></head>
 <body><a href="#page-title" class="skip-link">Saltar al contenido</a>
 <header class="topbar"><button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menú de pasos">☰</button>
 <a class="brand" href="#/inicio" aria-label="MayraScript · Inicio del workshop"><span class="brand-mark" aria-hidden="true"><img src="./guide-assets/mayrascript-isotipo.png" alt="" width="43" height="43"></span><span><strong>MayraScript</strong><small>Tu próximo equipo no es humano</small></span></a>
@@ -21,12 +21,14 @@
 <nav class="sidebar-resources" aria-label="Recursos adicionales"><p class="sidebar-label">PARA IR MÁS ALLÁ</p><ul class="step-list"><li><a class="step-link" href="#/laboratorio" data-nav="laboratorio"><span class="step-number" data-number="◇" aria-hidden="true">◇</span><span class="step-label">Laboratorio con Gemini</span></a></li>
 <li><a class="step-link" href="#/facilitacion" data-nav="facilitacion"><span class="step-number" data-number="☷" aria-hidden="true">☷</span><span class="step-label">Guía de facilitación</span></a></li></ul></nav>
 <div class="progress-card"><div class="progress-heading"><strong>Tu progreso</strong></div><p id="progress-label" class="progress-heading">0 de 8 pasos completados</p><progress id="progress" max="8" value="0" aria-labelledby="progress-label"></progress><p class="progress-note">Se guarda solo en este navegador.<br>Avanza a tu ritmo.</p></div></aside>
-<main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><a href="https://mayrascript.com/" target="_blank" rel="noopener noreferrer">MayraScript</a><span aria-hidden="true">/</span><span>Workshop · Google ADK</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">Tu próximo equipo no es humano</h1><section data-step="inicio" aria-label="Tu próximo equipo no es humano"><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/README.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><p class="workshop-subtitle">Workshop de orquestación de agentes con Google ADK</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span><span>~140 min + práctica opcional</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="join-workshop"><img src="./guide-assets/workshop-qr.svg" width="150" height="150" alt="QR para abrir la dirección pública del workshop"><div><strong>Abre el workshop en tu dispositivo</strong><p>Escanea el QR o comparte el enlace.</p><a href="https://mayrascript.github.io/multiagent-adk-workshop/">mayrascript.github.io/multiagent-adk-workshop/</a><p><a href="./guide-assets/workshop-qr.svg" download="workshop-qr.svg">Descargar QR ↗</a></p></div></div><div class="avatar-team"><img src="./guide-assets/agent-avatars.png" width="2172" height="724" alt="Cuatro especialistas: Estratega con brújula, Redactor con manual, Diseñador con herramientas y Editor con lupa."><div class="avatar-captions"><div><b>Estratega</b><small>La brújula<br>Define la dirección</small></div><div><b>Redactor</b><small>El manual · skill<br>Consulta cómo escribir</small></div><div><b>Diseñador</b><small>La herramienta · tool<br>Genera la imagen</small></div><div><b>Editor</b><small>La lupa<br>Revisa el resultado</small></div></div></div><div class="step-body"><p>Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.</p>
+<main class="main" id="main"><div class="reading-wrap"><div class="breadcrumbs"><a href="https://mayrascript.com/" target="_blank" rel="noopener noreferrer">MayraScript</a><span aria-hidden="true">/</span><span>Workshop · Google ADK</span></div><article class="article"><p class="eyebrow" id="step-position">ANTES DE EMPEZAR</p><h1 id="page-title" tabindex="-1">Tu próximo equipo no es humano</h1><section data-step="inicio" aria-label="Tu próximo equipo no es humano"><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/README.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><p class="workshop-subtitle">Workshop de orquestación de agentes con Google ADK</p><div class="intro-chips"><span>TypeScript</span><span>Google ADK</span><span>Gemini</span><span>~140 min + práctica opcional</span></div><div class="welcome-note"><span class="note-icon" aria-hidden="true">◎</span><div><strong>Empieza sin API key.</strong><br>Practica primero con la demo y las comprobaciones offline. Activa Gemini cuando estés listo.</div></div><div class="join-workshop"><img src="./guide-assets/workshop-qr.svg" width="150" height="150" alt="QR para abrir la dirección pública del workshop"><div><strong>Abre el workshop en tu dispositivo</strong><p>Escanea el QR o comparte el enlace.</p><a href="https://mayrascript.github.io/multiagent-adk-workshop/">mayrascript.github.io/multiagent-adk-workshop/</a><p><a href="./guide-assets/workshop-qr.svg" download="workshop-qr.svg">Descargar QR ↗</a></p></div></div><p><figure class="guide-figure"><a href="./guide-assets/team-collaboration.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar equipo trabajando contigo"><img src="./guide-assets/team-collaboration.png" alt="Los cuatro especialistas colaboran alrededor de una mesa. Una silla vacía dice Tú, human in the loop: tu lugar para orientar y revisar el trabajo del equipo." width="1672" height="941" loading="eager" decoding="async"></a><figcaption>Tu lugar en el equipo: das contexto, revisas las imágenes y apruebas la campaña. Human in the loop significa que participas en las decisiones. <a href="./guide-assets/team-collaboration.png" target="_blank" rel="noopener noreferrer">Ampliar imagen ↗</a></figcaption></figure></p>
+<div class="step-body"><p>Construye cuatro agentes con Google ADK y conecta sus resultados con una aplicación de contenido. La interfaz, la API, el guardado y los límites están preparados. Trabajarás en archivos pequeños con TODO numerados, comentarios explicativos y bloques para descomentar o pegar.</p>
 <p>El caso práctico es <strong>Golden Rentals</strong>, una marca ficticia de alojamientos. El nombre del taller es <strong>Tu próximo equipo no es humano</strong>: lo que aprenderás se puede aplicar a otras marcas y equipos de agentes.</p>
 <h2>Requisitos iniciales</h2>
 <p>Antes de empezar, instala <strong>Node.js 24 LTS</strong> (24.13.0 o posterior), <strong>npm</strong> (incluido con Node.js) <strong>pnpm 11.25.0</strong> y <strong>Git</strong>. Necesitarás una terminal, un editor de código y conexión a Internet para la instalación.</p>
 <p>Sigue <a href="#/preparacion">la verificación e instalación de Node.js, npm, pnpm y Git</a>, con instrucciones para Windows, macOS y Linux, comprobación de versiones y soluciones a errores frecuentes. Puedes realizar la preparación y la demo sin una API key de Gemini.</p>
 <h2>Los agentes que construirás</h2>
+<p><figure class="avatar-team"><a href="./guide-assets/agent-avatars.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar avatares del equipo"><img src="./guide-assets/agent-avatars.png" alt="Los cuatro especialistas del equipo: Estratega con brújula, Redactor con manual, Diseñador con herramientas y Editor con lupa." width="2172" height="724" loading="lazy" decoding="async"></a><figcaption class="avatar-captions"><div><b>Estratega</b><small>La brújula<br>Define la dirección</small></div><div><b>Redactor</b><small>El manual · skill<br>Consulta cómo escribir</small></div><div><b>Diseñador</b><small>La herramienta · tool<br>Genera la imagen</small></div><div><b>Editor</b><small>La lupa<br>Revisa el resultado</small></div></figcaption></figure></p>
 <p>Un agente combina un modelo, instrucciones y herramientas disponibles para una responsabilidad concreta. En el modo real de este proyecto, el backend ejecuta cada agente con ADK y le entrega el contexto que necesita.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
 <thead>
@@ -65,7 +67,7 @@
 </div><p>El <strong>workflow del backend</strong> coordina el orden, pasa el contexto y aplica límites. Es código TypeScript; no es un quinto agente. La persona revisa las imágenes y aprueba la campaña. El Editor no inspecciona píxeles y su <code>APPROVED</code> no sustituye esa aprobación humana.</p>
 <aside class="info-card info-note" aria-label="Contexto útil"><strong class="info-label">Contexto útil</strong><p><strong>Piensa en un equipo creativo:</strong> cada avatar representa una responsabilidad. El manual del Redactor es una skill; la caja del Diseñador contiene tools. El workflow entrega el encargo al siguiente especialista y tú revisas el resultado.</p>
 </aside><h2>Así se conecta el equipo</h2>
-<p><figure class="architecture-figure"><a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar el diagrama de arquitectura"><img src="./guide-assets/workshop-architecture.png" alt="El participante usa React para enviar un brief al workflow local. El servidor TypeScript coordina cuatro agentes ADK: Estratega, Redactor con una skill, Diseñador con una tool de imágenes y Editor. En modo real, los cuatro usan el modelo de texto de Gemini; la tool usa el modelo de imágenes y guarda archivos localmente." width="2048" height="1152" loading="lazy"></a><figcaption>Arquitectura del proyecto en TypeScript. <a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer">Abrir diagrama en tamaño completo ↗</a></figcaption></figure></p>
+<p><figure class="guide-figure"><a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar diagrama de arquitectura"><img src="./guide-assets/workshop-architecture.png" alt="El participante usa React para enviar un brief al workflow local. El servidor TypeScript coordina cuatro agentes ADK: Estratega, Redactor con una skill, Diseñador con una tool de imágenes y Editor. En modo real, los cuatro usan el modelo de texto de Gemini; la tool usa el modelo de imágenes y guarda archivos localmente." width="2048" height="1152" loading="lazy" decoding="async"></a><figcaption>Arquitectura del proyecto en TypeScript. <a href="./guide-assets/workshop-architecture.png" target="_blank" rel="noopener noreferrer">Ampliar imagen ↗</a></figcaption></figure></p>
 <details class="guide-details"><summary>Leer el diagrama paso a paso</summary><div class="details-body"><p>Lee el diagrama de izquierda a derecha:</p>
 <ol>
 <li><strong>Participante e interfaz:</strong> introduces el brief y después revisas, editas y descargas la campaña.</li>
@@ -328,17 +330,27 @@ pnpm dev</code></pre></div></div></details><h2>TODO 1.1 · Crear tu configuraci�
 </tr>
 </tbody></table>
 </div><p>Esta edición usa Gemini mediante API key y guarda archivos localmente. No solicita nombre de proyecto de Google Cloud, región, bucket ni IDs de Notion. Esos campos corresponderían a módulos de nube o MCP.</p>
-<details class="guide-details"><summary>Opcional · Preparar Gemini cuando vayas a probar el modo real</summary><div class="details-body"><h2>TODO 1.2 · Preparar la credencial cuando vayas a probar Gemini</h2>
-<p>Obtén tu propia clave desde Google AI Studio, en su sección de claves de API, y pégala en <code>GOOGLE_GENAI_API_KEY</code> dentro de <code>.env</code>. Este archivo permanece local y está excluido del ZIP y de Git. No se coloca la clave dentro de un prompt, una skill ni el código del navegador.</p>
-<p>Ejecuta <code>pnpm workshop:check setup</code>: mostrará si hay una clave configurada, sin imprimirla. Es una comprobación local, no valida acceso con Google. <code>pnpm gemini:check</code> consulta el acceso a los modelos sin generar contenido.</p>
-</div></details><h2>TODO 1.3 · Elegir el modo de prueba</h2>
+<aside class="info-card info-note" aria-label="Contexto útil"><strong class="info-label">Contexto útil</strong><p><strong>La llave de Gemini se configura al probar un agente real.</strong> Encontrarás cómo obtenerla y guardarla en <a href="#/laboratorio">Prueba un agente por separado</a>. Puedes completar esta preparación sin ella.</p>
+</aside><h2>TODO 1.2 · Elegir el modo de prueba</h2>
 <p>Los ejercicios empiezan con <code>pnpm workshop:check NUMERO</code>, sin consumo de IA. Mantén <code>GENERATION_MODE=simulated</code> hasta completar los módulos. El <a href="#/laboratorio">laboratorio</a> permite probar un agente real antes de integrar toda la web.</p>
 <p>Resultado esperado: la interfaz abre y produce una campaña simulada, y la comprobación setup termina sin mostrar credenciales.</p>
 </div></section>
 <section data-step="agente" aria-label="Configura tu primer agente" hidden><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/02-strategist.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/exercises/02-strategist.ts" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/main/workshop/exercises/02-strategist.ts" target="_blank" rel="noopener noreferrer">✓ Ver solución</a></div><p class="lesson-time">◷ 20 min estimados · Puedes avanzar a tu ritmo.</p><div class="step-body"><aside class="info-card info-tip" aria-label="Para avanzar"><strong class="info-label">Para avanzar</strong><p><strong>Tu objetivo:</strong> construir un <code>LlmAgent</code> y distinguir definirlo de ejecutarlo. Requisito: completar la preparación.</p>
 </aside><h2>Antes del código: qué hace Google ADK</h2>
 <p><strong>ADK conecta un modelo con instrucciones, herramientas y una sesión.</strong> Primero entiende la estructura de cualquier agente; luego la adaptaremos al Estratega.</p>
-<h3>La ficha de un agente, sin un caso de negocio</h3>
+<h3>Características principales</h3>
+<ul>
+<li><strong>Enfoque modular y de software.</strong> Defines agentes, herramientas y flujos mediante código, con componentes que puedes reutilizar y probar. Hay SDK para <strong>Python, TypeScript, Go, Java y Kotlin</strong>. <a href="https://adk.dev/" target="_blank" rel="noopener noreferrer">Lenguajes y ejemplos oficiales</a>.</li>
+<li><strong>Flexibilidad de modelos y despliegue.</strong> Puedes usar <strong>Gemini</strong> u otros modelos mediante las integraciones compatibles, como <strong>LiteLLM en ADK Python</strong> o modelos disponibles en Vertex AI. Puedes ejecutar los agentes en local, empaquetarlos con <strong>Docker</strong> y desplegarlos en <strong>Cloud Run o GKE</strong>. <a href="https://developers.googleblog.com/en/agent-development-kit-easy-to-build-multi-agent-applications/" target="_blank" rel="noopener noreferrer">Modelos</a> · <a href="https://adk.dev/deploy/" target="_blank" rel="noopener noreferrer">Despliegue</a>.</li>
+<li><strong>Orquestación y flujos de trabajo.</strong> Combina especialistas en secuencia, en paralelo o en bucle. También admite delegación y enrutamiento dinámico mediante un LLM. <a href="https://developers.googleblog.com/en/agent-development-kit-easy-to-build-multi-agent-applications/" target="_blank" rel="noopener noreferrer">Orquestación en ADK</a>.</li>
+<li><strong>Herramientas y MCP.</strong> Conecta funciones propias, búsqueda web, ejecución de código y herramientas o fuentes de datos externas mediante <strong>Model Context Protocol (MCP)</strong>, según el SDK y el modelo utilizados. <a href="https://adk.dev/tools-custom/mcp-tools/" target="_blank" rel="noopener noreferrer">Herramientas MCP</a>.</li>
+<li><strong>Pruebas y depuración local.</strong> La CLI y la <strong>Web UI</strong> permiten conversar con los agentes e inspeccionar eventos, llamadas a herramientas, estado y trazas de ejecución. Encontrarás comandos como <code>adk run</code> y <code>adk web</code>; la forma de invocarlos depende del SDK. <a href="https://adk.dev/runtime/web-interface/" target="_blank" rel="noopener noreferrer">Interfaz web de ADK</a>.</li>
+</ul>
+<aside class="info-card info-tip" aria-label="Para avanzar"><strong class="info-label">Para avanzar</strong><p><strong>Pruébalo en este workshop:</strong> usamos TypeScript y Gemini. El <a href="#/laboratorio">laboratorio con ADK Web</a> explica cómo iniciar <code>pnpm workshop:web</code>, abrir <strong><a href="http://127.0.0.1:8000" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8000</a></strong> y conversar con cada especialista por separado.</p>
+</aside><details class="guide-details"><summary>Qué capacidades usamos aquí y cuáles puedes explorar después</summary><div class="details-body"><p>En este taller defines cuatro agentes con <code>LlmAgent</code>, conectas una tool y una skill, y ejecutas un workflow coordinado por código TypeScript. La persona revisa las imágenes y aprueba la campaña: participa en el proceso como <strong>human in the loop</strong>.</p>
+<p>Los agentes de flujo de ADK, la delegación dinámica, MCP y el despliegue en la nube son posibilidades del framework que puedes explorar después. El workflow de este proyecto fija el orden en código; no usa <code>SequentialAgent</code>, <code>ParallelAgent</code> ni <code>LoopAgent</code>.</p>
+<p>Las capacidades no son idénticas en todos los lenguajes. Por ejemplo, el <a href="https://adk.dev/agents/models/litellm/" target="_blank" rel="noopener noreferrer">conector LiteLLM documentado por ADK</a> corresponde a Python; este proyecto TypeScript conecta directamente con Gemini. Revisa siempre la compatibilidad del SDK que uses.</p>
+</div></details><h3>La ficha de un agente, sin un caso de negocio</h3>
 <div class="code-block"><div class="code-toolbar"><span>TypeScript</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>import { LlmAgent } from &#39;@google/adk&#39;;
 
 export const rootAgent = new LlmAgent({
@@ -404,9 +416,9 @@ export const rootAgent = new LlmAgent({
 </aside><h3>De mensaje a resultado</h3>
 <p><strong>Tu mensaje → Runner + sesión → agente y modelo → respuesta.</strong></p>
 <p>Si el modelo necesita una herramienta: <strong>solicita la tool → ADK ejecuta la función → el resultado vuelve al modelo</strong>. Las skills aportan instrucciones y recursos mediante un <code>SkillToolset</code>; no existe un parámetro <code>skills</code> en este ejemplo.</p>
-<details class="guide-details"><summary>Por qué description es breve en el codelab original</summary><div class="details-body"><p>El <a href="https://codelabs.developers.google.com/ai-creative-studio-adk-a2a" target="_blank" rel="noopener noreferrer">codelab de Google, secciones 3 y 4</a> usa una descripción de una línea para el Brand Strategist. La explicación extensa vive en <code>SYSTEM_INSTRUCTION</code>: incluye especialidad, restricciones, pasos y formato de salida.</p>
+<details class="guide-details"><summary>Qué va en description y qué va en instruction</summary><div class="details-body"><p><code>description</code> resume la responsabilidad del agente en una frase. <code>instruction</code> desarrolla el encargo: incluye especialidad, restricciones, pasos y formato de salida.</p>
 <p>La diferencia no es la longitud, sino la función: <code>description</code> permite identificar al especialista y <code>instruction</code> guía su trabajo. En un sistema con delegación, otro agente puede leer esa descripción para seleccionar a quién llamar. En este proyecto el workflow fija el orden, así que la descripción no decide el enrutamiento.</p>
-<p>El original investiga con Google Search y usa Python. Nuestra adaptación trabaja con hechos del brief, usa TypeScript y deja <code>tools: []</code> en el Estratega. Por eso su descripción es distinta.</p>
+<p>El Estratega de este workshop trabaja con los hechos del brief, usa TypeScript y configura <code>tools: []</code>. Su descripción resume esa responsabilidad y sus instrucciones especifican cómo producir la estrategia.</p>
 </div></details><h3>Ahora sí: la ficha del Estratega</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
 <thead>
@@ -470,7 +482,8 @@ pnpm workshop:check 2</code></pre></div><aside class="info-card info-important" 
 </div></section>
 <section data-step="tools" aria-label="Dale una herramienta al agente" hidden><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/03-tools.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/exercises/03-tools.ts" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/main/workshop/exercises/03-tools.ts" target="_blank" rel="noopener noreferrer">✓ Ver solución</a></div><p class="lesson-time">◷ 15 min estimados · Puedes avanzar a tu ritmo.</p><div class="step-body"><aside class="info-card info-tip" aria-label="Para avanzar"><strong class="info-label">Para avanzar</strong><p><strong>Tu objetivo:</strong> exponer una función al modelo y observar el recorrido llamada → ejecución → resultado. Requisito: módulo 2.</p>
 </aside><aside class="info-card info-note" aria-label="Contexto útil"><strong class="info-label">Contexto útil</strong><p><strong>La tool es un instrumento de trabajo:</strong> el Diseñador decide qué necesita y pide usarlo. La función ejecuta la acción y devuelve un resultado; no es otro agente.</p>
-</aside><p>Una función TypeScript tiene código ejecutable. Una <code>FunctionTool</code> agrega el nombre, la descripción y el esquema de argumentos que ADK entrega al modelo. Registrarla en <code>tools</code> permite que el agente solicite su ejecución. El modelo propone los argumentos; ADK valida el esquema y ejecuta la función.</p>
+</aside><p><figure class="guide-figure"><a href="./guide-assets/tool-illustration.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar ilustración de una tool"><img src="./guide-assets/tool-illustration.png" alt="El Diseñador recibe un encargo, elige una cámara de su caja de herramientas y obtiene una imagen. La ilustración representa el recorrido llamada, ejecución y resultado de una tool." width="1672" height="941" loading="lazy" decoding="async"></a><figcaption>Tool = una acción. El agente la solicita; ADK ejecuta la función y devuelve el resultado. La cámara es una analogía: aquí la tool genera una imagen con Gemini. <a href="./guide-assets/tool-illustration.png" target="_blank" rel="noopener noreferrer">Ampliar imagen ↗</a></figcaption></figure></p>
+<p>Una función TypeScript tiene código ejecutable. Una <code>FunctionTool</code> agrega el nombre, la descripción y el esquema de argumentos que ADK entrega al modelo. Registrarla en <code>tools</code> permite que el agente solicite su ejecución. El modelo propone los argumentos; ADK valida el esquema y ejecuta la función.</p>
 <p>Abre <code>workshop/exercises/03-tools.ts</code>. Lee <code>imageParameters</code>: los campos y sus descripciones explican qué debe entregar el modelo. Completa el TODO 3.1 para crear la herramienta y el TODO 3.2 para conectarla al Diseñador.</p>
 <p>En este primer ejercicio <code>execute</code> devuelve un resultado técnico fijo. Es deliberado: permite aprender el protocolo antes de generar una imagen. En el módulo 5 se conecta la misma herramienta con Gemini y el almacenamiento.</p>
 <p>Observa dos líneas en la terminal: <code>→ llamada generate_campaign_image</code> con <code>pieceId</code>, <code>prompt</code> y <code>altText</code>, y <code>← resultado generate_campaign_image</code> con <code>status: saved</code>. En modo offline la respuesta del modelo que solicita esa tool también está preparada; ADK sí ejecuta tu función.</p>
@@ -499,7 +512,8 @@ pnpm workshop:check 3</code></pre></div><aside class="info-card info-important" 
 </div></section>
 <section data-step="skills" aria-label="Conecta una skill y sus recursos" hidden><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/04-skills.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/exercises/04-skills.ts" target="_blank" rel="noopener noreferrer">⌘ Abrir ejercicio</a><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/main/workshop/exercises/04-skills.ts" target="_blank" rel="noopener noreferrer">✓ Ver solución</a></div><p class="lesson-time">◷ 20 min estimados · Puedes avanzar a tu ritmo.</p><div class="step-body"><aside class="info-card info-tip" aria-label="Para avanzar"><strong class="info-label">Para avanzar</strong><p><strong>Tu objetivo:</strong> proporcionar conocimiento reutilizable mediante las herramientas de carga de ADK. Requisito: módulo 3.</p>
 </aside><aside class="info-card info-note" aria-label="Contexto útil"><strong class="info-label">Contexto útil</strong><p><strong>La skill es el manual del especialista:</strong> el Redactor consulta reglas y ejemplos cuando los necesita. El manual aporta conocimiento; una tool ejecuta una acción. ADK expone este manual mediante herramientas de lectura.</p>
-</aside><p>Abre <code>skills/instagram-copy/SKILL.md</code> y <code>skills/instagram-copy/references/estructuras.md</code>. El primer archivo define la skill y sus instrucciones; el segundo contiene estructuras que el Redactor puede consultar cuando las necesita.</p>
+</aside><p><figure class="guide-figure"><a href="./guide-assets/skill-illustration.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar ilustración de una skill"><img src="./guide-assets/skill-illustration.png" alt="El Redactor consulta un manual con reglas de tono, una lista de comprobación y ejemplos mientras escribe una publicación. La skill reúne ese conocimiento reutilizable." width="1672" height="941" loading="lazy" decoding="async"></a><figcaption>Skill = un manual reutilizable. El Redactor consulta instrucciones, reglas y ejemplos para orientar su trabajo. <a href="./guide-assets/skill-illustration.png" target="_blank" rel="noopener noreferrer">Ampliar imagen ↗</a></figcaption></figure></p>
+<p>Abre <code>skills/instagram-copy/SKILL.md</code> y <code>skills/instagram-copy/references/estructuras.md</code>. El primer archivo define la skill y sus instrucciones; el segundo contiene estructuras que el Redactor puede consultar cuando las necesita.</p>
 <p>En <code>workshop/exercises/04-skills.ts</code>, completa tres pasos: leer la carpeta con <code>loadSkillFromDir</code>, crear un <code>SkillToolset</code> y registrarlo en <code>tools</code>. Los imports están preparados para que el archivo compile desde el inicio; sus usos aparecen en los bloques comentados.</p>
 <p>La comprobación debe mostrar <code>load_skill</code> y luego <code>load_skill_resource</code>, antes de recibir tres textos. Cargar un archivo al arrancar Node y observar que el agente lo consulta son comprobaciones distintas; el laboratorio cubre ambas.</p>
 <p>Después, personaliza una regla de tono en SKILL.md y compara resultados en una ejecución real. El modo offline utiliza respuestas fijas y no mide calidad de escritura.</p>
@@ -621,7 +635,7 @@ pnpm test
 pnpm build</code></pre></div><p>La prueba ADK de <code>pnpm test</code> usa el equipo conectado a la web con respuestas locales. Mientras haya TODO pendientes, esa prueba debe fallar. Las comprobaciones por módulo permiten avanzar de forma gradual.</p>
 <ol start="2">
 <li>Ejecuta la web con <code>pnpm dev</code>. Usa primero el modo simulado para recorrer formulario, revisión y descarga.</li>
-<li>Para probar tus agentes reales, configura tu propia clave y presupuesto de cuenta, cambia <code>GENERATION_MODE=real</code> en <code>.env</code> y reinicia el servidor. La web conserva los límites por campaña; el presupuesto del laboratorio no se aplica a la web.</li>
+<li>Para probar tus agentes reales, sigue <strong>“Vuelve al dashboard de edición con Gemini”</strong> en <a href="#/laboratorio">Laboratorio con Gemini</a>. Allí se explica qué línea de <code>.env</code> editar, cómo reiniciar con <code>pnpm dev</code>, qué dirección abrir y cómo comprobar que aparece “Generación con IA”. La web conserva los límites por campaña; el presupuesto del laboratorio no se aplica a la web.</li>
 <li>Crea una campaña ficticia: observa la estrategia, los textos, las imágenes, la revisión y el calendario. Edita una pieza y verifica que su aprobación anterior queda invalidada.</li>
 <li>Revisa el contenido y descarga el borrador o la campaña aprobada. La aprobación humana es tu decisión.</li>
 <li>Detén el servidor. Las campañas de la web permanecen en <code>.data/</code>; los ejercicios y tu configuración personal permanecen en tu carpeta.</li>
@@ -661,39 +675,189 @@ pnpm workshop:check 6
 pnpm workshop:check 7
 pnpm workshop:check all</code></pre></div><p>Los módulos 2 a 6 ejecutan agentes ADK con respuestas HTTP preparadas. Las tools y la lectura de archivos sí se ejecutan. La salida del modelo es una fixture: cambiar el prompt no modifica ese texto fijo. La comprobación de imágenes usa un PNG de 1 píxel y elimina sus archivos temporales al terminar. El módulo 7 verifica la conexión del equipo y el mensaje de contexto.</p>
 <p>Las líneas <code>→ llamada</code> muestran nombre y argumentos; <code>← resultado</code> muestra un extracto del resultado. Las partes internas de razonamiento no se imprimen. El módulo 4 exige observar tanto <code>load_skill</code> como <code>load_skill_resource</code>; crear el toolset por sí solo no basta.</p>
-<h2>Ejecutar un agente con Gemini</h2>
-<p>Completa los TODO necesarios y configura tu <code>.env</code>. Elige un presupuesto máximo para las pruebas de este laboratorio. Después sustituye <code>IMPORTE</code> en este comando por ese número:</p>
-<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm workshop:run 2 --real --allow-paid-generation --budget-usd=IMPORTE</code></pre></div><p>Puedes usar 2 (Estratega), 4 (Redactor), 5 (Diseñador, una imagen) o 6 (Editor). Cada ejecución tiene un máximo de seis llamadas contando la imagen. El Diseñador requiere los módulos 3 y 5. La salida real varía; aquí sí puedes comparar el efecto de tus instrucciones.</p>
-<p>El laboratorio reserva una estimación conservadora antes de cada llamada y conserva el acumulado en <code>.workshop-data/lab-budget.json</code>. El presupuesto indicado es un tope acumulado para ese laboratorio, no un monto adicional por ejecución. El registro usa las tarifas documentadas al preparar el piloto y debe revisarse antes de impartir el workshop; no es una factura de Google. La interfaz web y el script <code>real:validate</code> tienen controles separados. <code>--solution</code> selecciona expresamente la solución, nunca se usa como recuperación automática de un TODO pendiente.</p>
-<p>Una ejecución real conserva sus archivos en la carpeta temporal indicada en la salida; el Diseñador muestra la ruta de la imagen. Los módulos 3 y 7 se comprueban offline. La campaña completa se prueba después desde la web.</p>
-<p>Si se cerró a la fuerza un laboratorio real, puede quedar <code>.workshop-data/lab.lock</code>. Comprueba que no haya otra ejecución activa antes de eliminar ese archivo. El registro de reservas debe conservarse.</p>
-<h2>Conversa con cada agente en ADK Web</h2>
+<h2>Obtén y configura tu llave de Gemini</h2>
+<p><strong>Necesitas una llave de API para conversar con Gemini real</strong>, tanto desde la terminal como desde ADK Web. Las comprobaciones sin red de arriba funcionan sin ella. Si ya tienes una llave válida, pasa a guardarla en <code>.env</code>.</p>
+<h3>1. Obtén la llave en Google AI Studio</h3>
+<ol>
+<li>Abre <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer">Google AI Studio</a> e inicia sesión con tu cuenta de Google. Si es tu primera visita, completa la bienvenida y revisa los términos que te presente Google.</li>
+<li>Entra en <strong>Get API key / API keys</strong>. Para cuentas nuevas, AI Studio puede haber creado un proyecto y una llave inicial.</li>
+<li>Si necesitas una llave nueva, pulsa <strong>Create API key / Crear clave de API</strong> y selecciona el proyecto que usarás para el taller. Sigue el diálogo para crear o elegir el proyecto.</li>
+<li>Copia la llave. La pegarás únicamente en tu archivo local <code>.env</code>.</li>
+</ol>
+<p>Cada llave está asociada a un proyecto de Google Cloud, pero este taller solo necesita la llave en su configuración. <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" rel="noopener noreferrer">Guía oficial de llaves de Gemini</a>.</p>
+<details class="guide-details"><summary>No veo mi proyecto o no puedo crear una llave</summary><div class="details-body"><p>Si ya tienes proyectos de Google Cloud y no aparecen, abre <strong>Dashboard → Projects → Import projects</strong> en AI Studio. Importa el proyecto que tengas autorizado usar y vuelve a <strong>API keys</strong>.</p>
+<p>Si el botón para crear la llave está deshabilitado por permisos, consulta con quien administra ese proyecto. <a href="https://ai.google.dev/gemini-api/docs/troubleshoot-ai-studio" target="_blank" rel="noopener noreferrer">Permisos y solución de problemas en AI Studio</a>.</p>
+</div></details><h3>2. Guarda la llave en tu proyecto</h3>
+<p>Abre <code>.env</code> en la raíz del proyecto, junto a <code>package.json</code>. Si no existe, duplica <code>.env.example</code> y nombra la copia <code>.env</code>; si ya existe, conserva sus otros valores. Reemplaza el valor de esta línea por tu llave:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>GOOGLE_GENAI_API_KEY=PEGA_TU_LLAVE_AQUI</code></pre></div><p>Guarda el archivo. Mantén los valores de <code>TEXT_MODEL</code> e <code>IMAGE_MODEL</code> de la plantilla. Después de comprobar la llave, sigue el apartado <strong>Cambia de simulated a real</strong> para elegir cómo probar Gemini.</p>
+<aside class="info-card info-important" aria-label="Qué debes recordar"><strong class="info-label">Qué debes recordar</strong><p><strong>Tu llave permanece en <code>.env</code>.</strong> Ese archivo está excluido de Git y del ZIP del proyecto. No pegues la llave en el chat del agente, una skill, una captura ni el código del navegador.</p>
+</aside><h3>3. Comprueba la configuración</h3>
+<p>Desde la raíz del proyecto, ejecuta:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm workshop:check setup</code></pre></div><p>Debe mostrar <strong>Clave configurada: sí</strong>, sin imprimirla. Esta comprobación solo detecta que escribiste un valor; todavía no valida la llave con Google.</p>
+<p>Después comprueba el acceso a los modelos:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm gemini:check</code></pre></div><p><strong>Resultado esperado:</strong> <code>accessible: true</code> para los modelos configurados. Este comando contacta con Google y consulta sus metadatos; no genera contenido ni garantiza cuota para generar. Si ADK Web ya estaba abierto, detenlo con <strong>Ctrl+C</strong> y vuelve a iniciarlo para cargar la llave nueva.</p>
+<details class="guide-details"><summary>La comprobación no reconoce la llave o falla</summary><div class="details-body"><ul>
+<li><strong>Clave configurada: no:</strong> comprueba el nombre <code>.env</code>, que guardaste el archivo y que completaste <code>GOOGLE_GENAI_API_KEY</code> en la carpeta desde la que ejecutas el comando.</li>
+<li><strong><code>invalid-key</code>:</strong> vuelve a copiar la llave completa desde AI Studio y reemplaza el texto de ejemplo.</li>
+<li><strong><code>permission-denied</code>:</strong> revisa el proyecto asociado y los permisos de tu cuenta en AI Studio.</li>
+<li><strong><code>model-not-found-or-unsupported</code>:</strong> revisa <code>TEXT_MODEL</code> e <code>IMAGE_MODEL</code> y el acceso de tu proyecto a esos modelos.</li>
+<li><strong><code>network-unavailable</code>:</strong> comprueba tu conexión a Internet y vuelve a ejecutar la comprobación.</li>
+</ul>
+</div></details><h2>Cambia de simulated a real</h2>
+<p><strong>La opción correcta para usar Gemini en la aplicación de campañas es <code>real</code>.</strong> Se cambia en el archivo <strong><code>.env</code></strong>, en la raíz del proyecto, junto a <code>package.json</code>. El indicador “Demo simulada” de la aplicación muestra el modo actual; no es un selector.</p>
+<h3>Activa Gemini en la aplicación de campañas</h3>
+<ol>
+<li>Con tu llave ya configurada, abre <strong><code>.env</code></strong> en tu editor. Busca esta línea:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>GENERATION_MODE=simulated</code></pre></div><ol start="2">
+<li>Reemplázala por esta y guarda el archivo. Edita la línea existente; no agregues una segunda:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>GENERATION_MODE=real</code></pre></div><ol start="3">
+<li>En la terminal donde ejecutaste <code>pnpm dev</code>, detén el servidor con <strong>Ctrl+C</strong>. Vuelve a iniciarlo desde la raíz del proyecto:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm dev</code></pre></div><ol start="4">
+<li>Abre la dirección que imprime esa terminal y recarga la aplicación. Comprueba <strong>“Modo real”</strong> en la terminal y <strong>“Generación con IA”</strong> en la parte superior de la aplicación.</li>
+<li>Elige <strong>“Nueva campaña”</strong> si tenías una abierta. Las campañas simuladas ya guardadas conservan su modo; el cambio se aplica a las campañas nuevas.</li>
+</ol>
+<aside class="info-card info-important" aria-label="Qué debes recordar"><strong class="info-label">Qué debes recordar</strong><p><strong>Las generaciones en modo real consumen la API de tu cuenta.</strong> Los límites de la aplicación son por campaña; el presupuesto del laboratorio no se aplica a esta web.</p>
+</aside><h3>¿Y si quiero probar solo un agente?</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Entorno</th>
+<th>Cómo se activa Gemini</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Aplicación de campañas</strong> (<code>pnpm dev</code>)</td>
+<td>Usa <code>GENERATION_MODE=real</code> en <code>.env</code> y reinicia el servidor.</td>
+</tr>
+<tr>
+<td><strong>Chat de ADK Web</strong> (puerto 8000)</td>
+<td>El comando <code>pnpm workshop:web</code> con autorización y presupuesto que aparece más abajo usa Gemini real. Puedes mantener <code>GENERATION_MODE=simulated</code> para la aplicación de campañas.</td>
+</tr>
+<tr>
+<td><strong>Un agente desde la terminal</strong></td>
+<td>Usa el comando de abajo con <code>--real</code>, autorización y presupuesto. No depende de <code>GENERATION_MODE</code>.</td>
+</tr>
+<tr>
+<td><strong>Comprobaciones sin red</strong> (<code>pnpm workshop:check</code>)</td>
+<td>Usan respuestas preparadas, incluso si <code>.env</code> tiene <code>GENERATION_MODE=real</code>.</td>
+</tr>
+</tbody></table>
+</div><details class="guide-details"><summary>Sigue apareciendo Demo simulada, o quiero volver al modo de práctica</summary><div class="details-body"><ul>
+<li>Confirma que editaste <strong><code>.env</code></strong>, no <code>.env.example</code>, y que guardaste el archivo en la misma carpeta desde la que inicias el servidor.</li>
+<li>Detén y vuelve a ejecutar <code>pnpm dev</code>; recargar el navegador por sí solo no vuelve a leer <code>.env</code>.</li>
+<li>Usa la dirección de la terminal que acabas de iniciar. Si tienes abiertas las versiones <code>main</code> y <code>starter</code>, cada carpeta tiene su propio <code>.env</code> y puerto.</li>
+<li>Si la cabecera dice <strong>“Generación con IA”</strong> pero la campaña dice <strong>“Contenido simulado”</strong>, crea una campaña nueva.</li>
+<li>Para volver a la práctica sin llamadas a Gemini, cambia la línea a <code>GENERATION_MODE=simulated</code>, reinicia <code>pnpm dev</code> y crea una campaña nueva. Este cambio solo controla la aplicación de campañas.</li>
+</ul>
+</div></details><h2>Ejecutar un agente con Gemini: abre ADK Web</h2>
+<p><strong>Este es el entorno para conversar con cada agente en tu navegador.</strong> Abre una terminal en la raíz de tu copia del workshop, donde está <code>package.json</code>. Puedes dejar la aplicación de campañas abierta en otra terminal.</p>
 <aside class="info-card info-important" aria-label="Qué debes recordar"><strong class="info-label">Qué debes recordar</strong><p><strong>Práctica opcional con Gemini real.</strong> ADK Web permite escribir mensajes y observar eventos de herramientas. Necesitas tu propia clave en <code>.env</code>. El modo <code>simulated</code> de la aplicación no convierte ADK Web en un chat simulado.</p>
-</aside><h3>1. Abre el laboratorio</h3>
-<p>Completa los TODO del especialista que quieres probar y ejecuta su comprobación offline. Después, en la raíz del proyecto, sustituye <code>IMPORTE</code> por el presupuesto que hayas elegido:</p>
-<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm workshop:web --allow-paid-generation --budget-usd=IMPORTE</code></pre></div><p>Abre <strong><a href="http://127.0.0.1:8000" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8000</a></strong>. En el selector de agentes encontrarás <strong>strategist</strong>, <strong>copywriter</strong>, <strong>designer</strong> y <strong>editor</strong>. Elige uno y crea una sesión nueva. No hace falta tener terminados todos los agentes para probar el Estratega.</p>
+</aside><h3>1. Comprueba que tu copia incluye ADK Web</h3>
+<p>Ejecuta:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm run</code></pre></div><p>En la lista debe aparecer <strong><code>workshop:web</code></strong>. Este comando arranca el chat de ADK; <code>workshop:run</code> ejecuta una prueba por terminal.</p>
+<details class="guide-details"><summary>Me aparece Command &quot;workshop:web&quot; not found</summary><div class="details-body"><p>Ese mensaje significa que <code>package.json</code> no tiene registrado el comando en la carpeta actual. Comprueba que abriste la raíz del workshop y que existen <code>scripts/workshop-web.ts</code> y <code>workshop/adk-agents/</code>.</p>
+<p>Si faltan, tu copia es anterior al laboratorio ADK Web. Actualiza a una versión que incluya esos archivos y el script <code>workshop:web</code>, conservando tus ejercicios y <code>.env</code>. Reinstalar dependencias por sí solo no agrega ese comando. Si ya modificaste ejercicios, pide ayuda a la facilitadora para actualizar la infraestructura sin reemplazar tu trabajo.</p>
+</div></details><h3>2. Instala las dependencias y arranca ADK Web</h3>
+<p>Completa los TODO del especialista que quieres probar y ejecuta su comprobación offline. Con la llave ya guardada en <code>.env</code>, instala las dependencias si aún no lo hiciste:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm install --frozen-lockfile</code></pre></div><p>Después ejecuta:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code># 5 = presupuesto estimado acumulado de 5 USD para ADK Web.
+pnpm workshop:web --allow-paid-generation --budget-usd=5</code></pre></div><p><strong><code>--budget-usd=5</code> reserva un presupuesto estimado de 5 USD para las pruebas de ADK Web.</strong> El consumo estimado se acumula entre reinicios. ADK Web lleva un registro separado del laboratorio por terminal; no comparten un único presupuesto de 5 USD. Este valor no establece un límite de facturación en Google.</p>
+<p>Mantén esa terminal abierta y espera a que el servidor termine de arrancar. Abre <strong><a href="http://127.0.0.1:8000" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8000</a></strong> en tu navegador; <code>pnpm dev</code> abre la aplicación de campañas, que es otra interfaz.</p>
+<p>En el selector de agentes encontrarás <strong>strategist</strong>, <strong>copywriter</strong>, <strong>designer</strong> y <strong>editor</strong>. Elige uno y crea una sesión nueva. No hace falta tener terminados todos los agentes para probar el Estratega.</p>
 <p>El laboratorio usa tus funciones de <code>workshop/exercises/</code>. Si falta un TODO, muestra el error; no sustituye tu código por la solución.</p>
-<h3>2. Elige un especialista y envía una instrucción</h3>
-<details class="guide-details"><summary>Estratega · Genera tres ángulos a partir de un brief</summary><div class="details-body"><p>Requiere el módulo 2. Selecciona <strong>strategist</strong> y pega:</p>
-<div class="code-block"><div class="code-toolbar"><span>Código</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Marca ficticia: Golden Rentals. Audiencia: parejas que buscan una escapada tranquila. Objetivo: dar a conocer la marca.
+<h3>3. Elige un especialista y envía una instrucción</h3>
+<p><strong>Los nombres del taller están en español; el selector de ADK muestra los identificadores del código.</strong> El Redactor se llama <strong><code>copywriter</code></strong>. El Editor (<code>editor</code>) revisa los textos.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla desplazable"><table>
+<thead>
+<tr>
+<th>Agente del workshop</th>
+<th>Nombre en el selector de ADK</th>
+<th>Completa antes</th>
+<th>Qué vas a comprobar</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Estratega</strong></td>
+<td><code>strategist</code></td>
+<td>Módulo 2</td>
+<td>Una estrategia y tres ángulos.</td>
+</tr>
+<tr>
+<td><strong>Redactor</strong></td>
+<td><code>copywriter</code></td>
+<td>Módulo 4</td>
+<td>Lectura de la skill y tres publicaciones.</td>
+</tr>
+<tr>
+<td><strong>Diseñador</strong></td>
+<td><code>designer</code></td>
+<td>Módulos 3 y 5</td>
+<td>Una llamada a la tool y una imagen.</td>
+</tr>
+<tr>
+<td><strong>Editor</strong></td>
+<td><code>editor</code></td>
+<td>Módulo 6</td>
+<td>Revisión textual y tres fechas propuestas.</td>
+</tr>
+</tbody></table>
+</div><p>Selecciona el agente, pulsa <strong>NEW SESSION</strong>, abre su bloque de abajo y copia el mensaje completo con <strong>Copiar</strong>. Cada ejemplo trae su propio contexto; no necesitas ejecutar los otros primero. Las conversaciones no se comparten al cambiar de agente.</p>
+<details class="guide-details"><summary>Estratega · strategist · Instrucción lista para copiar</summary><div class="details-body"><p>Requiere el módulo 2. Selecciona <strong>strategist</strong> y pega:</p>
+<div class="code-block"><div class="code-toolbar"><span>Mensaje para ADK Web</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Marca ficticia: Golden Rentals. Audiencia: parejas que buscan una escapada tranquila. Objetivo: dar a conocer la marca.
 Hechos permitidos: fact-1 = marca de alojamientos ficticia para este taller; fact-2 = comunicación cálida y cercana. No se conocen precios, ubicación ni amenidades.
 Propón tres ángulos distintos basados solo en estos hechos. Devuelve JSON con summary y angles: [{angleId, title, purpose}]. Usa angle-1, angle-2 y angle-3.</code></pre></div><p><strong>Observa:</strong> tres enfoques distintos, ninguna búsqueda externa y ningún precio inventado. Cambia la audiencia y compara una nueva respuesta.</p>
-</div></details><details class="guide-details"><summary>Redactor · Observa cómo consulta su skill</summary><div class="details-body"><p>Requiere el módulo 4. Selecciona <strong>copywriter</strong> y pega:</p>
-<div class="code-block"><div class="code-toolbar"><span>Código</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Marca ficticia: Golden Rentals. Audiencia: parejas. Tono cálido.
+</div></details><details class="guide-details"><summary>Redactor · copywriter · Instrucción lista para copiar</summary><div class="details-body"><p>Requiere el módulo 4. Selecciona <strong>copywriter</strong> y pega:</p>
+<div class="code-block"><div class="code-toolbar"><span>Mensaje para ADK Web</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Marca ficticia: Golden Rentals. Audiencia: parejas. Tono cálido.
 Hechos: fact-1 = marca ficticia del taller; fact-2 = comunicación cercana.
 Estrategia: invitar a imaginar una pausa sin prometer características del alojamiento.
 Ángulos: angle-1 = hacer una pausa; angle-2 = imaginar una escapada; angle-3 = compartir un deseo de viaje.
 Carga instagram-copy y references/estructuras.md. Escribe tres publicaciones. Devuelve JSON {pieces:[{pieceId,angleId,hook,body,cta,hashtags,factIds}]}, con piece-1, piece-2 y piece-3. No inventes precios ni servicios.</code></pre></div><p><strong>Observa:</strong> eventos <code>load_skill</code> y <code>load_skill_resource</code>, seguidos de tres textos. Pega los resultados del Estratega si quieres trabajar con tu propia estrategia: el Redactor no los recibe automáticamente al cambiar el selector.</p>
-</div></details><details class="guide-details"><summary>Diseñador · Ejecuta una tool y revisa la imagen</summary><div class="details-body"><p>Requiere los módulos 3 y 5. Selecciona <strong>designer</strong> y pega:</p>
-<div class="code-block"><div class="code-toolbar"><span>Código</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Diseña una única imagen conceptual para piece-1 de una marca de alojamientos ficticia. Concepto: la sensación de una pausa, luz suave y paleta arena y coral. No representes una propiedad real ni incluyas texto o logotipos.
+</div></details><details class="guide-details"><summary>Diseñador · designer · Instrucción lista para copiar</summary><div class="details-body"><p>Requiere los módulos 3 y 5. Selecciona <strong>designer</strong> y pega:</p>
+<p><strong>Entrega un brief completo:</strong> indica la pieza, los hechos del escenario y la paleta. En ADK Web, el Diseñador no recibe automáticamente lo que hablaste con el Estratega o el Redactor. Su configuración actual crea fotografías de interiores de alojamientos ficticios.</p>
+<div class="code-block"><div class="code-toolbar"><span>Mensaje para ADK Web</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Ejercicio ficticio de Golden Rentals; no representa una propiedad real.
+Pieza: piece-1. Todavía no tiene imagen.
+Datos del escenario ficticio:
+- fact-1: la escena es el interior de una cabaña ficticia, con una ventana amplia.
+- fact-2: desde esa ventana se ve una playa imaginaria de arena blanca, agua turquesa y palmeras. No corresponde a una ubicación real.
+- fact-3: el interior contiene una silla de madera y una cortina de lino; no se conocen otros servicios o amenidades.
+Paleta: arena, turquesa y coral.
+Concepto: una pausa tranquila frente a una playa paradisíaca.
+Crea una fotografía fotorrealista desde el interior, con la playa visible por la ventana y luz natural suave. Usa únicamente los elementos descritos, sin texto ni logotipos.
 Usa generate_campaign_image una sola vez para piece-1. Incluye un altText que indique que es una imagen generada por IA de un alojamiento ficticio. Devuelve la referencia obtenida de la herramienta.</code></pre></div><p><strong>Observa:</strong> nombre y argumentos de la tool, resultado con ruta local y un artefacto de imagen en ADK Web. Esta prueba consume una generación de imagen además de las llamadas de texto. Inspecciona la imagen tú; el Editor no hace revisión de píxeles.</p>
-</div></details><details class="guide-details"><summary>Editor · Prueba una afirmación que no está respaldada</summary><div class="details-body"><p>Requiere el módulo 6. Selecciona <strong>editor</strong> y pega:</p>
-<div class="code-block"><div class="code-toolbar"><span>Código</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Revisa este ejemplo ficticio. Hechos permitidos: fact-1 = Golden Rentals es una marca ficticia del taller.
+<p><strong>Si responde que faltan hechos o una pieza:</strong> es una respuesta del agente a un brief incompleto. Comprueba que incluiste <code>piece-1</code>, los datos con sus <code>factId</code> y la paleta. Esos identificadores etiquetan los datos del ejercicio; no certifican una propiedad real.</p>
+<p>Una petición como “crea una playa paradisíaca” omite ese contexto. Además, pedir solo un paisaje exterior requiere ampliar la dirección visual de <code>PHOTO_STYLE</code> en <code>packages/providers/image-prompt.ts</code>, que actualmente pide interiores. Si cambias esa configuración, conserva la distinción entre escenas ficticias y hechos de propiedades reales, reinicia ADK Web y crea una sesión nueva.</p>
+</div></details><details class="guide-details"><summary>Editor · editor · Detecta un problema y aprueba la corrección</summary><div class="details-body"><p>Requiere el módulo 6. Selecciona <strong>editor</strong> y crea una sesión nueva. Esta prueba tiene dos mensajes: primero revisas un texto con datos inventados; después envías una versión corregida.</p>
+<p><strong>Prueba A · Detecta la afirmación sin respaldo.</strong> Copia este primer mensaje:</p>
+<div class="code-block"><div class="code-toolbar"><span>Mensaje para ADK Web</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Revisa este ejemplo ficticio. Hechos permitidos: fact-1 = Golden Rentals es una marca ficticia del taller.
 Pieza piece-1, ángulo angle-1: “Reserva hoy por $50 con piscina privada”. Esos datos no están en los hechos.
 Pieza piece-2, ángulo angle-2: “Imagina tu próxima pausa”.
 Pieza piece-3, ángulo angle-3: “¿Con quién compartirías una escapada?”.
-Devuelve JSON {review:{status,findings:[{pieceId,severity,category,description}],visualInspection:&quot;HUMAN_REQUIRED&quot;},calendar:[{pieceId,date,localTime:&quot;&quot;,topic}]} con tres fechas entre 2026-11-07 y 2026-11-13. Señala las afirmaciones sin respaldo; no apruebes imágenes.</code></pre></div><p><strong>Observa:</strong> debería señalar el precio y la piscina como datos no respaldados. La respuesta del modelo puede fallar: compárala con el contrato del módulo 6 y con tu criterio.</p>
-</div></details><h3>3. Cambia la instrucción y compara</h3>
+Devuelve JSON {review:{status,findings:[{pieceId,severity,category,description}],visualInspection:&quot;HUMAN_REQUIRED&quot;},calendar:[{pieceId,date,localTime:&quot;&quot;,topic}]} con tres fechas entre 2026-11-07 y 2026-11-13. Señala las afirmaciones sin respaldo; no apruebes imágenes.
+Respeta estos valores exactos del contrato: review.status solo puede ser &quot;APPROVED&quot; o &quot;NEEDS_REVISION&quot;; severity solo &quot;blocking&quot; o &quot;note&quot;; category solo &quot;factual&quot;, &quot;brand&quot;, &quot;copy&quot;, &quot;visual&quot;, &quot;calendar&quot; o &quot;technical&quot;.
+Usa NEEDS_REVISION cuando haya afirmaciones sin respaldo y APPROVED cuando la revisión textual no encuentre problemas que bloqueen su aprobación. Cada entrada de calendar debe corresponder a una pieza distinta. Las fechas pertenecen a este caso didáctico; no se publicará nada.</code></pre></div><p><strong>Resultado esperado:</strong> <code>review.status: &quot;NEEDS_REVISION&quot;</code>, con una observación <code>blocking</code> de categoría <code>factual</code> para <code>piece-1</code>, por el precio y la piscina. También debe devolver tres fechas y <code>visualInspection: &quot;HUMAN_REQUIRED&quot;</code>.</p>
+<p><strong>Prueba B · Revisa la versión corregida.</strong> En la misma sesión de <strong>editor</strong>, envía este segundo mensaje completo:</p>
+<div class="code-block"><div class="code-toolbar"><span>Mensaje para ADK Web</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>Esta es la versión corregida de las tres piezas del ejercicio ficticio. Revisa estos textos actuales; los textos anteriores han sido reemplazados.
+Marca: Golden Rentals. Audiencia: parejas. Tono: cálido y cercano. Objetivo: presentar el ejemplo del taller e invitar a imaginar una pausa.
+Hechos permitidos: fact-1 = Golden Rentals es una marca ficticia creada para este taller. No se conocen precios, promociones, ubicación, disponibilidad ni amenidades.
+
+Pieza piece-1, ángulo angle-1, presentación:
+&quot;Conoce Golden Rentals: una marca ficticia creada para este taller. Explora el ejemplo con nosotros.&quot;
+Pieza piece-2, ángulo angle-2, pausa imaginada:
+&quot;Imagina una pausa a tu ritmo. ¿Qué te gustaría hacer en ese momento?&quot;
+Pieza piece-3, ángulo angle-3, compañía:
+&quot;Soñar una escapada también puede empezar con una conversación. ¿Con quién compartirías esa idea?&quot;
+
+Evalúa hechos, tono, coherencia y variedad con los mismos criterios. Decide el estado a partir de los textos; no des por aprobada la revisión solo porque se presenta como corregida.
+Devuelve únicamente JSON {review:{status,findings:[{pieceId,severity,category,description}],visualInspection:&quot;HUMAN_REQUIRED&quot;},calendar:[{pieceId,date,localTime:&quot;&quot;,topic}]}.
+review.status solo puede ser &quot;APPROVED&quot; o &quot;NEEDS_REVISION&quot;. Usa NEEDS_REVISION si encuentras un problema que bloquee la aprobación textual; usa APPROVED si no lo encuentras. Si no hay observaciones, findings debe ser [].
+En cada observación usa severity &quot;blocking&quot; o &quot;note&quot; y category &quot;factual&quot;, &quot;brand&quot;, &quot;copy&quot;, &quot;visual&quot;, &quot;calendar&quot; o &quot;technical&quot;.
+Propón exactamente tres entradas de calendar, una por pieza, con fechas distintas entre 2026-11-07 y 2026-11-13, localTime &quot;&quot; y un topic breve. Son fechas del ejercicio, no una solicitud de publicación. No inspecciones ni apruebes imágenes.</code></pre></div><p><strong>Resultado esperado:</strong> <code>review.status: &quot;APPROVED&quot;</code>, sin observaciones <code>blocking</code>, tres entradas en <code>calendar</code> y <code>visualInspection: &quot;HUMAN_REQUIRED&quot;</code>. Lo que cambió fue el texto: se retiraron el precio y la piscina inventados.</p>
+<aside class="info-card info-important" aria-label="Qué debes recordar"><strong class="info-label">Qué debes recordar</strong><p><strong>APPROVED significa revisión automática textual.</strong> La revisión de imágenes y la aprobación humana de la campaña siguen pendientes. En ADK Web esta respuesta no cambia ni publica una campaña en la otra aplicación.</p>
+</aside><p>Si obtienes <code>NEEDS_REVISION</code> en la segunda prueba, lee <code>findings</code>, corrige el problema señalado y vuelve a enviar las tres piezas completas. El objetivo es satisfacer los criterios, no pedir al agente que ignore sus observaciones. La respuesta de Gemini puede variar: verifica el formato y el contenido.</p>
+</div></details><h3>4. Cambia la instrucción y compara</h3>
 <p>Edita la función que construye <code>instruction</code> en tu ejercicio. Detén ADK Web con <strong>Ctrl+C</strong>, vuelve a iniciarlo y crea una sesión nueva. Así comparas la instrucción nueva sin arrastrar la conversación anterior. Cambiar el mensaje del chat prueba una petición del usuario; cambiar <code>instruction</code> modifica las reglas del agente.</p>
 <details class="guide-details"><summary>Límites y errores del laboratorio</summary><div class="details-body"><ul>
 <li>El servidor escucha solo en tu equipo, en el puerto 8000. No necesita <code>--allow_origins=&#39;*&#39;</code>.</li>
@@ -704,6 +868,30 @@ Devuelve JSON {review:{status,findings:[{pieceId,severity,category,description}]
 <li>Si el proceso se interrumpió a la fuerza, puede quedar <code>server.lock</code>. Elimínalo únicamente después de comprobar que no hay otro laboratorio abierto. Conserva el registro de presupuesto.</li>
 </ul>
 </div></details><p>Referencia: <a href="https://adk.dev/get-started/typescript/#run-with-web-interface" target="_blank" rel="noopener noreferrer">interfaz web oficial de ADK</a>.</p>
+<h2>Vuelve al dashboard de edición con Gemini</h2>
+<p>Después de probar los agentes por separado, puedes ejecutar el equipo completo y editar su campaña en la aplicación. Necesitas haber completado los módulos 2 a 7.</p>
+<ol>
+<li>En el <strong><code>.env</code> de esa misma carpeta</strong>, conserva tu llave de Gemini y comprueba esta línea:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>GENERATION_MODE=real</code></pre></div><ol start="2">
+<li>Abre <strong>otra terminal</strong> en la raíz del proyecto, donde está <code>package.json</code>. Si el dashboard ya estaba corriendo, detén su proceso anterior con <strong>Ctrl+C</strong> para que vuelva a leer <code>.env</code>. Inícialo con:</li>
+</ol>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code>pnpm dev</code></pre></div><ol start="3">
+<li>Abre la dirección que imprima esa terminal. Con los puertos de las plantillas, será <strong><a href="http://127.0.0.1:4319" target="_blank" rel="noopener noreferrer">http://127.0.0.1:4319</a></strong> en <code>starter</code> o <strong><a href="http://127.0.0.1:4317" target="_blank" rel="noopener noreferrer">http://127.0.0.1:4317</a></strong> en <code>main</code>. Si cambiaste <code>PORT</code>, usa el valor que aparece en la terminal. <strong>El puerto 8000 corresponde al chat de ADK Web.</strong></li>
+<li>Comprueba que la cabecera del dashboard diga <strong>“Generación con IA”</strong>. Si tenías una campaña simulada abierta, elige <strong>“Nueva campaña”</strong>. Completa el brief ficticio y pulsa <strong>“Crear mi campaña”</strong> para ejecutar el equipo con Gemini.</li>
+<li>Cuando termine la generación, abre las piezas: <strong>“Editar texto”</strong> permite cambiar el contenido manualmente; <strong>“Pedir ajuste”</strong> solicita una revisión con Gemini; <strong>“Otra imagen”</strong> permite generar una alternativa. Después revisa el calendario y descarga la campaña.</li>
+</ol>
+<aside class="info-card info-note" aria-label="Contexto útil"><strong class="info-label">Contexto útil</strong><p><strong>Las pruebas de ADK Web son independientes del dashboard.</strong> Sus conversaciones e imágenes no se incorporan automáticamente a una campaña. La campaña nueva se genera con el brief que completes en la aplicación.</p>
+</aside><p>Las generaciones y los ajustes con Gemini consumen tu API. El presupuesto de <strong>5 USD del laboratorio</strong> no se aplica al dashboard, que utiliza sus propios límites por campaña. La revisión y aprobación final siguen siendo tuyas.</p>
+<h2>Alternativa: probar un agente desde la terminal</h2>
+<p>Esta opción muestra el resultado en la terminal y termina; no abre ADK Web. Úsala cuando quieras ejecutar el ejemplo preparado de un módulo.</p>
+<p>Con la llave configurada y los TODO necesarios completos, ejecuta este comando desde la raíz del proyecto:</p>
+<div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" class="copy-code" aria-label="Copiar bloque de código">Copiar</button></div><pre tabindex="0"><code># 5 = presupuesto estimado acumulado de 5 USD para el laboratorio por terminal.
+pnpm workshop:run 2 --real --allow-paid-generation --budget-usd=5</code></pre></div><p><strong>¿Qué significa <code>--budget-usd=5</code>?</strong> El laboratorio permite llamadas mientras sus reservas estimadas acumuladas quepan dentro de <strong>5 USD</strong>. Puedes cambiar el número para elegir otro presupuesto. Es un control local basado en estimaciones; no carga 5 USD por adelantado ni establece un límite de facturación en Google.</p>
+<p>Puedes usar 2 (Estratega), 4 (Redactor), 5 (Diseñador, una imagen) o 6 (Editor). Cada ejecución tiene un máximo de seis llamadas contando la imagen. El Diseñador requiere los módulos 3 y 5. La salida real varía; aquí sí puedes comparar el efecto de tus instrucciones.</p>
+<p>El laboratorio reserva una estimación conservadora antes de cada llamada y conserva el acumulado en <code>.workshop-data/lab-budget.json</code>. El presupuesto indicado es un tope acumulado para ese laboratorio, no un monto adicional por ejecución. El registro usa las tarifas documentadas al preparar el piloto y debe revisarse antes de impartir el workshop; no es una factura de Google. La interfaz web y el script <code>real:validate</code> tienen controles separados. <code>--solution</code> selecciona expresamente la solución, nunca se usa como recuperación automática de un TODO pendiente.</p>
+<p>Una ejecución real conserva sus archivos en la carpeta temporal indicada en la salida; el Diseñador muestra la ruta de la imagen. Los módulos 3 y 7 se comprueban offline. La campaña completa se prueba después desde la web.</p>
+<p>Si se cerró a la fuerza un laboratorio real, puede quedar <code>.workshop-data/lab.lock</code>. Comprueba que no haya otra ejecución activa antes de eliminar ese archivo. El registro de reservas debe conservarse.</p>
 </div></section>
 <section data-step="facilitacion" aria-label="Prepara y acompaña el taller" hidden><div class="step-tools"><a href="https://github.com/mayrascript/multiagent-adk-workshop/blob/starter/workshop/guide/facilitadora.md" target="_blank" rel="noopener noreferrer">↗ Ver guía en GitHub</a></div><div class="step-body"><h2>Preparar la sesión</h2>
 <p>Comparte la rama starter con el grupo. Conserva una copia de main, la solución completa con comentarios, para demostrar el objetivo y ayudar en un bloqueo. Recorre primero la interfaz y luego abre el TODO 2.1. Los archivos incluyen las explicaciones que se deben leer junto al código.</p>

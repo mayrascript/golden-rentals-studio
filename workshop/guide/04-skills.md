@@ -6,6 +6,8 @@
 > [!NOTE]
 > **La skill es el manual del especialista:** el Redactor consulta reglas y ejemplos cuando los necesita. El manual aporta conocimiento; una tool ejecuta una acción. ADK expone este manual mediante herramientas de lectura.
 
+![El Redactor consulta un manual con reglas de tono, una lista de comprobación y ejemplos mientras escribe una publicación. La skill reúne ese conocimiento reutilizable.](../assets/skill-illustration.png)
+
 Abre `skills/instagram-copy/SKILL.md` y `skills/instagram-copy/references/estructuras.md`. El primer archivo define la skill y sus instrucciones; el segundo contiene estructuras que el Redactor puede consultar cuando las necesita.
 
 En `workshop/exercises/04-skills.ts`, completa tres pasos: leer la carpeta con `loadSkillFromDir`, crear un `SkillToolset` y registrarlo en `tools`. Los imports están preparados para que el archivo compile desde el inicio; sus usos aparecen en los bloques comentados.

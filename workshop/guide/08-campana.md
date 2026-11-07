@@ -15,7 +15,7 @@ La prueba ADK de `pnpm test` usa el equipo conectado a la web con respuestas loc
 
 
 2. Ejecuta la web con `pnpm dev`. Usa primero el modo simulado para recorrer formulario, revisión y descarga.
-3. Para probar tus agentes reales, configura tu propia clave y presupuesto de cuenta, cambia `GENERATION_MODE=real` en `.env` y reinicia el servidor. La web conserva los límites por campaña; el presupuesto del laboratorio no se aplica a la web.
+3. Para probar tus agentes reales, sigue **“Vuelve al dashboard de edición con Gemini”** en [Laboratorio con Gemini](laboratorio.md). Allí se explica qué línea de `.env` editar, cómo reiniciar con `pnpm dev`, qué dirección abrir y cómo comprobar que aparece “Generación con IA”. La web conserva los límites por campaña; el presupuesto del laboratorio no se aplica a la web.
 4. Crea una campaña ficticia: observa la estrategia, los textos, las imágenes, la revisión y el calendario. Edita una pieza y verifica que su aprobación anterior queda invalidada.
 5. Revisa el contenido y descarga el borrador o la campaña aprobada. La aprobación humana es tu decisión.
 6. Detén el servidor. Las campañas de la web permanecen en `.data/`; los ejercicios y tu configuración personal permanecen en tu carpeta.
